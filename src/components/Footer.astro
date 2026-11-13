@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+import { SITE } from '@/config';
+---
+<footer class="site-footer shell">
+  <div class="footer-top"><a href="/" class="footer-brand">bin<span>.</span></a><p>把想法写下来，<br/>让有趣的事情发生。</p><a class="back-top" href="#top">回到顶部 <span>↑</span></a></div>
+  <div class="footer-bottom"><p>© {new Date().getFullYear()} BIN / JOURNAL <span class="footer-divider">/</span> 保持好奇，持续构建。</p><div><a href={SITE.github} target="_blank" rel="noopener noreferrer">GITHUB <Icon name="arrow" size={12}/></a><a href="/rss.xml">RSS <Icon name="rss" size={13}/></a><span class="sample-indicator">DESIGN PREVIEW</span></div></div>
+</footer>

@@ -1,0 +1,16 @@
+---
+interface Props { name: 'arrow' | 'search' | 'sun' | 'moon' | 'close' | 'menu' | 'github' | 'rss' | 'down'; size?: number; class?: string; }
+const { name, size = 20, class: className } = Astro.props;
+const paths = {
+  arrow: 'M5 19 19 5M5 5h14v14',
+  search: 'M21 21l-5.2-5.2M18 10.5a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z',
+  sun: 'M12 3V1m0 22v-2M3 12H1m22 0h-2M5.6 5.6 4.2 4.2m15.6 15.6-1.4-1.4M5.6 18.4l-1.4 1.4M19.8 4.2l-1.4 1.4M17 12a5 5 0 1 1-10 0 5 5 0 0 1 10 0Z',
+  moon: 'M20.8 13a9 9 0 1 1-9.8-9.8A7 7 0 0 0 20.8 13Z',
+  close: 'M6 6l12 12M18 6 6 18',
+  menu: 'M4 7h16M4 12h16M4 17h16',
+  github: 'M9 19c-4.3 1.3-4.3-2.2-6-2.7m12 5v-3.5c0-1 .1-1.5-.5-2 3.2-.4 6.5-1.6 6.5-7.1a5.5 5.5 0 0 0-1.5-3.8 5.1 5.1 0 0 0-.1-3.8S18.2.7 15 2.5a13.4 13.4 0 0 0-6 0C5.8.7 4.6 1.1 4.6 1.1a5.1 5.1 0 0 0-.1 3.8A5.5 5.5 0 0 0 3 8.7c0 5.5 3.3 6.7 6.5 7.1-.6.5-.6 1.3-.5 2V21',
+  rss: 'M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16M5 20h.01',
+  down: 'M12 4v16m-6-6 6 6 6-6',
+} as const;
+---
+<svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class={className} aria-hidden="true"><path d={paths[name]} /></svg>

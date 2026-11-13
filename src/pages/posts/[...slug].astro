@@ -1,0 +1,26 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { getPosts, formatDate, readingTime } from '@/utils/posts';
+export async function getStaticPaths() {
+  return (await getPosts()).map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const sections = headings.filter(heading => heading.depth === 2);
+---
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="article-shell">
+    <a class="article-back" href="/posts/">← 返回全部文章</a>
+    <header class="article-header"><div class="post-meta"><span class="category"><i></i>{post.data.category}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time><span>{readingTime(post.body)}</span></div><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p><div class="article-author"><span class="author-avatar" aria-hidden="true">✳</span><div><strong>Bin</strong><span>保持好奇，持续构建。</span></div></div></header>
+    <img class="article-cover" src={`/art/${post.data.cover}.svg`} alt={`${post.data.title}的抽象几何封面`} width="1000" height="760"/>
+    <div class="article-body">
+      {post.data.sample && <p class="demo-note article-notice">设计样稿 · 本文为示例内容，用于预览文章排版与阅读体验。</p>}
+      {sections.length > 1 && <nav class="article-toc" aria-label="文章目录"><h2>文章目录</h2><ul>{sections.map(section => <li><a href={`#${section.slug}`}>{section.text}</a></li>)}</ul></nav>}
+      <div class="prose"><Content/></div>
+      <div class="article-end"><div class="article-tags">{post.data.tags.map(tag => <span># {tag}</span>)}</div><button class="copy-link" type="button" data-copy-link aria-live="polite">复制文章链接 <Icon name="arrow" size={15}/></button></div>
+    </div>
+  </article>
+</BaseLayout>
