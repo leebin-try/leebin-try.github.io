@@ -1,5 +1,24 @@
 import { expect, test } from '@playwright/test';
 
+test('research report shares the journal theme and keeps evidence navigable', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('link', { name: '阅读报告' }).click();
+  await expect(page).toHaveURL(/\/data-agent-ontology\/$/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Data Agent 与本体');
+  await expect(page.locator('.site-header')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  const brokenAnchors = await page.locator('.research-report').evaluate(root =>
+    [...root.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')]
+      .filter(a => !document.getElementById(a.hash.slice(1))).map(a => a.hash));
+  expect(brokenAnchors).toEqual([]);
+  await page.getByRole('button', { name: '切换到深色模式' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.locator('.research-report a[href="#e1"]').first().click();
+  await expect(page.locator('#e1')).toBeVisible();
+  const markdown = await page.request.get('/data-agent-ontology/report.md');
+  expect(markdown.ok()).toBe(true);
+});
+
 test('navigation and article reading work without horizontal overflow', async ({ page }, info) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('保持好奇');
