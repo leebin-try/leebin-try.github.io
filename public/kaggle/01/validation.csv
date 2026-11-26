@@ -1,0 +1,9 @@
+candidate,series,value
+RF control,Ordinary repeated CV,0.841751
+RF + WCG,Ordinary repeated CV,0.845866
+WCG rule,Ordinary repeated CV,0.846988
+WCG + XGB,Ordinary repeated CV,0.847737
+RF control,Relationship-group stress,0.802469
+RF + WCG,Relationship-group stress,0.802469
+WCG rule,Relationship-group stress,0.821549
+WCG + XGB,Relationship-group stress,0.821549

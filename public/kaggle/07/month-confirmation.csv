@@ -1,0 +1,4 @@
+candidate,series,value
+Last month,Month 33 confirmation RMSE,1.13581701
+Lag mean,Month 33 confirmation RMSE,1.02094007
+Selected LGB,Month 33 confirmation RMSE,0.8744386

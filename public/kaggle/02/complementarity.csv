@@ -1,0 +1,4 @@
+candidate,series,value
+Lexical only,Development OOF balanced accuracy,0.45823
+Native parent,Development OOF balanced accuracy,0.659786
+0.6 native + 0.4 lexical,Development OOF balanced accuracy,0.6683047477

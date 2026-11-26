@@ -1,0 +1,710 @@
+[
+  {
+    "id": "01-original_cover",
+    "file": "/kaggle/01/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "f5df42908eaec6c0a616e9e60375822bf65e17bc65589949856d94ab2e4f27db"
+  },
+  {
+    "id": "01-original_method_diagram",
+    "file": "/kaggle/01/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "93c9c9a5afb3543d00cbbf7e0a45dd3daa91d509974e4f8438dcc519c031281a"
+  },
+  {
+    "id": "02-original_cover",
+    "file": "/kaggle/02/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "c770c6d0bd6c574f113b9aab4da762ffe67c73bff98a6fc5816d1ff01498bb9b"
+  },
+  {
+    "id": "02-original_method_diagram",
+    "file": "/kaggle/02/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "8e1e0da184eb685fe435cd2899bd37e4e0b692ab6048303299b095dbc083ddee"
+  },
+  {
+    "id": "03-original_cover",
+    "file": "/kaggle/03/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "9b82388816ff56dd687675325537116724331632dc67908986d607698abc30df"
+  },
+  {
+    "id": "03-original_method_diagram",
+    "file": "/kaggle/03/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "1caf2db2b45638ca7432171dea5ffb7bcd7f435601d9f1f0a3ec30504dac54fc"
+  },
+  {
+    "id": "04-original_cover",
+    "file": "/kaggle/04/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "26fc00c536b2dd0f2241f790c1e6cbe424a01ce39d6f426b7b93e1a49bcbdc37"
+  },
+  {
+    "id": "04-original_method_diagram",
+    "file": "/kaggle/04/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "26445e0aefafcf9d2abb688b876cc37c0504f97efc8f6fca89b4120217011586"
+  },
+  {
+    "id": "05-original_cover",
+    "file": "/kaggle/05/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "dbaca63f8caf26ff1076f751e8f8290873d025117df5991869063f7b4beb02f0"
+  },
+  {
+    "id": "05-original_method_diagram",
+    "file": "/kaggle/05/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "bf14282a7c01048dac9ad3645c5d9a4b6688675b780f46f150b830dff9aa77ad"
+  },
+  {
+    "id": "06-original_cover",
+    "file": "/kaggle/06/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "b3c046e1a680dd23d7d3ded267be20369e79ae0d4a5c03ec42fd98d994ec4227"
+  },
+  {
+    "id": "06-original_method_diagram",
+    "file": "/kaggle/06/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "e4e3ad840cbc66140052dcc60cf1c3190fd8ab5ec6bb0e94da75b576086f6a75"
+  },
+  {
+    "id": "07-original_cover",
+    "file": "/kaggle/07/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "1092981734142925a65b804328325e545387ffdbad41cf50dc0d81f6f3d63b57"
+  },
+  {
+    "id": "07-original_method_diagram",
+    "file": "/kaggle/07/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "ae7f46b82163737a84dfd10551ab2108a1fe2c91cb45fe2cc484c885f11db817"
+  },
+  {
+    "id": "08-original_cover",
+    "file": "/kaggle/08/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "535542c4955c02a92dd0f85373e22d579e9783e674407a6a659dbe925a6fe3dd"
+  },
+  {
+    "id": "08-original_method_diagram",
+    "file": "/kaggle/08/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "509f67e16ef26adf58e5a5020cfa079041f0dd0e1dc62450f80c7fa8dbee4950"
+  },
+  {
+    "id": "09-original_cover",
+    "file": "/kaggle/09/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "fc4101698e5fd43a7ec291e1476d2f6be9c2e13a3f635388e00dbccf9d8a43bf"
+  },
+  {
+    "id": "09-original_method_diagram",
+    "file": "/kaggle/09/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "6bb1128f210effd263c07c10e1c4aa935275c9ab94c963fa3d4f9cc97da87dc9"
+  },
+  {
+    "id": "10-original_cover",
+    "file": "/kaggle/10/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "e9753c94ddef837375033479a6d6efb4e5e272b898e382f331ea139c91cc9e51"
+  },
+  {
+    "id": "10-original_method_diagram",
+    "file": "/kaggle/10/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "5a75ad94a6066b4a3d94b56274d0c12b274a9037cd87823a3ec4d3c7066a4453"
+  },
+  {
+    "id": "11-original_cover",
+    "file": "/kaggle/11/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "26058f9e2476fcb23a2f5f5b05f29c4694545562320ed5b001792f5e4c943df8"
+  },
+  {
+    "id": "11-original_method_diagram",
+    "file": "/kaggle/11/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "31e3bd8179aa8a2a52e822a0441cca285d0e0e1b2c10bd0befe9ad2395ec0625"
+  },
+  {
+    "id": "12-original_cover",
+    "file": "/kaggle/12/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "f14d3460996dfb524ab73e04ba0da482febca6663daaefbc9daf781911f2aa9e"
+  },
+  {
+    "id": "12-original_method_diagram",
+    "file": "/kaggle/12/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "3f84ad1611c7520bc516af2a1df8ce3ee985151cd38002e4cadcc32dddf62f39"
+  },
+  {
+    "id": "13-original_cover",
+    "file": "/kaggle/13/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "d65b77b7bb8d5ec24155bb015acd729305f96e88864405ec03625c96043b5e52"
+  },
+  {
+    "id": "13-original_method_diagram",
+    "file": "/kaggle/13/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "d393e5a350773a2e72d68be5eb55668c78cda39d48ac786788f24946497d4fd1"
+  },
+  {
+    "id": "14-original_cover",
+    "file": "/kaggle/14/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "6defcd3039a297edbf8bbc1732d5ab2cb2afb78b08fe31d3c866227999144b87"
+  },
+  {
+    "id": "14-original_method_diagram",
+    "file": "/kaggle/14/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "5f819a0e65b5967cb05fe39e2f3fe676832e0a9d6dfc11038461fc906b073857"
+  },
+  {
+    "id": "15-original_cover",
+    "file": "/kaggle/15/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "bc9279866456f825dcb166ed63c86501b0e7017123e85c9335123ef03dfec097"
+  },
+  {
+    "id": "15-original_method_diagram",
+    "file": "/kaggle/15/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "e99ba76bcc4dcaa373c9fc75ae0eaf8ed27b6cdb3cc7fc7a34af16440ddf6f1f"
+  },
+  {
+    "id": "16-original_cover",
+    "file": "/kaggle/16/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "d242cbb24653fbec93f40451979d755fa7761e7e96f6fe128520b5765316ab23"
+  },
+  {
+    "id": "16-original_method_diagram",
+    "file": "/kaggle/16/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "8301c3fdc3f7b79322407680cfc4614f6c0fcdb67e34f83b486954e849c69e8c"
+  },
+  {
+    "id": "17-original_cover",
+    "file": "/kaggle/17/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "5b8d701311780d796f21a2d6ad50ff1b79ca795756a7450d991e72fbab52edd6"
+  },
+  {
+    "id": "17-original_method_diagram",
+    "file": "/kaggle/17/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "1345b5a04f6dc680bdad324c0d7f81f3c264aae739cb613a770e39f19cfd64c0"
+  },
+  {
+    "id": "validation-original_cover",
+    "file": "/kaggle/validation/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "550e46353070352d5924fc7ec728993c61a4ac0ae22cc2b2de694d63afaa7f22"
+  },
+  {
+    "id": "validation-original_method_diagram",
+    "file": "/kaggle/validation/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "9fef56afd7f7c7a14d6a50caf2a29bb03f75ee9fbd1074e9bc55126314d585a1"
+  },
+  {
+    "id": "metrics-original_cover",
+    "file": "/kaggle/metrics/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "9cd50d2b78c15a0144290e0350b4c9f4cbffcd14b306565a54c54ddcb0a69825"
+  },
+  {
+    "id": "metrics-original_method_diagram",
+    "file": "/kaggle/metrics/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "566558cc608efd53a6973a06fe927b50ff1cbb8783eccabb19aa1c0fd93ac9a7"
+  },
+  {
+    "id": "compute-original_cover",
+    "file": "/kaggle/compute/cover.svg",
+    "kind": "original_cover",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "fff8fe98275355d09ed640c904a752bf548e9fa7e4458951921e22823e1778f9"
+  },
+  {
+    "id": "compute-original_method_diagram",
+    "file": "/kaggle/compute/method.svg",
+    "kind": "original_method_diagram",
+    "author": "BIN / JOURNAL",
+    "description": "Original vector illustration; no competition sample or official logo.",
+    "sha256": "e76984f1f1e7c98aa64c4fc3ef4a32e95c0f93e78057e3008fcd61393b241938"
+  },
+  {
+    "id": "01-validation",
+    "file": "/kaggle/01/validation.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/01/validation.csv",
+    "scope": "Internal validation; not official scores",
+    "notes": "Three ordinary fivefold repeats versus one grouped fivefold stress protocol. Different generalization questions; no independent feature attribution.",
+    "sources": [
+      {
+        "path": "01_titanic/docs/wcg-results.md",
+        "sha256": "64f0245b896c095afbc2def26ef5d75988d05fba2eeb9c3d223b1c79f2483041"
+      }
+    ],
+    "rows": 8,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "00f9d7cbc3a3e2ca0ff3b2d0ce7c5deff62595a9b749072cbddfc16934553eef",
+    "dataSha256": "5c99890cab29bcf1d0cc8698ff2cb3b1c666faf91fe28f9fdd07d3b818bed1b6"
+  },
+  {
+    "id": "02-complementarity",
+    "file": "/kaggle/02/complementarity.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/02/complementarity.csv",
+    "scope": "Selected development OOF; not untouched holdout",
+    "notes": "The lexical model is weaker alone. Corpus selection and mixture selection reuse development information.",
+    "sources": [
+      {
+        "path": "02_name_that_llm/docs/overnight-t4-results.md",
+        "sha256": "655ee0cac0f1edc0bcfad2143e6b54dd8bcdfb23fa25c4ac72774fab1b1e7bb7"
+      }
+    ],
+    "rows": 3,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "06e10b59f0693e7c3ffc87ad0865b7c7e2764558ce45e4adfc4ee4ee9cbc6454",
+    "dataSha256": "9272f24ac9458f3a709553ff60163b9ec61d826c5ad1e04cb3244efd01c23ba2"
+  },
+  {
+    "id": "03-scored-candidates",
+    "file": "/kaggle/03/scored-candidates.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/03/scored-candidates.csv",
+    "scope": "Five scored packages; multiple components differ",
+    "notes": "The packages change more than one component; this is not a causal ablation. Unsubmitted configurations are excluded.",
+    "sources": [
+      {
+        "path": "03_store_sales_time_series_forecasting/docs/final-report.md",
+        "sha256": "445ed0fc1f28164c766e5235ab033942ba6cb4e32d9c34f5b071d42a23a81571"
+      }
+    ],
+    "rows": 5,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "85c1f9b6092ea614eb7c0b1096f171c7c1affa0717409f5592fceae3457ce102",
+    "dataSha256": "7b0731cbdddaf6332c56344a16dc0a4f341c40fb27367b2286a44b7e056d8576"
+  },
+  {
+    "id": "05-paired-confirmation",
+    "file": "/kaggle/05/paired-confirmation.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/05/paired-confirmation.csv",
+    "scope": "24-task confirmation; not an official leaderboard score",
+    "notes": "One evaluation environment error was recorded separately; counts are not a general success-rate estimate.",
+    "sources": [
+      {
+        "path": "05_gemma_4_developer_agent/docs/refresh31b-results-20261120.md",
+        "sha256": "7067673a8ecc8c25697c50e5545b6b5866c6db932cdb8205a86f3fe6ba70d9a3"
+      }
+    ],
+    "rows": 2,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "103f5024dcf48a13c2ed419998bdfa117d39cec2ada3265a7d44dfe280dcd8fa",
+    "dataSha256": "e4f6dc142c2e3f5215b200c00a846415266fcb528ee6b73b0dd8d69ce142c475"
+  },
+  {
+    "id": "06-candidate-ceiling",
+    "file": "/kaggle/06/candidate-ceiling.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/06/candidate-ceiling.csv",
+    "scope": "Internal temporal diagnostic; candidate pool fixed",
+    "notes": "Ceilings apply the metric-specific per-session cap; they are not achieved model scores.",
+    "sources": [
+      {
+        "path": "06_otto_recommender_system/docs/gpu-results.md",
+        "sha256": "d1046e721ede29b63bd818809712e4b16663a1732555c27c98f5cec029338748"
+      }
+    ],
+    "rows": 6,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "567b5596c84929c2fdd87d9593d4b798f8bb82a14a4a0dd8678eb3a591c3a4e8",
+    "dataSha256": "da49ae53de0782b57eb59efd5dee245e6f7d2b25f3bcf0f84bdbfe0766e254cb"
+  },
+  {
+    "id": "07-month-confirmation",
+    "file": "/kaggle/07/month-confirmation.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/07/month-confirmation.csv",
+    "scope": "Same month 33 confirmation population",
+    "notes": "Month 32 selected the candidate; month 33 is a separate temporal confirmation. This is not the official test population.",
+    "sources": [
+      {
+        "path": "07_competitive_data_science_predict_future_sales/docs/results.md",
+        "sha256": "014add171b5da4d08c6ddcb6742291b987bc8439453406fde7c77e9332976c82"
+      }
+    ],
+    "rows": 3,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "1582a656257ce1b007bdaf8d95a45cb0e9c98f80d36402a40f4d679798e647ce",
+    "dataSha256": "996afd4840439788ca28eeec00e48a52e44970d7e6b022c4a01275d5f17a8654"
+  },
+  {
+    "id": "08-learning",
+    "file": "/kaggle/08/learning.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/08/learning.csv",
+    "scope": "v5; reused 5,000-row selection split",
+    "notes": "Unsmoothed epoch observations. Dashed lines mark selected checkpoints; two-seed averaging did not pass the improvement gate.",
+    "sources": [
+      {
+        "path": "08_cifar_10/data/reports/remote-progress-20261123/v5/cifar-study/seed-42/selection-history.json",
+        "sha256": "d7ace215339d9cc4c0faae8256371cd6bd4978096c776bc9839af1046c64965c"
+      },
+      {
+        "path": "08_cifar_10/data/reports/remote-progress-20261123/v5/cifar-study/seed-2026/selection-history.json",
+        "sha256": "0b780991cc13bb683ddfd03728caaf789424b76b53b01b41291c0d41e2c0b796"
+      }
+    ],
+    "rows": 60,
+    "fields": [
+      "seed",
+      "epoch",
+      "train_loss",
+      "validation_loss",
+      "validation_accuracy"
+    ],
+    "sha256": "d3615f5cac6ea25edc05c65486e70c8095ccf6fce697a3f62240a0a62508a4f0",
+    "dataSha256": "55614693978fdb658c0ab9f80023576ce92d24ecfe3e837f1fbb7eda7e9825d3"
+  },
+  {
+    "id": "10-learning",
+    "file": "/kaggle/10/learning.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/10/learning.csv",
+    "scope": "Selection worker 0 / reused stopping fold",
+    "notes": "Validation is logged every two epochs; no values are invented for missing epochs. Positive-only class Dice is provided in the CSV.",
+    "sources": [
+      {
+        "path": "10_severstal_steel_defect_detection/data/runs/baseline-20261120T061615Z/training-artifacts/training/fold-0/cv/history.json",
+        "sha256": "1c240ef3efebae7c709f0ea23fc323f57c2a5ad5fd0e438261774c77b3cb7041"
+      }
+    ],
+    "rows": 12,
+    "fields": [
+      "epoch",
+      "crop_width",
+      "train_loss",
+      "validation_dice",
+      "always_empty_dice",
+      "class_1_positive_dice",
+      "class_2_positive_dice",
+      "class_3_positive_dice",
+      "class_4_positive_dice"
+    ],
+    "sha256": "608af8cb9ac03ace90a79dba81444cf0ee9382a9d63bf02ff4351fcb6b1596d4",
+    "dataSha256": "f8646ae06ab8b677056e5b1b0b97a97f583ca9e4026224c8b1315f84ed97e653"
+  },
+  {
+    "id": "11-learning",
+    "file": "/kaggle/11/learning.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/11/learning.csv",
+    "scope": "v10 / patient-separated selection / only 3 points per worker",
+    "notes": "Native pixel Dice is not official Dice3DHausdorff. Lines connect observations only; cap-limited convergence remains unresolved.",
+    "sources": [
+      {
+        "path": "11_uw_madison_gi_tract_image_segmentation/data/reports/remote-progress-20261123/v10/training/seed-0/cv/history.json",
+        "sha256": "c73e2e1c624566e1a917e414d9303276d8c546b33e4620d64830eaf44308c22f"
+      },
+      {
+        "path": "11_uw_madison_gi_tract_image_segmentation/data/reports/remote-progress-20261123/v10/training/seed-1/cv/history.json",
+        "sha256": "c1c3d878d7adb97867fb68c3c086fedef5fbda051d16830c68e95cd23ad2062f"
+      }
+    ],
+    "rows": 6,
+    "fields": [
+      "worker",
+      "epoch",
+      "train_loss",
+      "validation_loss",
+      "native_pixel_dice",
+      "organ_1_dice",
+      "organ_2_dice",
+      "organ_3_dice"
+    ],
+    "sha256": "c698a5f6d05ded7dae538f24f4c7c2d7fd485c1dd08bd1f5f90e458559534f72",
+    "dataSha256": "2af61096e45f91ec07721f4ae53019c0d31ff892ebd3169aceee1bf1246d4275"
+  },
+  {
+    "id": "12-audit-ablation",
+    "file": "/kaggle/12/audit-ablation.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/12/audit-ablation.csv",
+    "scope": "Independent audit; four representation arms",
+    "notes": "Small differences should be read numerically, not exaggerated by a truncated axis. Mixture-minus-single bootstrap spans zero.",
+    "sources": [
+      {
+        "path": "12_playground_series_s4e8/docs/results.md",
+        "sha256": "d8be7060d1966699a3f3caef519641b431e21465ce6891e9b2175487828a3984"
+      }
+    ],
+    "rows": 4,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "53b1c5eb5ef13259db248a8ef85c095c23fc5338eab5ca577719b08ab06acf3a",
+    "dataSha256": "d87846a3f2f57f705643740e35f71b4f3e626425b5fe30f6a8e9c74f194eebdb"
+  },
+  {
+    "id": "13-learning",
+    "file": "/kaggle/13/learning.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/13/learning.csv",
+    "scope": "v6 / 25-round log samples plus selected and final observations",
+    "notes": "Dashed lines show selected rounds. Sampling is disclosed; no unlogged validation values are reconstructed.",
+    "sources": [
+      {
+        "path": "13_sf_crime/data/runs/storage-repair-20261124T032907Z/full-outputs/sf-crime-run/selection-cat_address/history.json",
+        "sha256": "15195cf5921afafbdb93d11fdfbfa1aa70417575f89f8df202c3cdfca8ea6f46"
+      },
+      {
+        "path": "13_sf_crime/data/runs/storage-repair-20261124T032907Z/full-outputs/sf-crime-run/selection-xgb_target/history.json",
+        "sha256": "9fc038c091bfdae8558a9e6efe66e8f1ac5ba4d945623af00a564a82392f091a"
+      }
+    ],
+    "rows": 90,
+    "fields": [
+      "candidate",
+      "iteration",
+      "train_logloss",
+      "stop_logloss"
+    ],
+    "sha256": "692fc4b04532adc3560b5bec9c127fce3561f7a08c77df929f10138467ab362e",
+    "dataSha256": "d8b03cd424fe5557dce22ef11fda583643dd27a9d2c4fab7ff518e82e4f8f378"
+  },
+  {
+    "id": "14-learning",
+    "file": "/kaggle/14/learning.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/14/learning.csv",
+    "scope": "v1 small CNN / 37 observed epochs",
+    "notes": "Train and stopping losses have different augmentation contexts. Logarithmic loss axis; no smoothing; reused stopping split.",
+    "sources": [
+      {
+        "path": "14_aerial_cactus_identification/data/runs/experiment-20261123T125142Z/outputs/cactus-run/selection-small_cnn/history.json",
+        "sha256": "11d4fbbb153e05fc0e4fbe7b4021e9377c717b58d1babde1d060a983b7d62c48"
+      }
+    ],
+    "rows": 37,
+    "fields": [
+      "epoch",
+      "train_loss",
+      "validation_loss",
+      "validation_auc"
+    ],
+    "sha256": "3a41399049bde91e021909624f9c47e88fd68476c967a2bd797cbb2c0f853edf",
+    "dataSha256": "b27f4a09105339967f41ec8a6f7e9d9a859e0cee170f56a2360ed284c02f9b52"
+  },
+  {
+    "id": "15-learning",
+    "file": "/kaggle/15/learning.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/15/learning.csv",
+    "scope": "v2 / XGBoost fold 1 / sampled observations",
+    "notes": "QWK is evaluated with fixed thresholds here; it is not the calibrated OOF or official QWK. No unlogged elapsed values are filled.",
+    "sources": [
+      {
+        "path": "15_child_mind_institute_problematic_internet_use/data/runs/scoring-20261125T061759Z/full/outputs/cmi-piu-run/selection-xgb/fold-1/history.json",
+        "sha256": "94a37db4b67b7c7052aaa4de29181f851d90f80cdd0076b068a0b9af8f5a1cdf"
+      }
+    ],
+    "rows": 15,
+    "fields": [
+      "iteration",
+      "train_rmse",
+      "stop_rmse",
+      "stop_fixed_qwk"
+    ],
+    "sha256": "402240915c85249fbbf5f0ad879a6714d501a139e3620f8404c41931a2e045a1",
+    "dataSha256": "9011f3c8da88137907d583dc3db6f58c52a6f54d16e639cc940517ed6da46168"
+  },
+  {
+    "id": "15-confusion",
+    "file": "/kaggle/15/confusion.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/15/confusion.csv",
+    "scope": "Counts only / no participant rows or identifiers",
+    "notes": "No class-3 participant was correctly predicted in this audit. Small support limits stable class-specific inference.",
+    "sources": [
+      {
+        "path": "15_child_mind_institute_problematic_internet_use/data/runs/scoring-20261125T061759Z/full/outputs/cmi-piu-run/audit.json",
+        "sha256": "86a749f472b64de867603b1c114cf2451e0d44217dc5ff5efa82bc86092216ef"
+      }
+    ],
+    "rows": 16,
+    "fields": [
+      "true_class",
+      "predicted_class",
+      "count"
+    ],
+    "sha256": "0302a969982333959ce4040258f2fa2f6628aeff2fa307011c332accd594c4e0",
+    "dataSha256": "c32c78f081072a807a1c2a363e6f3d51f5a7502ad2d787c941394f727f5dc0cf"
+  },
+  {
+    "id": "16-learning",
+    "file": "/kaggle/16/learning.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/16/learning.csv",
+    "scope": "v3 / two complete prompt-held-out selection histories",
+    "notes": "Targets can move in opposite directions. Fold 1 reaches its six-epoch cap; these are reused selection observations, not official scores.",
+    "sources": [
+      {
+        "path": "16_commonlit_evaluate_student_summaries/data/reports/full-v3-curve-review/cv-worker-0--fold-0/history.json",
+        "sha256": "52a63d3d39c5d07750c061234965a6f17411ddd37605f80609e95b6237472a61"
+      },
+      {
+        "path": "16_commonlit_evaluate_student_summaries/data/reports/full-v3-curve-review/cv-worker-1--fold-1/history.json",
+        "sha256": "2df7d0cf585e594100e4688bb6f21a902417847eab3bf8416c89b0e11b897310"
+      }
+    ],
+    "rows": 9,
+    "fields": [
+      "fold",
+      "epoch",
+      "train_mse",
+      "mse",
+      "mcrmse",
+      "content_rmse",
+      "wording_rmse"
+    ],
+    "sha256": "0f5f6748c9de8dfef1b85b021b3128240dc5bc17769ad49247e3d90a42626aa6",
+    "dataSha256": "af50b07191a3b04d1c49a2621fe4660cfd87fca5cd00e7b5d0185875091de24f"
+  },
+  {
+    "id": "17-pilot-timing",
+    "file": "/kaggle/17/pilot-timing.svg",
+    "kind": "recorded_aggregate_metrics",
+    "data": "/kaggle/17/pilot-timing.csv",
+    "scope": "Remote pilot report / one positive-weight model / includes startup",
+    "notes": "Observed speedup is about 1.58, not a full-workflow or two-model ensemble guarantee. Local artifact validation stopped at the CSV field-size limit; no official score is implied.",
+    "sources": [
+      {
+        "path": "17_carvana_image_masking_challenge/data/runs/authorized-20261125T112203Z/pilot/outputs/carvana-run/result.json",
+        "sha256": "23d308b9d5830985fc67da082c942c0d6fbbb4da394df2bf0d10b635f847031a"
+      }
+    ],
+    "rows": 2,
+    "fields": [
+      "candidate",
+      "series",
+      "value"
+    ],
+    "sha256": "1e35065af6668a1e9bb964311298aed65abc91ae1065f99200db2b8c549267f9",
+    "dataSha256": "b90d7029e3e066f10f463b4c98b99f45a37096cf71ea7e1076d0b51d1d0976f3"
+  }
+]

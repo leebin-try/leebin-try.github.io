@@ -9,15 +9,42 @@ featured: false
 draft: false
 sample: false
 kaggle: {"kind": "case", "number": 6, "topic": "时序与推荐", "status": "已出分", "result": "Public / private weighted Recall@20 0.57455 / 0.57352", "evidenceDate": "2026-11-17", "source": "https://leebin-try.github.io/kaggle/sources/#case-06", "competitionUrl": "https://www.kaggle.com/competitions/otto-recommender-system", "recordSource": "https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/06_otto_recommender_system/docs/gpu-results.md", "submission": "58449500"}
+coverImage: "/kaggle/06/cover.svg"
+coverAlt: "商品共现网络连接点击、购物车和订单三条排序路径"
+coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是官方标志、比赛样本或模型预测。"
 ---
 
 推荐系统的一条直觉在这场比赛里很具体：**如果目标商品根本没进入候选池，后面的排序器就没有机会选中它。** 因此，分析排序分数之前，先看候选召回覆盖多少目标。
+
+## 问题定义：一次会话，对应三种不同的未来目标
+
+输入是截至当前已观察到的会话前缀，输出是点击、加购物车、下单三类目标各自的 Top-20 商品列表。评分不是“推荐列表里有没有一个对的”，而是按比赛规定的目标权重、每会话截断与聚合方式计算 weighted Recall@20。
+
+这意味着采样与候选覆盖需要按目标检查。点击行为更密，订单更稀疏，但它们的重要性不只由样本量决定。用点击表现代替所有行为，或把每个目标的内部召回率简单平均，都可能改变优化对象。
+
+当前管线先构造共现候选，再做目标专属排序。它的优势是能够清楚定位误差来源：商品没有被召回，还是进入了候选却被排在 20 名以后。两者最终都表现为漏检，但需要不同的工程投入。
+
+
+<figure class="research-figure" data-figure-kind="original_method_diagram">
+<a href="/kaggle/06/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · OTTO"><img src="/kaggle/06/method.svg" alt="原创流程与验证边界示意。商品共现网络连接点击、购物车和订单三条排序路径；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
+<figcaption><strong>方法图 · OTTO</strong> 原创流程与验证边界示意。商品共现网络连接点击、购物车和订单三条排序路径；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/06/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-06-original_method_diagram">图表出处与口径</a></figcaption>
+</figure>
 
 ## 两阶段方法：共现召回，再分别排序
 
 方案建立三类 CUDA 共现图，从会话中产生候选商品，再为 clicks、carts、orders 训练各自的 XGBoost 模型。三个目标的行为强度和频率不同，使用同一个排序器会掩盖这种差异。
 
 时间验证把历史图、排序训练与验证标签的时间边界分开。最终图可以按允许的规则使用已观测测试前缀，但不能读取未来行为或赛后标签。候选池来自哪里，应该和模型训练集一样可追溯。
+
+## 实现展开：候选池与排序器各自承担什么
+
+共现图把历史会话里的物品联系起来，候选特征再描述当前前缀与候选的关系。三种目标分别训练 XGBoost，允许同一个候选在点击、购物车、订单任务中有不同得分。选择轮次和规则／模型融合使用已声明的时间验证。
+
+一个合成例子能说明上限：某会话有四个应预测商品，候选池只含其中三个。再强的排序器也无法找回第四个；若候选很多但 Top-20 没装下已有的三个，则还有排序空间。真实比赛中的上限必须套用官方的分母和截断方式，不能直接拿这个四商品例子的 3／4 当实际公式。
+
+候选规模增大也有成本。它会增加特征计算、训练负样本和最终排序的开销，并可能稀释正样本比例。所以“扩大候选”应同时报告可达召回上升多少、每会话候选数和运行时间变化，而不是把更大的列表天然看成更好。
+
+时间边界必须贯穿图和排序标签。训练排序器以前形成的历史图，与最终使用允许的测试前缀构成的图，分布并不完全相同；旧图上的诊断收益不能不加说明地搬到最终测试图。
 
 ## 上限诊断比继续堆特征更有指向性
 
@@ -35,11 +62,34 @@ kaggle: {"kind": "case", "number": 6, "topic": "时序与推荐", "status": "已
 
 实际分配是两张 T4，即使请求或历史版本标签里写过 L4，也不能据此把结果称为 L4 测量。两个 GPU 执行独立任务，不是把一个树模型拆成分布式训练。
 
+## 用上限差距安排下一次预算
+
+
+<figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
+<a href="/kaggle/06/candidate-ceiling.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · OTTO"><img src="/kaggle/06/candidate-ceiling.svg" alt="同一时间验证协议下的排序召回与既定候选池的可达上限。上限不是实际模型结果。" width="720" height="324" loading="lazy" decoding="async" /></a>
+<figcaption><strong>实测图 1 · OTTO</strong> 同一时间验证协议下的排序召回与既定候选池的可达上限。上限不是实际模型结果。<br /><a href="/kaggle/06/candidate-ceiling.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/06/candidate-ceiling.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-06-candidate-ceiling">图表出处与口径</a></figcaption>
+</figure>
+
+
+图中的点击与购物车仍有明显的候选上限差距；订单排序更接近其当前可达上限。它提示我们分别衡量两类实验：固定候选，改进排序与特征；固定排序器，引入新的召回来源。若第二类能稳定扩大覆盖，第一类才获得新的可利用空间。
+
+这里不能直接从两条柱子的差距计算下一版的预期官方收益。候选上限假设候选内存在理想排序，真实模型可能无法利用新增候选；新的召回源还会改变负样本难度。更有信息量的是在同一时间确认窗口里，记录新增召回命中了哪些原先漏掉的目标。
+
+成本也要沿全链路看。此次 GPU 管线更慢而得分更高，局部算子的 GPU／CPU 计时不能抵消新增建图与模型工作。把质量收益、算子性能和端到端耗时分开，才能判断下一份计算预算究竟买到了什么。
+
 ## 观点与下一步
 
 这次支持“更丰富的管线带来了更好的实际比赛结果”，不支持“整个系统被 GPU 加速了若干倍”。局部算子的加速比，也不能移植成端到端收益。
 
 下一步应先增加或改变召回来源，尤其检查 carts 的候选覆盖，再在固定候选池上比较排序特征。向量召回、更多共现邻域都只是待验证选项。先把瓶颈定位到具体阶段，才知道新增计算花在了哪里。
+
+## 进一步辨析：增加候选，也会改变排序问题
+
+召回源增加以后，原来的排序器未必能直接利用新商品。新候选可能更难、位置偏差不同，负样本比例也改变。因而候选上限提高不能直接当作最终召回会提高的保证。
+
+可以设计两步未执行对照：先冻结现有排序器，只加入一个召回源，测覆盖与排序退化；再固定新候选池，重新拟合排序器。分别记录候选数、可达上限、真实 Recall@20、特征计算和总时长，就能区分“提供了新机会”与“模型学会了利用机会”。
+
+三种目标也应独立检查。当前 clicks、carts、orders 选择轮次为 274、452、190，但轮次不能直接表示难度或预算；各自数据量和每轮工作不同。若购物车改善只来自多给候选，而订单排序变慢却没收益，就应按目标重新安排预算，而不是给三条路径一律扩大容量。
 
 ## 资料与证据
 

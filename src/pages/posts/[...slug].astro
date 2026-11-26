@@ -2,7 +2,7 @@
 import { render, type CollectionEntry } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Icon from '@/components/Icon.astro';
-import { getPosts, formatDate, readingTime } from '@/utils/posts';
+import { getPosts, formatDate, readingTime, coverSource, coverAlt } from '@/utils/posts';
 import '@/styles/kaggle.css';
 export async function getStaticPaths() {
   return (await getPosts()).map(post => ({ params: { slug: post.id }, props: { post } }));
@@ -15,11 +15,14 @@ const evidenceURL = post.data.kaggle ? new URL(post.data.kaggle.source) : undefi
 const evidenceHref = evidenceURL?.host === Astro.site?.host
   ? `${evidenceURL?.pathname}${evidenceURL?.hash}` : evidenceURL?.href;
 ---
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout title={post.data.title} description={post.data.description} image={post.data.coverImage?.replace('.svg', '.png')}>
   <article class="article-shell">
     <a class="article-back" href={post.data.kaggle ? '/kaggle/' : '/posts/'}>{post.data.kaggle ? '← 返回 Kaggle 竞赛笔记' : '← 返回全部文章'}</a>
     <header class="article-header"><div class="post-meta"><span class="category"><i></i>{post.data.category}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time><span>{readingTime(post.body)}</span></div><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p><div class="article-author"><span class="author-avatar" aria-hidden="true">✳</span><div><strong>Bin</strong><span>保持好奇，持续构建。</span></div></div></header>
-    <img class="article-cover" src={`/art/${post.data.cover}.svg`} alt={`${post.data.title}的抽象几何封面`} width="1000" height="760"/>
+    <figure class:list={{ 'article-cover-figure': Boolean(post.data.coverImage) }}>
+      <img class:list={['article-cover', { 'editorial-cover': Boolean(post.data.coverImage) }]} src={coverSource(post)} alt={coverAlt(post)} width="1200" height="675"/>
+      {post.data.coverCaption && <figcaption>{post.data.coverCaption}</figcaption>}
+    </figure>
     <div class="article-body">
       {post.data.kaggle && <aside class="kaggle-evidence" aria-label="复盘证据与状态">
         <a href="/kaggle/">KAGGLE / 竞赛笔记</a>
@@ -27,7 +30,7 @@ const evidenceHref = evidenceURL?.host === Astro.site?.host
         <p>实验记录截至 {post.data.kaggle.evidenceDate}。<a href={evidenceHref}>查看公开证据摘要 ↗</a></p>
       </aside>}
       {post.data.sample && <p class="demo-note article-notice">设计样稿 · 本文为示例内容，用于预览文章排版与阅读体验。</p>}
-      {sections.length > 1 && <nav class="article-toc" aria-label="文章目录"><h2>文章目录</h2><ul>{sections.map(section => <li><a href={`#${section.slug}`}>{section.text}</a></li>)}</ul></nav>}
+      {sections.length > 1 && <nav class="article-toc" aria-label="文章目录"><details open={!post.data.kaggle}><summary>阅读路线与目录 · {sections.length} 节</summary><ul>{sections.map(section => <li><a href={`#${section.slug}`}>{section.text}</a></li>)}</ul></details></nav>}
       <div class="prose"><Content/></div>
       <div class="article-end"><div class="article-tags">{post.data.tags.map(tag => <span># {tag}</span>)}</div><button class="copy-link" type="button" data-copy-link aria-live="polite">复制文章链接 <Icon name="arrow" size={15}/></button></div>
     </div>

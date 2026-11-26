@@ -46,6 +46,7 @@ npm run test:e2e
 ```text
 demo_personal_blog/
 ├── public/art/             # 本地原创 SVG 封面
+├── public/kaggle/          # 逐题封面、方法图、实测图及聚合指标 CSV
 ├── src/
 │   ├── components/         # 导航、页脚、文章卡片和搜索框
 │   ├── content/posts/      # Markdown 文章
@@ -87,14 +88,28 @@ sample: false
 
 - 入口：`/kaggle/`，导航、首页及页脚均有链接。
 - 内容：17 篇逐赛复盘，按表格学习、时序与推荐、图像分类、图像分割、语言模型、智能体分类；另有验证设计、评价指标、计算预算三篇方法论。
+- 深度：每篇补充具体实现、计算或合成例子、实测解读、适用边界与可证伪的下一步实验；未执行的方案明确标注。
+- 图像：20 幅赛题／方法主题封面、20 幅流程图，均为原创 SVG；另有 16 幅依据真实记录重绘的曲线、对照图与混淆矩阵。封面同步提供 PNG 分享预览，正文支持放大原图与下载指标 CSV。
 - 阅读：分类筛选可通过 URL 的 `topic` 参数分享；文章也进入全站归档、搜索、RSS 与 sitemap。
 - 证据：`/kaggle/sources/` 提供公开结果摘要。源代码仓库当前为私有，原记录链接标注访问权限；本文不改变源仓库权限或发布原始数据、预测和模型。
-- 状态：15 个项目有文档核实过的官方评分；PLE 环境受阻；Carvana 预检完成、无正式提交。分数按各篇记录日期引用，不是全量实时榜单同步。
+- 状态：15 个项目有文档核实过的官方评分；PLE 环境受阻；Carvana 远程预检 COMPLETE，本地产物校验在 CSV 字段上限处停止、无正式提交。分数按各篇记录日期引用，不是全量实时榜单同步。
 - 维护：[专栏编辑约定](docs/kaggle-editorial-guide.md)。成绩、事实与归纳观点分别记录，新增项目不必更改页面里的固定列表。
 
-[专栏桌面预览](docs/previews/kaggle-desktop.png) · [专栏手机预览](docs/previews/kaggle-mobile.png) · [手机复盘阅读](docs/previews/kaggle-article-mobile.png)
+[专栏桌面预览](docs/previews/kaggle-desktop.png) · [专栏手机预览](docs/previews/kaggle-mobile.png) · [手机复盘阅读](docs/previews/kaggle-article-mobile.png) · [真实图表阅读](docs/previews/kaggle-figures-desktop.png)
 
-本次本地验证：Astro／TypeScript 0 错误、0 警告；35 个静态页面构建成功；14 项桌面／手机浏览器测试通过；1,044 个站内链接与锚点检查通过。发布结果以 GitHub Pages 工作流为准。
+本次本地验证：Astro／TypeScript 0 错误、0 警告、0 提示；35 个静态页面构建成功；16 项桌面／手机浏览器测试通过；1,473 个站内链接、图片及锚点检查通过。另核对 56 幅 SVG、16 份指标 CSV 和源记录的 SHA-256，以及 20 张 PNG 封面尺寸。发布结果以 GitHub Pages 工作流为准。
+
+图表由 `scripts/build-kaggle-assets.py` 从私有工程的白名单聚合指标生成；不读取训练样本、不运行模型、不发布完整运行日志。复绘需要 Python + Matplotlib 和源记录；静态完整性检查仅需要 Python 标准库：
+
+```bash
+python scripts/build-kaggle-assets.py --source-root /path/to/kaggle_try
+node scripts/render-kaggle-covers.mjs
+npm run build
+python scripts/check-kaggle-assets.py --source-root /path/to/kaggle_try
+node scripts/capture-kaggle-preview.mjs
+```
+
+没有私有源仓库时，省略检查命令的 `--source-root`，仍可检查公开图像／CSV 指纹、尺寸和构建后的链接。浏览器预览截图前须先启动开发或预览服务；可用 `PREVIEW_URL` 指定地址。
 
 ## 自定义与发布
 

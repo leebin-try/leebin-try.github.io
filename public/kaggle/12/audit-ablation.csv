@@ -1,0 +1,5 @@
+candidate,series,value
+XGB raw,Frozen audit MCC at 0.5,0.984569
+XGB rare pooled,Frozen audit MCC at 0.5,0.984596
+Cat mixed,Frozen audit MCC at 0.5,0.984214
+Cat all categorical,Frozen audit MCC at 0.5,0.983029

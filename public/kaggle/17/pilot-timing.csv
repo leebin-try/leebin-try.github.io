@@ -1,0 +1,3 @@
+candidate,series,value
+One T4,Wall seconds / same 512 images,95.03634597099995
+Two T4 workers,Wall seconds / same 512 images,60.058851872000105

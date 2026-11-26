@@ -1,5 +1,11 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 export type Post = CollectionEntry<'posts'>;
+export function coverSource(post: Post): string {
+  return post.data.coverImage ?? `/art/${post.data.cover}.svg`;
+}
+export function coverAlt(post: Post): string {
+  return post.data.coverAlt ?? `${post.data.title}的抽象几何封面`;
+}
 
 export async function getPosts(): Promise<Post[]> {
   return (await getCollection('posts', ({ data }) => !data.draft))

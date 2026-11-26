@@ -111,3 +111,38 @@ test('Kaggle content is in archive, search, RSS and sitemap', async ({ page }) =
   expect(rss.ok()).toBe(true);
   expect(await rss.text()).toContain('/posts/kaggle-16-commonlit/');
 });
+
+test('subject covers, real figures and public metric data retain their meaning', async ({ page }) => {
+  await page.goto('/kaggle/');
+  const covers = await page.locator('.kaggle-case-cover img').evaluateAll(images =>
+    images.map(image => image.getAttribute('src')));
+  expect(covers).toHaveLength(17);
+  expect(new Set(covers).size).toBe(17);
+  expect(covers.every(source => source?.startsWith('/kaggle/'))).toBe(true);
+  await page.goto('/posts/kaggle-15-cmi/');
+  await expect(page.locator('.article-cover')).toHaveAttribute('src', '/kaggle/15/cover.svg');
+  const cover = await page.locator('.article-cover').boundingBox();
+  expect(cover).not.toBeNull();
+  expect(cover!.width / cover!.height).toBeCloseTo(16 / 9, 2);
+  await expect(page.locator('.article-cover-figure figcaption')).toContainText('原创');
+  await expect(page.locator('.research-figure')).toHaveCount(3);
+  await expect(page.locator('.prose h2')).toHaveCount(9);
+  const contents = page.getByRole('navigation', { name: '文章目录' });
+  await expect(contents.locator('details')).not.toHaveAttribute('open');
+  await contents.locator('summary').click();
+  await expect(contents.getByRole('link').first()).toBeVisible();
+  const data = await page.request.get('/kaggle/15/confusion.csv');
+  expect(data.ok()).toBe(true);
+  const text = await data.text();
+  expect(text).toContain('true_class,predicted_class,count');
+  expect(text).toContain('3,3,0');
+  const manifest = await (await page.request.get('/kaggle/figures.json')).json() as Array<{kind: string}>;
+  expect(manifest.filter(item => item.kind === 'recorded_aggregate_metrics')).toHaveLength(16);
+  expect(manifest.filter(item => item.kind === 'original_cover')).toHaveLength(20);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  await page.getByRole('button', { name: '切换到深色模式' }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  const preview = await page.request.get('/kaggle/15/cover.png');
+  expect(preview.ok()).toBe(true);
+  expect(await page.locator('meta[property="og:image"]').getAttribute('content')).toContain('/kaggle/15/cover.png');
+});

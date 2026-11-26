@@ -1,0 +1,7 @@
+candidate,series,value
+Clicks,Selected ranker,0.50244598
+Carts,Selected ranker,0.40087623
+Orders,Selected ranker,0.61468722
+Clicks,Candidate attainable ceiling,0.58881981
+Carts,Candidate attainable ceiling,0.47582538
+Orders,Candidate attainable ceiling,0.65880931

@@ -42,6 +42,31 @@
 .prose a { overflow-wrap: anywhere; }
 .kaggle-source-record { border-top: 1px solid var(--border); padding-block: 20px; }
 .kaggle-source-record p { margin-block: 12px; }
+.kaggle-case-cover { display:block; margin: -28px -28px 24px; border-radius:11px 11px 0 0; overflow:hidden; }
+.kaggle-case-cover img { width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; background:#102635; }
+.post-cover > img.editorial-cover, .featured-art img.editorial-cover { object-fit:contain; background:#102635; }
+.article-cover-figure { margin:0 0 36px; }
+.article-cover.editorial-cover { width:100%; height:auto; aspect-ratio:16/9; object-fit:contain; margin-bottom:12px; }
+.article-cover-figure figcaption { max-width:700px; margin-inline:auto; font-size:12px; line-height:1.8; color:var(--muted); }
+.prose .research-figure { margin:36px 0; padding:14px; border:1px solid var(--border); border-radius:10px; background:var(--surface); }
+.prose .research-figure img { width:100%; height:auto; border-radius:5px; background:#f9faf7; }
+.prose .research-figure figcaption { margin-top:12px; font-size:13px; line-height:1.9; color:var(--muted); }
+.prose .research-figure figcaption strong { color:var(--text); }
+.prose pre { max-width:100%; overflow-x:auto; }
+.prose code { overflow-wrap:anywhere; }
+.prose h3 { margin-top:28px; }
+.article-toc summary { cursor:pointer; font-size:15px; font-weight:600; line-height:1.8; }
+.kaggle-figure-source { padding:20px 0; border-top:1px solid var(--border); }
+.kaggle-figure-source code { font-size:11px; overflow-wrap:anywhere; }
+.kaggle-figure-source details { background:var(--surface); padding:12px; border-radius:6px; margin-top:12px; }
+.kaggle-figure-source summary { cursor:pointer; }
+@media(min-width:1050px) {
+  .prose .research-figure { width:calc(100% + 160px); margin-left:-80px; }
+}
+@media(max-width:700px) {
+  .kaggle-case-cover { margin:-22px -22px 20px; }
+  .prose .research-figure { padding:8px; margin-block:28px; }
+}
 @media (max-width: 700px) {
   .kaggle-hero { padding-block: 48px 32px; }
   .kaggle-lead { font-size: 19px; }

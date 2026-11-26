@@ -35,6 +35,7 @@ const scored = cases.filter(item => item.record.status === '已出分').length;
     </div>
     <div class="kaggle-case-grid">
       {cases.map(({ post, record }) => <article class="kaggle-case" data-kaggle-case data-topic={record.topic}>
+        <a class="kaggle-case-cover" href={`/posts/${post.id}/`} tabindex="-1" aria-hidden="true"><img src={post.data.coverImage} alt="" width="1200" height="675" loading="lazy"/></a>
         <div class="kaggle-case-meta"><span>{String(record.number).padStart(2, '0')} / {record.topic}</span><span class:list={['kaggle-state', { 'kaggle-state-scored': record.status === '已出分' }]}>{record.status}</span></div>
         <h3><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3><p>{post.data.description}</p>
         <div class="kaggle-case-result">{record.result}</div>

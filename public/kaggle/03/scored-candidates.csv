@@ -1,0 +1,6 @@
+candidate,series,value
+Seasonal,Official public RMSLE,0.45914
+Global LGB,Official public RMSLE,0.42323
+Residual LGB,Official public RMSLE,0.4348
+Origin blend,Official public RMSLE,0.42413
+Family windows,Official public RMSLE,0.3842
