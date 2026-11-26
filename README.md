@@ -2,9 +2,9 @@
 
 [访问博客](https://leebin-try.github.io/) · [GitHub 仓库](https://github.com/leebin-try/leebin-try.github.io)
 
-现代、简约的个人博客设计样稿，采用暖白、墨黑和荧光绿配色，提供完整的中文阅读界面。
+采用暖白、墨黑和荧光绿配色的中文个人博客。现有 [Kaggle 竞赛笔记专栏](https://leebin-try.github.io/kaggle/)，以及研究报告和个人文章。
 
-当前使用 Astro 与严格 TypeScript 配置，实现独立定制主题；内容组织参考 AstroPaper 的 Markdown 博客思路。首页与文章页面均为定制实现。项目中的文章、手记和个人介绍为示例内容，正式发布前可替换。
+当前使用 Astro 与严格 TypeScript 配置，实现独立定制主题；内容组织参考 AstroPaper 的 Markdown 博客思路。Kaggle 专栏是有来源的实验复盘；其余保留的示例文章在正文单独标注。手记和个人介绍仍沿用初始示例。
 
 [桌面首页预览](docs/previews/home-desktop.png) · [手机预览](docs/previews/home-mobile.png) · [深色主题](docs/previews/home-dark.png) · [手机文章页](docs/previews/article-mobile.png)
 
@@ -20,7 +20,7 @@
 ## 开始使用
 
 ```bash
-cd ~/projects/demo_personal_blog
+cd ~/projects/leebin-try.github.io
 nvm use
 npm ci
 npm run dev
@@ -81,7 +81,20 @@ sample: false
 ---
 ```
 
-在文件头之后写 Markdown 正文。`category` 支持 `技术`、`设计`、`生活`；`cover` 支持 `garden`、`terminal`、`design`、`coffee`、`workflow`、`slow`。草稿设置 `draft: true` 后不会出现在文章列表、RSS 或搜索索引中。
+在文件头之后写 Markdown 正文。`category` 支持 `技术`、`设计`、`生活`、`Kaggle`；`cover` 支持 `garden`、`terminal`、`design`、`coffee`、`workflow`、`slow`。草稿设置 `draft: true` 后不会出现在文章列表、RSS 或搜索索引中。
+
+## Kaggle 专栏
+
+- 入口：`/kaggle/`，导航、首页及页脚均有链接。
+- 内容：17 篇逐赛复盘，按表格学习、时序与推荐、图像分类、图像分割、语言模型、智能体分类；另有验证设计、评价指标、计算预算三篇方法论。
+- 阅读：分类筛选可通过 URL 的 `topic` 参数分享；文章也进入全站归档、搜索、RSS 与 sitemap。
+- 证据：`/kaggle/sources/` 提供公开结果摘要。源代码仓库当前为私有，原记录链接标注访问权限；本文不改变源仓库权限或发布原始数据、预测和模型。
+- 状态：15 个项目有文档核实过的官方评分；PLE 环境受阻；Carvana 预检完成、无正式提交。分数按各篇记录日期引用，不是全量实时榜单同步。
+- 维护：[专栏编辑约定](docs/kaggle-editorial-guide.md)。成绩、事实与归纳观点分别记录，新增项目不必更改页面里的固定列表。
+
+[专栏桌面预览](docs/previews/kaggle-desktop.png) · [专栏手机预览](docs/previews/kaggle-mobile.png) · [手机复盘阅读](docs/previews/kaggle-article-mobile.png)
+
+本次本地验证：Astro／TypeScript 0 错误、0 警告；35 个静态页面构建成功；14 项桌面／手机浏览器测试通过；1,044 个站内链接与锚点检查通过。发布结果以 GitHub Pages 工作流为准。
 
 ## 自定义与发布
 

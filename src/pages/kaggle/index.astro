@@ -1,0 +1,74 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import PostCard from '@/components/PostCard.astro';
+import { getPosts } from '@/utils/posts';
+import { KAGGLE_TOPICS } from '@/config';
+import '@/styles/kaggle.css';
+const posts = await getPosts();
+const cases = posts.flatMap(post => post.data.kaggle?.kind === 'case' ? [{ post, record: post.data.kaggle }] : [])
+  .sort((a, b) => a.record.number - b.record.number);
+const methods = posts.filter(post => post.data.kaggle?.kind === 'method');
+const scored = cases.filter(item => item.record.status === '已出分').length;
+---
+<BaseLayout title="Kaggle 竞赛笔记" description="17 个 Kaggle 项目的方法、判断与失败复盘，按六类问题组织，并提炼验证、指标与计算预算的共同原则。">
+  <section class="kaggle-hero shell">
+    <span class="section-eyebrow-label">KAGGLE / FIELD NOTES</span>
+    <h1>比赛会结束，<br/>方法可以留下<span class="accent-dot">。</span></h1>
+    <p class="kaggle-lead">把每一次建模，整理成下一次判断的依据。</p>
+    <p class="kaggle-intro">这里记录 {cases.length} 个项目的模型选择、验证设计、失败与取舍，也把不同题目中的共同问题连起来。先读具体复盘，再追问：这个结论在什么条件下仍然成立？</p>
+    <div class="kaggle-stats" aria-label="专栏内容概况">
+      <div><strong>{cases.length}</strong><span>比赛记录</span></div><div><strong>{scored}</strong><span>有官方评分</span></div>
+      <div><strong>{KAGGLE_TOPICS.length}</strong><span>问题类别</span></div><div><strong>{methods.length}</strong><span>方法论文章</span></div>
+    </div>
+    <div class="kaggle-reading"><a href="#cases">按比赛阅读 ↓</a><a href="#methods">从方法开始 ↓</a><a href="/kaggle/sources/">证据与出处说明 ↗</a></div>
+  </section>
+  <section class="kaggle-principles shell" aria-label="阅读这组复盘的三个角度">
+    <div><span>01 / VALIDATION</span><h2>先问怎样验证。</h2><p>随机切分、整组留出与时间回测，回答的是不同问题。</p></div>
+    <div><span>02 / STRUCTURE</span><h2>再问缺什么信号。</h2><p>零销量、候选召回、文本风格与图像边缘，各有自己的信息结构。</p></div>
+    <div><span>03 / EVIDENCE</span><h2>最后问能推出什么。</h2><p>官方分数、诊断指标和未执行假设，分别保留各自的边界。</p></div>
+  </section>
+  <section class="kaggle-cases shell" id="cases" aria-labelledby="cases-title">
+    <div class="section-heading"><div><span class="section-eyebrow-label">THE COMPETITIONS</span><h2 id="cases-title">逐赛复盘</h2></div><p class="kaggle-count" data-kaggle-count aria-live="polite">显示 {cases.length} 个比赛</p></div>
+    <div class="filter-row kaggle-filters" role="group" aria-label="按题型筛选比赛">
+      {['全部', ...KAGGLE_TOPICS].map((topic, index) => <button type="button" class:list={['filter-button', { active: index === 0 }]} data-kaggle-filter={topic} aria-pressed={index === 0}>{topic}<span>{topic === '全部' ? cases.length : cases.filter(item => item.record.topic === topic).length}</span></button>)}
+    </div>
+    <div class="kaggle-case-grid">
+      {cases.map(({ post, record }) => <article class="kaggle-case" data-kaggle-case data-topic={record.topic}>
+        <div class="kaggle-case-meta"><span>{String(record.number).padStart(2, '0')} / {record.topic}</span><span class:list={['kaggle-state', { 'kaggle-state-scored': record.status === '已出分' }]}>{record.status}</span></div>
+        <h3><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3><p>{post.data.description}</p>
+        <div class="kaggle-case-result">{record.result}</div>
+        <a class="text-link" href={`/posts/${post.id}/`}>阅读复盘 <Icon name="arrow" size={16}/></a>
+      </article>)}
+    </div>
+    <p class="kaggle-evidence-note">成绩是原始实验记录的快照，日期详见各篇；这里没有刷新所有比赛的实时榜单。不同指标不横向排高低，晚提交也不换算成历史名次。源仓库为私有，公开摘要可直接阅读，原记录链接需要访问权限。<a href="/kaggle/sources/">查看证据与出处说明 ↗</a></p>
+  </section>
+  <section class="kaggle-methods shell" id="methods" aria-labelledby="methods-title">
+    <div class="section-heading"><div><span class="section-eyebrow-label">ACROSS COMPETITIONS</span><h2 id="methods-title">把经验抽象成方法</h2></div></div>
+    <p class="kaggle-section-intro">把案例放在一起读，才能看见哪些判断可以迁移，哪些只在特定数据与预算下成立。</p>
+    <div class="post-grid">{methods.map((post, index) => <PostCard post={post} index={index}/>)}</div>
+  </section>
+  <aside class="kaggle-editorial shell"><h2>这组文章如何维护</h2><p>正文依据代码仓库的已记录实验提炼；分数与已观察现象附来源，因果解释不足的地方保留为判断或待验证假设。新增比赛沿用“问题 → 方法 → 证据 → 失效条件 → 下一次实验”的结构，评分与学习收获分别更新。</p><a class="text-link" href="/rss.xml">通过 RSS 订阅后续复盘 <Icon name="arrow" size={16}/></a></aside>
+</BaseLayout>
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-kaggle-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-kaggle-case]');
+  function filter(topic: string, updateURL: boolean): void {
+    let count = 0;
+    cards.forEach(card => { card.hidden = topic !== '全部' && card.dataset.topic !== topic; if (!card.hidden) count++; });
+    buttons.forEach(button => {
+      const active = button.dataset.kaggleFilter === topic;
+      button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
+    });
+    const label = document.querySelector('[data-kaggle-count]');
+    if (label) label.textContent = `显示 ${count} 个比赛`;
+    if (updateURL) {
+      const url = new URL(window.location.href);
+      if (topic === '全部') url.searchParams.delete('topic'); else url.searchParams.set('topic', topic);
+      window.history.replaceState(null, '', url);
+    }
+  }
+  buttons.forEach(button => button.addEventListener('click', () => filter(button.dataset.kaggleFilter ?? '全部', true)));
+  const initial = new URL(window.location.href).searchParams.get('topic');
+  if (initial && [...buttons].some(button => button.dataset.kaggleFilter === initial)) filter(initial, false);
+</script>
