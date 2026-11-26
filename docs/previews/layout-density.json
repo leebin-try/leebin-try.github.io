@@ -1,0 +1,138 @@
+{
+  "observedAt": "2026-11-26T03:46:32.620Z",
+  "baselineCommit": "fee49346ac80cbbee6f95ef2de84301f11906eb2",
+  "scope": "Same viewports; article text was expanded and mobile prose increased from 15px to 16px, so document height is not a controlled spacing-only ablation.",
+  "measurements": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/",
+      "before": {
+        "width": 1440,
+        "route": "/",
+        "height": 3097,
+        "hero": 439.75,
+        "paragraphLineHeight": "normal"
+      },
+      "after": {
+        "height": 2574,
+        "hero": 316.875,
+        "paragraphLineHeight": "normal"
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/kaggle/",
+      "before": {
+        "width": 1440,
+        "route": "/kaggle/",
+        "height": 8396,
+        "hero": 645.1875,
+        "caseHeight": 659.34375,
+        "paragraphLineHeight": "normal"
+      },
+      "after": {
+        "height": 4232,
+        "hero": 454.78125,
+        "caseHeight": 254.390625,
+        "paragraphLineHeight": "normal"
+      }
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/posts/kaggle-15-cmi/",
+      "before": {
+        "width": 1440,
+        "route": "/posts/kaggle-15-cmi/",
+        "height": 6844,
+        "coverHeight": 450,
+        "paragraphLineHeight": "32px"
+      },
+      "after": {
+        "height": 5592,
+        "coverHeight": 123.75,
+        "paragraphLineHeight": "28.8px",
+        "paragraphFontSize": "16px",
+        "argumentTop": 713.828125
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "route": "/",
+      "before": {
+        "width": 390,
+        "route": "/",
+        "height": 4989,
+        "hero": 451.359375,
+        "paragraphLineHeight": "normal"
+      },
+      "after": {
+        "height": 4042,
+        "hero": 346.765625,
+        "paragraphLineHeight": "normal"
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "route": "/kaggle/",
+      "before": {
+        "width": 390,
+        "route": "/kaggle/",
+        "height": 13085,
+        "hero": 601.28125,
+        "caseHeight": 537.59375,
+        "paragraphLineHeight": "normal"
+      },
+      "after": {
+        "height": 8236,
+        "hero": 401.53125,
+        "caseHeight": 288.171875,
+        "paragraphLineHeight": "normal"
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 900
+      },
+      "route": "/posts/kaggle-15-cmi/",
+      "before": {
+        "width": 390,
+        "route": "/posts/kaggle-15-cmi/",
+        "height": 7012,
+        "coverHeight": 194.625,
+        "paragraphLineHeight": "30px"
+      },
+      "after": {
+        "height": 7240,
+        "coverHeight": 67.5,
+        "paragraphLineHeight": "28.8px",
+        "paragraphFontSize": "16px",
+        "argumentTop": 729.90625
+      }
+    }
+  ],
+  "extraOverflowChecks": {
+    "widths": [
+      320,
+      768,
+      1024
+    ],
+    "pages": 5,
+    "failures": []
+  }
+}

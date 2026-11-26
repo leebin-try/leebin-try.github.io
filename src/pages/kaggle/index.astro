@@ -49,7 +49,7 @@ const scored = cases.filter(item => item.record.status === '已出分').length;
     <p class="kaggle-section-intro">把案例放在一起读，才能看见哪些判断可以迁移，哪些只在特定数据与预算下成立。</p>
     <div class="post-grid">{methods.map((post, index) => <PostCard post={post} index={index}/>)}</div>
   </section>
-  <aside class="kaggle-editorial shell"><h2>这组文章如何维护</h2><p>正文依据代码仓库的已记录实验提炼；分数与已观察现象附来源，因果解释不足的地方保留为判断或待验证假设。新增比赛沿用“问题 → 方法 → 证据 → 失效条件 → 下一次实验”的结构，评分与学习收获分别更新。</p><a class="text-link" href="/rss.xml">通过 RSS 订阅后续复盘 <Icon name="arrow" size={16}/></a></aside>
+  <aside class="kaggle-editorial shell"><h2>这组文章如何维护</h2><p>每篇按“问题定位 → 技术思路与路线 → 评价方式 → 结果与证据 → 思考与结论 → 下一步”展开。开头给核心判断，正文解释实现和取舍，结尾列出可验证的实验。分数与观察附来源，未执行的设计单独标明。<a href="https://github.com/leebin-try/leebin-try.github.io/blob/main/docs/templates/kaggle-case-study.md">查看完整写作模板</a>。</p><a class="text-link" href="/rss.xml">通过 RSS 订阅后续复盘 <Icon name="arrow" size={16}/></a></aside>
 </BaseLayout>
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('[data-kaggle-filter]');

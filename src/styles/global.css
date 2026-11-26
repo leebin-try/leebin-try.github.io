@@ -238,8 +238,8 @@ button {
 
 /* Editorial hero */
 .hero {
-  padding-top:63px;
-  padding-bottom:68px
+  padding-top:32px;
+  padding-bottom:32px
 }
 
 .hero-eyebrow {
@@ -270,11 +270,11 @@ button {
   justify-content:space-between;
   align-items:flex-end;
   gap:45px;
-  padding-top:34px
+  padding-top:20px
 }
 
 .hero h1 {
-  font-size:clamp(62px,6.5vw,94px);
+  font-size:clamp(52px,5.5vw,76px);
   line-height:1.19;
   font-weight:650;
   letter-spacing:-5px
@@ -384,7 +384,7 @@ button {
 .featured-art {
   position:relative;
   background:#172d25;
-  min-height:380px;
+  min-height:260px;
   overflow:hidden
 }
 
@@ -507,8 +507,8 @@ button {
 
 /* Article archive and filters */
 .latest-section {
-  padding-top:86px;
-  padding-bottom:86px
+  padding-top:36px;
+  padding-bottom:36px
 }
 
 .section-heading {
@@ -900,25 +900,26 @@ button {
 
 .prose {
   font-size:16px;
-  line-height:2;
+  line-height:1.8;
   color:var(--text)
 }
 
 .prose p {
-  margin-bottom:1.4em
+  margin-bottom:.8em
 }
 
 .prose h2 {
-  font-size:27px;
-  line-height:1.5;
-  margin:2.2em 0 .8em;
+  font-size:25px;
+  line-height:1.4;
+  margin:28px 0 12px;
   font-weight:600;
   letter-spacing:-.5px
 }
 
 .prose h3 {
-  font-size:21px;
-  margin:1.8em 0 .8em
+  font-size:20px;
+  line-height:1.5;
+  margin:20px 0 8px
 }
 
 .prose a {
@@ -929,17 +930,17 @@ button {
 
 .prose ul,.prose ol {
   padding-left:1.4em;
-  margin:1.2em 0
+  margin:.8em 0
 }
 
 .prose li {
   padding-left:.25em;
-  margin-bottom:.45em
+  margin-bottom:.3em
 }
 
 .prose blockquote {
-  margin:1.8em 0;
-  padding:12px 25px;
+  margin:1.1em 0;
+  padding:10px 18px;
   border-left:3px solid var(--accent-ink);
   background:var(--surface);
   font-size:18px
@@ -951,7 +952,7 @@ button {
 
 .prose pre {
   border:1px solid var(--border);
-  padding:23px;
+  padding:16px;
   border-radius:4px;
   overflow-x:auto;
   font-size:13px;
@@ -1095,7 +1096,7 @@ button {
 .article-shell {
   max-width:800px;
   margin-inline:auto;
-  padding-block:57px 90px
+  padding-block:28px 44px
 }
 
 .article-back {
@@ -1103,7 +1104,7 @@ button {
   gap:12px;
   color:var(--muted);
   font-size:12px;
-  margin-bottom:35px
+  margin-bottom:18px
 }
 
 .article-header>.post-meta {
@@ -1112,26 +1113,26 @@ button {
 }
 
 .article-header h1 {
-  font-size:clamp(32px,4vw,48px);
+  font-size:clamp(30px,3.5vw,40px);
   font-weight:600;
   letter-spacing:-1.5px;
-  line-height:1.5;
-  margin-top:22px
+  line-height:1.35;
+  margin-top:12px
 }
 
 .article-description {
   font-size:17px;
-  line-height:1.9;
+  line-height:1.7;
   color:var(--muted);
-  margin-top:23px
+  margin-top:12px
 }
 
 .article-author {
   display:flex;
   align-items:center;
   gap:12px;
-  margin-top:28px;
-  padding-bottom:30px
+  margin-top:16px;
+  padding-bottom:16px
 }
 
 .author-avatar {
@@ -1346,17 +1347,17 @@ kbd {
     width:min(1280px,calc(100% - 160px))
   }
   .hero {
-    padding-top:75px;
-    padding-bottom:80px
+    padding-top:40px;
+    padding-bottom:40px
   }
   .hero h1 {
-    font-size:104px
+    font-size:84px
   }
   .hero-intro {
     width:310px
   }
   .featured-art {
-    min-height:425px
+    min-height:280px
   }
   .featured-copy {
     padding:48px 55px
@@ -1393,7 +1394,7 @@ kbd {
     font-size:12px
   }
   .featured-art {
-    min-height:355px
+    min-height:260px
   }
   .post-card h3 {
     font-size:18px
@@ -1437,8 +1438,8 @@ kbd {
     display:none
   }
   .hero {
-    padding-top:45px;
-    padding-bottom:48px
+    padding-top:28px;
+    padding-bottom:28px
   }
   .hero-vol {
     font-size:8px;
@@ -1481,7 +1482,7 @@ kbd {
     grid-template-columns:1fr 1fr
   }
   .featured-art {
-    min-height:335px
+    min-height:240px
   }
   .featured-copy {
     padding:25px
@@ -1516,8 +1517,8 @@ kbd {
     font-size:8px
   }
   .latest-section {
-    padding-top:62px;
-    padding-bottom:60px
+    padding-top:32px;
+    padding-bottom:32px
   }
   .post-grid {
     grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1578,7 +1579,7 @@ kbd {
     gap:20px
   }
   .prose {
-    font-size:15px
+    font-size:16px
   }
   .article-shell {
     max-width:calc(100% - 60px)
@@ -1609,7 +1610,7 @@ kbd {
     font-size:13px
   }
   .hero {
-    padding-top:35px
+    padding-top:24px
   }
   .hero-eyebrow {
     font-size:8px
@@ -1619,10 +1620,10 @@ kbd {
   }
   .hero-content {
     display:block;
-    padding-top:30px
+    padding-top:18px
   }
   .hero h1 {
-    font-size:68px;
+    font-size:54px;
     line-height:1.2;
     letter-spacing:-4px
   }
@@ -1631,15 +1632,15 @@ kbd {
     bottom:-1px
   }
   .hero-bottom {
-    margin-top:24px;
+    margin-top:16px;
     gap:14px
   }
   .hero-intro {
     width:auto;
     display:grid;
     grid-template-columns:1fr auto;
-    margin-top:32px;
-    padding-top:24px;
+    margin-top:20px;
+    padding-top:16px;
     border-top:1px solid var(--border);
     gap:17px;
     align-items:end
@@ -1662,7 +1663,7 @@ kbd {
   }
   .featured-art {
     min-height:0;
-    aspect-ratio:1.36
+    aspect-ratio:2.4
   }
   .featured-copy {
     padding:27px 27px 24px
@@ -1704,8 +1705,8 @@ kbd {
     padding-bottom:13px
   }
   .latest-section {
-    padding-top:52px;
-    padding-bottom:52px
+    padding-top:28px;
+    padding-bottom:28px
   }
   .section-heading h2 {
     font-size:26px
@@ -1897,24 +1898,24 @@ kbd {
   }
   .article-shell {
     max-width:calc(100% - 44px);
-    padding-top:36px;
-    padding-bottom:60px
+    padding-top:24px;
+    padding-bottom:36px
   }
   .article-back {
-    margin-bottom:25px
+    margin-bottom:16px
   }
   .article-header h1 {
-    font-size:32px;
-    line-height:1.5;
+    font-size:28px;
+    line-height:1.4;
     letter-spacing:-1px
   }
   .article-description {
-    font-size:14px;
-    line-height:1.9
+    font-size:16px;
+    line-height:1.7
   }
   .article-author {
-    margin-top:23px;
-    padding-bottom:25px
+    margin-top:14px;
+    padding-bottom:14px
   }
   .article-cover {
     aspect-ratio:1.4;

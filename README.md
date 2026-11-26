@@ -88,16 +88,19 @@ sample: false
 
 - 入口：`/kaggle/`，导航、首页及页脚均有链接。
 - 内容：17 篇逐赛复盘，按表格学习、时序与推荐、图像分类、图像分割、语言模型、智能体分类；另有验证设计、评价指标、计算预算三篇方法论。
-- 深度：每篇补充具体实现、计算或合成例子、实测解读、适用边界与可证伪的下一步实验；未执行的方案明确标注。
+- 深度：17 篇逐赛文章采用[六章写作模板](docs/templates/kaggle-case-study.md)：问题定位、技术思路与路线、评价方式、结果与证据、思考与结论、下一步。开头给核心判断，解释指标与验证职责，保留具体实现、实测分析和可证伪的下一步设计；未执行的方案明确标注。
+- 排版：正文 16px、约 1.8 行高，收紧段落、标题和模块间距；列表用缩略图，文章封面与图注并排，目录提供直接章节入口。实测图保持完整比例并可放大，不以裁掉坐标轴换取紧凑。相同窗口下，专栏列表的总页面高度较上一版减少约 50%（桌面）／37%（手机）；[测量记录](docs/previews/layout-density.json)同时说明文章内容与字号变化的影响。
 - 图像：20 幅赛题／方法主题封面、20 幅流程图，均为原创 SVG；另有 16 幅依据真实记录重绘的曲线、对照图与混淆矩阵。封面同步提供 PNG 分享预览，正文支持放大原图与下载指标 CSV。
 - 阅读：分类筛选可通过 URL 的 `topic` 参数分享；文章也进入全站归档、搜索、RSS 与 sitemap。
 - 证据：`/kaggle/sources/` 提供公开结果摘要。源代码仓库当前为私有，原记录链接标注访问权限；本文不改变源仓库权限或发布原始数据、预测和模型。
 - 状态：15 个项目有文档核实过的官方评分；PLE 环境受阻；Carvana 远程预检 COMPLETE，本地产物校验在 CSV 字段上限处停止、无正式提交。分数按各篇记录日期引用，不是全量实时榜单同步。
-- 维护：[专栏编辑约定](docs/kaggle-editorial-guide.md)。成绩、事实与归纳观点分别记录，新增项目不必更改页面里的固定列表。
+- 维护：[专栏编辑约定](docs/kaggle-editorial-guide.md)与[完整写作模板](docs/templates/kaggle-case-study.md)。成绩、事实与归纳观点分别记录，新增项目不必更改页面里的固定列表。
 
 [专栏桌面预览](docs/previews/kaggle-desktop.png) · [专栏手机预览](docs/previews/kaggle-mobile.png) · [手机复盘阅读](docs/previews/kaggle-article-mobile.png) · [真实图表阅读](docs/previews/kaggle-figures-desktop.png)
 
-本次本地验证：Astro／TypeScript 0 错误、0 警告、0 提示；35 个静态页面构建成功；16 项桌面／手机浏览器测试通过；1,473 个站内链接、图片及锚点检查通过。另核对 56 幅 SVG、16 份指标 CSV 和源记录的 SHA-256，以及 20 张 PNG 封面尺寸。发布结果以 GitHub Pages 工作流为准。
+[文章桌面首屏](docs/previews/kaggle-article-desktop.png) · [文章手机首屏](docs/previews/kaggle-article-first-screen.png)
+
+本次本地验证：Astro／TypeScript 0 错误、0 警告、0 提示；35 个静态页面构建成功；18 项桌面／手机浏览器测试通过，逐篇检查全部 17 个比赛的六章结构、目录跳转及溢出，另检查 320／768／1024px 的 15 个页面组合；1,420 个站内链接、图片及锚点检查通过。另核对 56 幅 SVG、16 份指标 CSV 和源记录的 SHA-256，以及 20 张 PNG 封面尺寸。发布结果以 GitHub Pages 工作流为准。
 
 图表由 `scripts/build-kaggle-assets.py` 从私有工程的白名单聚合指标生成；不读取训练样本、不运行模型、不发布完整运行日志。复绘需要 Python + Matplotlib 和源记录；静态完整性检查仅需要 Python 标准库：
 
@@ -107,6 +110,7 @@ node scripts/render-kaggle-covers.mjs
 npm run build
 python scripts/check-kaggle-assets.py --source-root /path/to/kaggle_try
 node scripts/capture-kaggle-preview.mjs
+node scripts/measure-reading-layout.mjs
 ```
 
 没有私有源仓库时，省略检查命令的 `--source-root`，仍可检查公开图像／CSV 指纹、尺寸和构建后的链接。浏览器预览截图前须先启动开发或预览服务；可用 `PREVIEW_URL` 指定地址。

@@ -126,10 +126,9 @@ test('subject covers, real figures and public metric data retain their meaning',
   expect(cover!.width / cover!.height).toBeCloseTo(16 / 9, 2);
   await expect(page.locator('.article-cover-figure figcaption')).toContainText('原创');
   await expect(page.locator('.research-figure')).toHaveCount(3);
-  await expect(page.locator('.prose h2')).toHaveCount(9);
+  await expect(page.locator('.prose h2')).toHaveCount(7);
   const contents = page.getByRole('navigation', { name: '文章目录' });
-  await expect(contents.locator('details')).not.toHaveAttribute('open');
-  await contents.locator('summary').click();
+  await expect(contents.locator('details')).toHaveAttribute('open');
   await expect(contents.getByRole('link').first()).toBeVisible();
   const data = await page.request.get('/kaggle/15/confusion.csv');
   expect(data.ok()).toBe(true);
@@ -145,4 +144,31 @@ test('subject covers, real figures and public metric data retain their meaning',
   const preview = await page.request.get('/kaggle/15/cover.png');
   expect(preview.ok()).toBe(true);
   expect(await page.locator('meta[property="og:image"]').getAttribute('content')).toContain('/kaggle/15/cover.png');
+});
+
+test('case studies expose the six-part argument in a compact readable layout', async ({ page }, info) => {
+  await page.goto('/kaggle/');
+  const paths = await page.locator('[data-kaggle-case] h3 a').evaluateAll(links =>
+    links.map(link => link.getAttribute('href')!));
+  for (const path of paths) {
+    await page.goto(path);
+    const headings = await page.locator('.prose h2').allTextContents();
+    expect(headings[0]).toMatch(/^问题定位：/);
+    expect(headings.slice(1)).toEqual(['技术思路与路线', '评价方式', '结果与证据', '思考与结论', '下一步', '资料与证据']);
+    await expect(page.locator('.prose > p').first()).toContainText('核心判断');
+    await expect(page.getByRole('navigation', { name: '文章目录' }).getByRole('link', { name: '评价方式', exact: true })).toBeVisible();
+    await page.getByRole('navigation', { name: '文章目录' }).getByRole('link', { name: '评价方式', exact: true }).click();
+    await expect(page.getByRole('heading', { name: '评价方式', exact: true })).toBeInViewport();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+  await page.goto('/posts/kaggle-15-cmi/');
+  const cover = await page.locator('.article-cover').boundingBox();
+  expect(cover!.height).toBeLessThan(info.project.name === 'mobile' ? 90 : 150);
+  await expect(page.locator('.prose > p').first()).toBeInViewport();
+  const prose = await page.locator('.prose').evaluate(element => ({
+    font: parseFloat(getComputedStyle(element).fontSize),
+    line: parseFloat(getComputedStyle(element).lineHeight),
+  }));
+  expect(prose.font).toBeGreaterThanOrEqual(16);
+  expect(prose.line / prose.font).toBeLessThanOrEqual(1.85);
 });

@@ -16,21 +16,20 @@ const evidenceHref = evidenceURL?.host === Astro.site?.host
   ? `${evidenceURL?.pathname}${evidenceURL?.hash}` : evidenceURL?.href;
 ---
 <BaseLayout title={post.data.title} description={post.data.description} image={post.data.coverImage?.replace('.svg', '.png')}>
-  <article class="article-shell">
+  <article class:list={['article-shell', { 'kaggle-article': Boolean(post.data.kaggle) }]}>
     <a class="article-back" href={post.data.kaggle ? '/kaggle/' : '/posts/'}>{post.data.kaggle ? '← 返回 Kaggle 竞赛笔记' : '← 返回全部文章'}</a>
-    <header class="article-header"><div class="post-meta"><span class="category"><i></i>{post.data.category}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time><span>{readingTime(post.body)}</span></div><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p><div class="article-author"><span class="author-avatar" aria-hidden="true">✳</span><div><strong>Bin</strong><span>保持好奇，持续构建。</span></div></div></header>
+    <header class="article-header"><div class="post-meta"><span class="category"><i></i>{post.data.category}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time><span>{readingTime(post.body)}</span>{post.data.kaggle && <span>作者 Bin</span>}</div><h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p>{!post.data.kaggle && <div class="article-author"><span class="author-avatar" aria-hidden="true">✳</span><div><strong>Bin</strong><span>保持好奇，持续构建。</span></div></div>}</header>
     <figure class:list={{ 'article-cover-figure': Boolean(post.data.coverImage) }}>
       <img class:list={['article-cover', { 'editorial-cover': Boolean(post.data.coverImage) }]} src={coverSource(post)} alt={coverAlt(post)} width="1200" height="675"/>
       {post.data.coverCaption && <figcaption>{post.data.coverCaption}</figcaption>}
     </figure>
     <div class="article-body">
       {post.data.kaggle && <aside class="kaggle-evidence" aria-label="复盘证据与状态">
-        <a href="/kaggle/">KAGGLE / 竞赛笔记</a>
-        {post.data.kaggle.kind === 'case' && <><p><strong>{post.data.kaggle.topic} · {post.data.kaggle.status}</strong></p><p>{post.data.kaggle.result}</p></>}
+        {post.data.kaggle.kind === 'case' && <p class="kaggle-evidence-heading"><strong>{post.data.kaggle.topic} · {post.data.kaggle.status}</strong><span>{post.data.kaggle.result}</span></p>}
         <p>实验记录截至 {post.data.kaggle.evidenceDate}。<a href={evidenceHref}>查看公开证据摘要 ↗</a></p>
       </aside>}
       {post.data.sample && <p class="demo-note article-notice">设计样稿 · 本文为示例内容，用于预览文章排版与阅读体验。</p>}
-      {sections.length > 1 && <nav class="article-toc" aria-label="文章目录"><details open={!post.data.kaggle}><summary>阅读路线与目录 · {sections.length} 节</summary><ul>{sections.map(section => <li><a href={`#${section.slug}`}>{section.text}</a></li>)}</ul></details></nav>}
+      {sections.length > 1 && <nav class="article-toc" aria-label="文章目录"><details open={!post.data.kaggle || post.data.kaggle.kind === 'case'}><summary>阅读路线与目录 · {sections.length} 节</summary><ul>{sections.map(section => <li><a href={`#${section.slug}`} title={section.text}>{post.data.kaggle?.kind === 'case' && section.text.startsWith('问题定位：') ? '问题定位' : section.text}</a></li>)}</ul></details></nav>}
       <div class="prose"><Content/></div>
       <div class="article-end"><div class="article-tags">{post.data.tags.map(tag => <span># {tag}</span>)}</div><button class="copy-link" type="button" data-copy-link aria-live="polite">复制文章链接 <Icon name="arrow" size={15}/></button></div>
     </div>
