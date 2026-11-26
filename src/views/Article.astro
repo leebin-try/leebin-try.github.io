@@ -1,0 +1,45 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ReadingLayout from '@/components/ReadingLayout.astro';
+import ArticleToc from '@/components/ArticleToc.astro';
+import Icon from '@/components/Icon.astro';
+import { getPosts, postKey, formatDate, readingTime, coverSource, coverAlt } from '@/utils/posts';
+import { localPath, translator, label } from '@/utils/i18n';
+import '@/styles/kaggle.css';
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+const locale = post.data.lang;
+const t = translator(locale);
+const { Content, headings } = await render(post);
+const sections = headings.filter(h => h.depth === 2 || h.depth === 3);
+const counterpart = (await getPosts(locale === 'en' ? 'zh' : 'en')).find(p => postKey(p) === postKey(post));
+const alternateHeadings = counterpart ? (await render(counterpart)).headings : [];
+const fragments = Object.fromEntries(headings.map((h,i) => [h.slug,alternateHeadings[i]?.slug ?? h.slug]));
+const evidenceHref = post.data.kaggle ? localPath(post.data.kaggle.source,locale) : undefined;
+---
+<BaseLayout title={post.data.title} description={post.data.description} image={post.data.coverImage?.replace('.svg','.png')} fragments={fragments}>
+  <ReadingLayout headings={sections}>
+    <article class:list={['article-shell', { 'kaggle-article': Boolean(post.data.kaggle) }]}>
+      <a class="article-back" href={localPath(post.data.kaggle ? '/kaggle/' : '/posts/',locale)}>{post.data.kaggle ? t('← 返回 Kaggle 竞赛笔记','← Back to Kaggle field notes') : t('← 返回全部文章','← Back to all articles')}</a>
+      <header class="article-header">
+        <div class="post-meta"><span class="category"><i></i>{label(post.data.category,locale)}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time><span>{readingTime(post.body,locale)}</span><span>{t('作者 Bin','By Bin')}</span></div>
+        <h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p>
+      </header>
+      <figure class="article-cover-figure">
+        <img class:list={['article-cover', {'editorial-cover':Boolean(post.data.coverImage)}]} src={coverSource(post)} alt={coverAlt(post)} width="1200" height="675"/>
+        {post.data.coverCaption && <figcaption>{post.data.coverCaption}</figcaption>}
+      </figure>
+      <div class="article-body">
+        {post.data.kaggle && <aside class="kaggle-evidence" aria-label={t('复盘证据与状态','Evidence and status')}>
+          {post.data.kaggle.kind === 'case' && <p class="kaggle-evidence-heading"><strong>{label(post.data.kaggle.topic,locale)} · {label(post.data.kaggle.status,locale)}</strong><span>{post.data.kaggle.result}</span></p>}
+          <p>{t('实验记录截至','Evidence as of')} {post.data.kaggle.evidenceDate}. <a href={evidenceHref}>{t('查看公开证据摘要','Read the public evidence summary')}</a></p>
+        </aside>}
+        {post.data.sample && <p class="demo-note article-notice">{t('设计样稿 · 本文为示例内容，用于预览文章排版与阅读体验。','Sample article · This retained demonstration illustrates the journal’s reading layout.')}</p>}
+        <ArticleToc headings={sections} mobile/>
+        <div class="prose" data-reading-content><Content/></div>
+        <div class="article-end"><div class="article-tags">{post.data.tags.map(tag => <span># {tag}</span>)}</div><button class="copy-link" type="button" data-copy-link aria-live="polite">{t('复制文章链接','Copy article link')} <Icon name="arrow" size={15}/></button></div>
+      </div>
+    </article>
+  </ReadingLayout>
+</BaseLayout>

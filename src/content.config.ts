@@ -19,6 +19,7 @@ const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: z.object({
     title: z.string(),
+    lang: z.enum(['en', 'zh']).default('zh'),
     description: z.string(),
     date: z.coerce.date(),
     category: z.enum(['技术', '设计', '生活', 'Kaggle']),

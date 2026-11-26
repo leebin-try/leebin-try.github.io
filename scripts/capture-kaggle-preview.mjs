@@ -17,8 +17,13 @@ try {
   await desktop.screenshot({ path: 'docs/previews/kaggle-desktop.png', fullPage: true });
   await load(desktop, '/posts/kaggle-15-cmi/');
   await desktop.screenshot({ path: 'docs/previews/kaggle-article-desktop.png' });
+  await desktop.locator('.reading-sidebar a[href="#evaluation"]').click();
+  await desktop.waitForFunction(() => document.querySelector('.reading-sidebar a[href="#evaluation"]')?.getAttribute('aria-current') === 'location');
+  await desktop.screenshot({ path: 'docs/previews/kaggle-outline-desktop.png' });
   await desktop.locator('.research-figure').nth(2).scrollIntoViewIfNeeded();
   await desktop.screenshot({ path: 'docs/previews/kaggle-figures-desktop.png' });
+  await load(desktop, '/zh/posts/kaggle-15-cmi/');
+  await desktop.screenshot({ path: 'docs/previews/kaggle-article-zh-desktop.png' });
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
   await load(mobile, '/kaggle/');
   await mobile.screenshot({ path: 'docs/previews/kaggle-mobile.png', fullPage: true });

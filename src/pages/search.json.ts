@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
-import { getPosts } from '@/utils/posts';
-export const GET: APIRoute = async () => {
-  const posts = await getPosts();
-  return new Response(JSON.stringify(posts.map(post => ({ title: post.data.title, description: post.data.description, category: post.data.category, tags: post.data.tags, url: `/posts/${post.id}/` }))), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
+import { getPosts, postPath } from '@/utils/posts';
+import { localeOf, label } from '@/utils/i18n';
+export const GET: APIRoute = async ({ url }) => {
+  const locale = localeOf(url.pathname);
+  const posts = await getPosts(locale);
+  return new Response(JSON.stringify(posts.map(post => ({ title: post.data.title, description: post.data.description, category: label(post.data.category,locale), tags: post.data.tags, url: postPath(post) }))), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
 };

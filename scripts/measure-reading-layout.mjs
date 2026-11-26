@@ -13,7 +13,8 @@ try {
   const measurements = [];
   for (const retained of prior.measurements) {
     const page = await browser.newPage({ viewport: retained.viewport });
-    await page.goto(base + retained.route, { waitUntil: 'networkidle' });
+    const measuredRoute = '/zh' + retained.route;
+    await page.goto(base + measuredRoute, { waitUntil: 'networkidle' });
     const after = await page.evaluate(() => {
       const prose = document.querySelector('.prose');
       const height = selector => document.querySelector(selector)?.getBoundingClientRect().height;
@@ -27,25 +28,28 @@ try {
         argumentTop: document.querySelector('.prose>p')?.getBoundingClientRect().top,
       };
     });
-    measurements.push({ ...retained, after });
+    measurements.push({ ...retained, measuredRoute, after });
     await page.close();
   }
   const failures = [];
-  const routes = ['/', '/kaggle/', '/posts/', '/posts/kaggle-15-cmi/', '/posts/kaggle-method-validation/'];
+  const routes = ['/', '/kaggle/', '/posts/', '/posts/kaggle-15-cmi/', '/posts/kaggle-method-validation/', '/data-agent-ontology/'];
   const widths = [320, 768, 1024];
   for (const width of widths) {
     const page = await browser.newPage({ viewport: { width, height: 900 } });
-    for (const route of routes) {
-      await page.goto(base + route);
-      if (!await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)) failures.push({ width, route });
+    for (const prefix of ['', '/zh']) {
+      for (const route of routes) {
+        await page.goto(base + prefix + route);
+        if (!await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)) failures.push({ width, route:prefix+route });
+      }
     }
     await page.close();
   }
   if (failures.length) throw new Error(`Horizontal overflow: ${JSON.stringify(failures)}`);
-  const report = { ...prior, observedAt: new Date().toISOString(), measurements,
-    extraOverflowChecks: { widths, pages: routes.length, failures } };
+  const report = { ...prior, observedAt: new Date().toISOString(),
+    scope:'Chinese editions now use /zh/ and full-row covers. Baseline pages were Chinese at root. Text, mobile font size, cover policy and navigation changed; height is not a spacing-only ablation.', measurements,
+    extraOverflowChecks: { widths, pages: routes.length, locales:['en','zh'], failures } };
   await writeFile(reportPath, JSON.stringify(report, null, 2) + '\n');
-  console.log('Refreshed six baseline comparisons; 15 narrow/tablet overflow checks passed.');
+  console.log('Refreshed six Chinese baseline comparisons; 36 bilingual narrow/tablet overflow checks passed.');
 } finally {
   await browser.close();
 }

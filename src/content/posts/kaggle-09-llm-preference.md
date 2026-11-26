@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/09/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · LLM 偏好预测"><img src="/kaggle/09/method.svg" alt="原创流程与验证边界示意。A/B 双回答比较与恢复输出顺序后的三类概率；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · LLM 偏好预测</strong> 原创流程与验证边界示意。A/B 双回答比较与恢复输出顺序后的三类概率；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/09/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-09-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · LLM 偏好预测</strong> 原创流程与验证边界示意。A/B 双回答比较与恢复输出顺序后的三类概率；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/09/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-09-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 实际做了什么
@@ -118,4 +118,4 @@ p_model = mean_of_available_valid_orientations(p_original, p_restored)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/09_llm_classification_finetuning/)
 - [加载与融合设计、来源归属](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/09_llm_classification_finetuning/docs/solution.md)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-09)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-09)列出了本文的结果口径、记录日期与可核对范围。

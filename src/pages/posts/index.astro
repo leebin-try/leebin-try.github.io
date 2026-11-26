@@ -1,8 +1,4 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import PostCard from '@/components/PostCard.astro';
-import { getPosts } from '@/utils/posts';
-import { categories } from '@/config';
-const posts = await getPosts();
+import View from '@/views/Archive.astro';
 ---
-<BaseLayout title="全部文章"><section class="listing-page shell"><div class="page-heading"><span class="section-eyebrow-label">THE ARCHIVE</span><h1>一些思考，<br/>一些正在发生的事<span class="accent-dot">。</span></h1><p>关于技术、设计、生活与 Kaggle 实践的 {posts.length} 篇记录。示例文章会在正文中单独标注。</p></div><div class="filter-row" role="group" aria-label="按分类筛选文章">{categories.map((category, index) => <button type="button" class:list={['filter-button', { active: index === 0 }]} data-filter={category} aria-pressed={index === 0}>{category}<span>{category === '全部' ? posts.length : posts.filter(post => post.data.category === category).length}</span></button>)}</div><div class="post-grid">{posts.map((post,index) => <PostCard post={post} index={index}/>)}</div><p class="filter-empty" hidden>这个分类还没有文章。</p></section></BaseLayout>
+<View/>

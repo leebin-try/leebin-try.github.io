@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/11/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · GI Tract"><img src="/kaggle/11/method.svg" alt="原创流程与验证边界示意。三张合成 MRI 邻片与三器官预测，非真实病例影像；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · GI Tract</strong> 原创流程与验证边界示意。三张合成 MRI 邻片与三器官预测，非真实病例影像；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/11/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-11-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · GI Tract</strong> 原创流程与验证边界示意。三张合成 MRI 邻片与三器官预测，非真实病例影像；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/11/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-11-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：让二维模型看到一点三维上下文
@@ -83,7 +83,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/11/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · GI Tract"><img src="/kaggle/11/learning.svg" alt="v10 两个 worker 各三轮患者留出历史。像素 Dice 不是官方 Dice3DHausdorff；三个点不足以证明收敛。" width="792" height="317" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · GI Tract</strong> v10 两个 worker 各三轮患者留出历史。像素 Dice 不是官方 Dice3DHausdorff；三个点不足以证明收敛。<br /><a href="/kaggle/11/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/11/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-11-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · GI Tract</strong> v10 两个 worker 各三轮患者留出历史。像素 Dice 不是官方 Dice3DHausdorff；三个点不足以证明收敛。<br /><a href="/kaggle/11/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/11/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-11-learning">图表出处与口径</a></figcaption>
 </figure>
 
 真实曲线只有三轮。两个 worker 的最佳点都在第三轮，内部验证仍在改善；这支持“需要继续验证训练长度”的判断，不支持“已经收敛，也不支持更长训练必定更好”。延长之后仍可能过拟合，尤其患者留出集已经被反复观察。
@@ -123,4 +123,4 @@ worker 0 的三轮记录提供了一个具体切面：大肠原生 Dice 约从 0
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/11_uw_madison_gi_tract_image_segmentation/)
 - [2.5D 输入与原生几何](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/11_uw_madison_gi_tract_image_segmentation/README.md)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-11)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-11)列出了本文的结果口径、记录日期与可核对范围。

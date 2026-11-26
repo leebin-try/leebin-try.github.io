@@ -29,14 +29,14 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/compute/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · 计算预算也是建模变量"><img src="/kaggle/compute/method.svg" alt="原创流程与验证边界示意。两张独立 GPU 与加载、训练、重训、预测和校验的关键路径；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · 计算预算也是建模变量</strong> 原创流程与验证边界示意。两张独立 GPU 与加载、训练、重训、预测和校验的关键路径；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/compute/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-compute-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · 计算预算也是建模变量</strong> 原创流程与验证边界示意。两张独立 GPU 与加载、训练、重训、预测和校验的关键路径；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/compute/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-compute-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ## 先定义成本单位，再外推
 
-[Name That LLM](/posts/kaggle-02-name-that-llm/) 的 27B 路径通过了小规模机制验证，但一轮外部数据训练仍外推到约 17—19 小时。节省显存解决了容量问题，没有消除吞吐问题。
+[Name That LLM](/zh/posts/kaggle-02-name-that-llm/) 的 27B 路径通过了小规模机制验证，但一轮外部数据训练仍外推到约 17—19 小时。节省显存解决了容量问题，没有消除吞吐问题。
 
-[Carvana](/posts/kaggle-17-carvana/) 则提醒我们：测试图像远多于训练图像时，推断、原生尺寸转换与编码可能比训练更值得先测。不能只用几十个短样本的前向时间，乘一个测试行数就宣布整个工作流能完成。
+[Carvana](/zh/posts/kaggle-17-carvana/) 则提醒我们：测试图像远多于训练图像时，推断、原生尺寸转换与编码可能比训练更值得先测。不能只用几十个短样本的前向时间，乘一个测试行数就宣布整个工作流能完成。
 
 一个更完整的估时，应区分加载、数据处理、模型选择、验证、检查点、全量重训、预测、文件生成与评分重放。并行阶段取关键路径，独立串行阶段再相加，保留真实的启动与 I/O 开销。
 
@@ -64,7 +64,7 @@ CIFAR-10、GI、CMI 等项目使用独立种子或折的任务并行；偏好预
 
 ## 更多计算带来质量收益，不等于加速收益
 
-[OTTO](/posts/kaggle-06-otto/) 的 GPU 新管线得分提高，整体却从约 25 分钟到 39 分钟，因为做了更多工作。它支持质量改进，不能提供同工作量下的加速比。局部算子的倍数也不能直接替代完整流水线测量。
+[OTTO](/zh/posts/kaggle-06-otto/) 的 GPU 新管线得分提高，整体却从约 25 分钟到 39 分钟，因为做了更多工作。它支持质量改进，不能提供同工作量下的加速比。局部算子的倍数也不能直接替代完整流水线测量。
 
 反过来，Store Sales 的快速 ridge 更弱，也不因它快就自动成为更好的模型。公平比较应保持任务、精度、数据覆盖和评价口径一致，再讨论收益与成本的交换。
 
@@ -73,7 +73,7 @@ CIFAR-10、GI、CMI 等项目使用独立种子或折的任务并行；偏好预
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/17/pilot-timing.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · 计算预算也是建模变量"><img src="/kaggle/17/pilot-timing.svg" alt="远程预检报告的同一批 512 图像墙钟时间，约 95.04／60.06 秒，含启动；仅一个正权重模型。本地产物校验尚未完成，不是正式评分。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · 计算预算也是建模变量</strong> 远程预检报告的同一批 512 图像墙钟时间，约 95.04／60.06 秒，含启动；仅一个正权重模型。本地产物校验尚未完成，不是正式评分。<br /><a href="/kaggle/17/pilot-timing.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/17/pilot-timing.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-17-pilot-timing">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · 计算预算也是建模变量</strong> 远程预检报告的同一批 512 图像墙钟时间，约 95.04／60.06 秒，含启动；仅一个正权重模型。本地产物校验尚未完成，不是正式评分。<br /><a href="/kaggle/17/pilot-timing.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/17/pilot-timing.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-17-pilot-timing">图表出处与口径</a></figcaption>
 </figure>
 
 
@@ -92,7 +92,7 @@ CIFAR-10、GI、CMI 等项目使用独立种子或折的任务并行；偏好预
 | 产物校验通过 | ID、数值、检查点与文件一致 | 官方隐藏输入一定接受 |
 | 官方 COMPLETE 并有分数 | 此次提交已被评分 | 因果贡献、历史排名或普遍领先 |
 
-[Titanic](/posts/kaggle-01-titanic/) 曾在本地 DNS 中断后恢复读取同一远程版本，没有因日志暂时不可读而重开训练或重复提交。网络观察失败与任务执行失败应分开处理；一份明确的提交意图和回执，能避免重试造成额外评分请求。
+[Titanic](/zh/posts/kaggle-01-titanic/) 曾在本地 DNS 中断后恢复读取同一远程版本，没有因日志暂时不可读而重开训练或重复提交。网络观察失败与任务执行失败应分开处理；一份明确的提交意图和回执，能避免重试造成额外评分请求。
 
 ## 观点：可复现意味着保留选择过程
 
@@ -106,4 +106,4 @@ CIFAR-10、GI、CMI 等项目使用独立种子或折的任务并行；偏好预
 - [OTTO 完整时间对照](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/06_otto_recommender_system/docs/gpu-results.md)
 - [27B 测时及淘汰决定](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/02_name_that_llm/docs/overnight-t4-results.md)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#protocol)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#protocol)列出了本文的结果口径、记录日期与可核对范围。

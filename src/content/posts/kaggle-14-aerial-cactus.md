@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/14/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · Aerial Cactus"><img src="/kaggle/14/method.svg" alt="原创流程与验证边界示意。合成航拍图块中的仙人掌与分类排序示意；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · Aerial Cactus</strong> 原创流程与验证边界示意。合成航拍图块中的仙人掌与分类排序示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/14/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-14-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · Aerial Cactus</strong> 原创流程与验证边界示意。合成航拍图块中的仙人掌与分类排序示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/14/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-14-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：先给小模型一次公平机会
@@ -71,7 +71,7 @@ ROC AUC 评价正样本排在负样本前面的能力，越高越好；BCE 则�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/14/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · Aerial Cactus"><img src="/kaggle/14/learning.svg" alt="小 CNN 的 37 轮真实记录：左侧为对数 BCE 轴，右侧为停止 AUC；虚线是第 27 轮所选检查点，不是 BCE 最小点。" width="792" height="317" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · Aerial Cactus</strong> 小 CNN 的 37 轮真实记录：左侧为对数 BCE 轴，右侧为停止 AUC；虚线是第 27 轮所选检查点，不是 BCE 最小点。<br /><a href="/kaggle/14/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/14/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-14-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · Aerial Cactus</strong> 小 CNN 的 37 轮真实记录：左侧为对数 BCE 轴，右侧为停止 AUC；虚线是第 27 轮所选检查点，不是 BCE 最小点。<br /><a href="/kaggle/14/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/14/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-14-learning">图表出处与口径</a></figcaption>
 </figure>
 
 图中 AUC 在后期维持平台，BCE 的对数轴仍显示下降。红色线标记按既定 AUC 规则选择的第 27 轮，而不是 BCE 最小轮。曲线每个点来自一轮真实记录，没有平滑；它给出了停止规则实际选择了什么，而不是替换成事后更有利的标准。
@@ -112,4 +112,4 @@ ROC AUC 评价正样本排在负样本前面的能力，越高越好；BCE 则�
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/14_aerial_cactus_identification/docs/results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/14_aerial_cactus_identification/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-14)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-14)列出了本文的结果口径、记录日期与可核对范围。

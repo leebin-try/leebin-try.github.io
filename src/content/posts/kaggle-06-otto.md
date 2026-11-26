@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/06/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · OTTO"><img src="/kaggle/06/method.svg" alt="原创流程与验证边界示意。商品共现网络连接点击、购物车和订单三条排序路径；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · OTTO</strong> 原创流程与验证边界示意。商品共现网络连接点击、购物车和订单三条排序路径；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/06/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-06-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · OTTO</strong> 原创流程与验证边界示意。商品共现网络连接点击、购物车和订单三条排序路径；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/06/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-06-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 两阶段方法：共现召回，再分别排序
@@ -77,7 +77,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/06/candidate-ceiling.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · OTTO"><img src="/kaggle/06/candidate-ceiling.svg" alt="同一时间验证协议下的排序召回与既定候选池的可达上限。上限不是实际模型结果。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · OTTO</strong> 同一时间验证协议下的排序召回与既定候选池的可达上限。上限不是实际模型结果。<br /><a href="/kaggle/06/candidate-ceiling.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/06/candidate-ceiling.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-06-candidate-ceiling">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · OTTO</strong> 同一时间验证协议下的排序召回与既定候选池的可达上限。上限不是实际模型结果。<br /><a href="/kaggle/06/candidate-ceiling.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/06/candidate-ceiling.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-06-candidate-ceiling">图表出处与口径</a></figcaption>
 </figure>
 
 图中的点击与购物车仍有明显的候选上限差距；订单排序更接近其当前可达上限。它提示我们分别衡量两类实验：固定候选，改进排序与特征；固定排序器，引入新的召回来源。若第二类能稳定扩大覆盖，第一类才获得新的可利用空间。
@@ -118,4 +118,4 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/06_otto_recommender_system/docs/gpu-results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/06_otto_recommender_system/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-06)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-06)列出了本文的结果口径、记录日期与可核对范围。

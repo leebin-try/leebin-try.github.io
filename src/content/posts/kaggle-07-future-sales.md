@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/07/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · Predict Future Sales"><img src="/kaggle/07/method.svg" alt="原创流程与验证边界示意。月度店铺商品网格中的零需求与未来月份预测；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · Predict Future Sales</strong> 原创流程与验证边界示意。月度店铺商品网格中的零需求与未来月份预测；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/07/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-07-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · Predict Future Sales</strong> 原创流程与验证边界示意。月度店铺商品网格中的零需求与未来月份预测；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/07/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-07-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 从流水补成月度需求网格
@@ -79,7 +79,7 @@ RMSE 是平方误差平均后开方，越低越好；较大的预测偏差受到
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/07/month-confirmation.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · Predict Future Sales"><img src="/kaggle/07/month-confirmation.svg" alt="月 33 同一确认总体中的参考与模型 RMSE；不是官方测试分区。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · Predict Future Sales</strong> 月 33 同一确认总体中的参考与模型 RMSE；不是官方测试分区。<br /><a href="/kaggle/07/month-confirmation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/07/month-confirmation.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-07-month-confirmation">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · Predict Future Sales</strong> 月 33 同一确认总体中的参考与模型 RMSE；不是官方测试分区。<br /><a href="/kaggle/07/month-confirmation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/07/month-confirmation.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-07-month-confirmation">图表出处与口径</a></figcaption>
 </figure>
 
 同一月份的三个参考提供了有用对照：如果只复制上月销量或取历史滞后均值，误差都高于选中的 LightGBM。但这不能指出收益来自哪一组特征，也不能保证下一个月份保持同样比例。
@@ -120,4 +120,4 @@ RMSE 是平方误差平均后开方，越低越好；较大的预测偏差受到
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/07_competitive_data_science_predict_future_sales/docs/results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/07_competitive_data_science_predict_future_sales/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-07)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-07)列出了本文的结果口径、记录日期与可核对范围。

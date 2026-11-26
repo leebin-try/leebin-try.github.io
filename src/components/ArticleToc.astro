@@ -1,0 +1,10 @@
+---
+import { localeOf, translator } from '@/utils/i18n';
+interface Props { headings: Array<{depth: number; slug: string; text: string}>; mobile?: boolean; }
+const { headings, mobile = false } = Astro.props;
+const t = translator(localeOf(Astro.url.pathname));
+---
+<nav class:list={['reading-toc', { 'reading-toc-mobile': mobile }]} aria-label={t('文章目录','Table of contents')}>
+  {mobile ? <details><summary>{t('目录 · 跳转章节','Contents · jump to a section')}</summary><ul>{headings.map(h => <li class:list={{'toc-subheading':h.depth===3}}><a href={`#${h.slug}`} data-toc-link>{h.text}</a></li>)}</ul></details>
+    : <><p class="toc-label">{t('本文目录','ON THIS PAGE')}</p><ul>{headings.map(h => <li class:list={{'toc-subheading':h.depth===3}}><a href={`#${h.slug}`} data-toc-link>{h.text}</a></li>)}</ul></>}
+</nav>

@@ -1,11 +1,4 @@
 ---
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import report from '@/content/reports/data-agent-ontology.html?raw';
-import '@/styles/research-report.css';
+import View from '@/views/Research.astro';
 ---
-<BaseLayout title="Data Agent 与本体" description="Data Agent 与本体的技术关系：技术主线、关键消融、前沿问题及可追溯的原始证据。">
-  <article class="research-report shell">
-    <a class="article-back" href="/">← 返回首页</a>
-    <div set:html={report}/>
-  </article>
-</BaseLayout>
+<View/>

@@ -29,14 +29,14 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/metrics/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · 把一个分数拆开"><img src="/kaggle/metrics/method.svg" alt="原创流程与验证边界示意。排序、概率与硬决策三种评价对象示意；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · 把一个分数拆开</strong> 原创流程与验证边界示意。排序、概率与硬决策三种评价对象示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/metrics/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-metrics-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · 把一个分数拆开</strong> 原创流程与验证边界示意。排序、概率与硬决策三种评价对象示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/metrics/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-metrics-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ## 排序正确，概率仍可能不够好
 
-[Aerial Cactus](/posts/kaggle-14-aerial-cactus/) 的停止 AUC 已到 1.0，BCE 还继续降低。只要正负排序不变，模型可以从不太确定变得更确定，AUC 却不变。因此，AUC 平台不能直接解释为概率损失平台。
+[Aerial Cactus](/zh/posts/kaggle-14-aerial-cactus/) 的停止 AUC 已到 1.0，BCE 还继续降低。只要正负排序不变，模型可以从不太确定变得更确定，AUC 却不变。因此，AUC 平台不能直接解释为概率损失平台。
 
-log loss 会惩罚对错误答案的过高置信度。[LLM 偏好预测](/posts/kaggle-09-llm-preference/) 输出三类概率，列顺序、归一化、融合温度都影响最终含义。把最大的概率转成标签后再只看 accuracy，会丢掉比赛正在考查的一部分能力。
+log loss 会惩罚对错误答案的过高置信度。[LLM 偏好预测](/zh/posts/kaggle-09-llm-preference/) 输出三类概率，列顺序、归一化、融合温度都影响最终含义。把最大的概率转成标签后再只看 accuracy，会丢掉比赛正在考查的一部分能力。
 
 ## 一个合成演算：为什么不能平均折 RMSE
 
@@ -53,13 +53,13 @@ mcrmse = mean(per_target)
 
 ## 连续模型，未必用连续指标交付
 
-[CMI](/posts/kaggle-15-cmi/) 用回归输出连续数值，却要通过有序阈值得到四类，再计算 QWK；[毒蘑菇](/posts/kaggle-12-mushrooms/) 的 MCC 也依赖硬标签。停止 RMSE 或 log loss 的最优点，不必然等于阈值后比赛指标的最优点。
+[CMI](/zh/posts/kaggle-15-cmi/) 用回归输出连续数值，却要通过有序阈值得到四类，再计算 QWK；[毒蘑菇](/zh/posts/kaggle-12-mushrooms/) 的 MCC 也依赖硬标签。停止 RMSE 或 log loss 的最优点，不必然等于阈值后比赛指标的最优点。
 
 阈值应该在声明过的开发预测上选择，并与最后的独立检查隔开。它是模型的一部分，不是得到官方成绩之后可以随意修改的装饰。
 
 ## 平均分会隐藏少数类或第二个目标
 
-CMI 的 audit 中，最高严重度七个人全没判对，总体 QWK 仍不为零。[CommonLit](/posts/kaggle-16-commonlit/) 的措辞误差高于内容误差，但两个目标平均后，弱点变得不那么显眼。
+CMI 的 audit 中，最高严重度七个人全没判对，总体 QWK 仍不为零。[CommonLit](/zh/posts/kaggle-16-commonlit/) 的措辞误差高于内容误差，但两个目标平均后，弱点变得不那么显眼。
 
 这类复盘至少应该带上支持数、混淆矩阵或分目标指标。某一类缺席时，结果是“无法估计”，不是召回率为零；某一类只有几个样本时，也不能把很小的差异当成稳定能力。
 
@@ -67,20 +67,20 @@ CMI 的 audit 中，最高严重度七个人全没判对，总体 QWK 仍不为�
 
 图像掩码重叠、器官三维边界与图片分类准确率不同。GI 的内部原生像素 Dice 不能直接冒充官方 Dice3DHausdorff。缩放、阈值与 RLE 编码顺序也会决定最终被度量的几何对象。
 
-[Carvana](/posts/kaggle-17-carvana/) 的静态标签核对，提示我们应该先确认序列化语义。一个数值范围合法的字符串，并不代表它描述了正确方向的掩码。
+[Carvana](/zh/posts/kaggle-17-carvana/) 的静态标签核对，提示我们应该先确认序列化语义。一个数值范围合法的字符串，并不代表它描述了正确方向的掩码。
 
 ## 训练曲线应怎样转成一项决定
 
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/14/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · 把一个分数拆开"><img src="/kaggle/14/learning.svg" alt="小 CNN 的 37 轮真实记录：左侧为对数 BCE 轴，右侧为停止 AUC；虚线是第 27 轮所选检查点，不是 BCE 最小点。" width="792" height="317" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · 把一个分数拆开</strong> 小 CNN 的 37 轮真实记录：左侧为对数 BCE 轴，右侧为停止 AUC；虚线是第 27 轮所选检查点，不是 BCE 最小点。<br /><a href="/kaggle/14/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/14/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-14-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · 把一个分数拆开</strong> 小 CNN 的 37 轮真实记录：左侧为对数 BCE 轴，右侧为停止 AUC；虚线是第 27 轮所选检查点，不是 BCE 最小点。<br /><a href="/kaggle/14/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/14/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-14-learning">图表出处与口径</a></figcaption>
 </figure>
 
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/16/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 2 · 把一个分数拆开"><img src="/kaggle/16/learning.svg" alt="v3 两个题目折的真实训练／验证及分目标曲线。fold 0 最佳在第 1 轮，fold 1 到六轮上限后仍未完成停止耐心。" width="792" height="504" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 2 · 把一个分数拆开</strong> v3 两个题目折的真实训练／验证及分目标曲线。fold 0 最佳在第 1 轮，fold 1 到六轮上限后仍未完成停止耐心。<br /><a href="/kaggle/16/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/16/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-16-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 2 · 把一个分数拆开</strong> v3 两个题目折的真实训练／验证及分目标曲线。fold 0 最佳在第 1 轮，fold 1 到六轮上限后仍未完成停止耐心。<br /><a href="/kaggle/16/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/16/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-16-learning">图表出处与口径</a></figcaption>
 </figure>
 
 
@@ -103,4 +103,4 @@ CMI 的 audit 中，最高严重度七个人全没判对，总体 QWK 仍不为�
 - [训练日志、曲线与充分性标准](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/PROJECT_STANDARD.md#learning-curves-and-training-sufficiency)
 - 各案例的原始曲线口径与分数出处见对应复盘中的资料链接。
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#protocol)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#protocol)列出了本文的结果口径、记录日期与可核对范围。

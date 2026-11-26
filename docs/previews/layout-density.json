@@ -1,7 +1,7 @@
 {
-  "observedAt": "2026-11-26T03:47:48.720Z",
+  "observedAt": "2026-11-26T04:45:58.654Z",
   "baselineCommit": "fee49346ac80cbbee6f95ef2de84301f11906eb2",
-  "scope": "Same viewports; article text was expanded and mobile prose increased from 15px to 16px, so document height is not a controlled spacing-only ablation.",
+  "scope": "Chinese editions now use /zh/ and full-row covers. Baseline pages were Chinese at root. Text, mobile font size, cover policy and navigation changed; height is not a spacing-only ablation.",
   "measurements": [
     {
       "viewport": {
@@ -17,10 +17,11 @@
         "paragraphLineHeight": "normal"
       },
       "after": {
-        "height": 2441,
+        "height": 2575,
         "hero": 316.875,
         "paragraphLineHeight": "normal"
-      }
+      },
+      "measuredRoute": "/zh/"
     },
     {
       "viewport": {
@@ -37,11 +38,12 @@
         "paragraphLineHeight": "normal"
       },
       "after": {
-        "height": 4232,
+        "height": 7101,
         "hero": 454.78125,
-        "caseHeight": 254.390625,
+        "caseHeight": 559.328125,
         "paragraphLineHeight": "normal"
-      }
+      },
+      "measuredRoute": "/zh/kaggle/"
     },
     {
       "viewport": {
@@ -57,12 +59,13 @@
         "paragraphLineHeight": "32px"
       },
       "after": {
-        "height": 5592,
-        "coverHeight": 123.75,
+        "height": 5884,
+        "coverHeight": 480,
         "paragraphLineHeight": "28.8px",
         "paragraphFontSize": "16px",
-        "argumentTop": 713.828125
-      }
+        "argumentTop": 1006.265625
+      },
+      "measuredRoute": "/zh/posts/kaggle-15-cmi/"
     },
     {
       "viewport": {
@@ -78,10 +81,11 @@
         "paragraphLineHeight": "normal"
       },
       "after": {
-        "height": 4042,
+        "height": 4411,
         "hero": 346.765625,
         "paragraphLineHeight": "normal"
-      }
+      },
+      "measuredRoute": "/zh/"
     },
     {
       "viewport": {
@@ -98,11 +102,12 @@
         "paragraphLineHeight": "normal"
       },
       "after": {
-        "height": 8236,
+        "height": 11207,
         "hero": 401.53125,
-        "caseHeight": 288.171875,
+        "caseHeight": 467.875,
         "paragraphLineHeight": "normal"
-      }
+      },
+      "measuredRoute": "/zh/kaggle/"
     },
     {
       "viewport": {
@@ -118,12 +123,13 @@
         "paragraphLineHeight": "30px"
       },
       "after": {
-        "height": 7240,
-        "coverHeight": 67.5,
+        "height": 7373,
+        "coverHeight": 196.875,
         "paragraphLineHeight": "28.8px",
         "paragraphFontSize": "16px",
-        "argumentTop": 729.90625
-      }
+        "argumentTop": 855.65625
+      },
+      "measuredRoute": "/zh/posts/kaggle-15-cmi/"
     }
   ],
   "extraOverflowChecks": {
@@ -132,7 +138,11 @@
       768,
       1024
     ],
-    "pages": 5,
+    "pages": 6,
+    "locales": [
+      "en",
+      "zh"
+    ],
     "failures": []
   }
 }

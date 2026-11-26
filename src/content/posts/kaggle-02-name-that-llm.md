@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/02/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · Name That LLM"><img src="/kaggle/02/method.svg" alt="原创流程与验证边界示意。文本指纹与两种互补表示，展示语义专家和词法专家；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · Name That LLM</strong> 原创流程与验证边界示意。文本指纹与两种互补表示，展示语义专家和词法专家；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/02/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-02-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · Name That LLM</strong> 原创流程与验证边界示意。文本指纹与两种互补表示，展示语义专家和词法专家；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/02/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-02-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 两条路径，保留不同的信号
@@ -80,7 +80,7 @@ Balanced accuracy 是各来源类别召回率的平均值，越高越好。少�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/02/complementarity.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · Name That LLM"><img src="/kaggle/02/complementarity.svg" alt="开发 OOF 的词法单体、原生父版本与所选混合。混合和语料筛选复用了开发信息，不能当作未经选择的独立测试。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · Name That LLM</strong> 开发 OOF 的词法单体、原生父版本与所选混合。混合和语料筛选复用了开发信息，不能当作未经选择的独立测试。<br /><a href="/kaggle/02/complementarity.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/02/complementarity.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-02-complementarity">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · Name That LLM</strong> 开发 OOF 的词法单体、原生父版本与所选混合。混合和语料筛选复用了开发信息，不能当作未经选择的独立测试。<br /><a href="/kaggle/02/complementarity.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/02/complementarity.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-02-complementarity">图表出处与口径</a></figcaption>
 </figure>
 
 图中的单独词法专家明显弱于原生专家，混合却提高了所选开发 OOF。这支持误差互补的解释，但没有单独证明它：多个混合比例经过选择，上游语料选择也使用过官方标签。配对提示词 bootstrap 可以描述当前重采样下的稳定性，不能消除这些选择。
@@ -122,4 +122,4 @@ Balanced accuracy 是各来源类别召回率的平均值，越高越好。少�
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/02_name_that_llm/)
 - [来源归属与资产说明](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/02_name_that_llm/docs/reproduction-credits.md)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-02)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-02)列出了本文的结果口径、记录日期与可核对范围。

@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/16/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · CommonLit"><img src="/kaggle/16/method.svg" alt="原创流程与验证边界示意。题目、原文、摘要三种输入与内容和措辞两个输出；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · CommonLit</strong> 原创流程与验证边界示意。题目、原文、摘要三种输入与内容和措辞两个输出；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/16/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-16-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · CommonLit</strong> 原创流程与验证边界示意。题目、原文、摘要三种输入与内容和措辞两个输出；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/16/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-16-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：让摘要注意原文，只对摘要做池化
@@ -83,7 +83,7 @@ MCRMSE 先对每个目标的全部 OOF 样本计算 RMSE，再平均两个目标
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/16/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · CommonLit"><img src="/kaggle/16/learning.svg" alt="v3 两个题目折的真实训练／验证及分目标曲线。fold 0 最佳在第 1 轮，fold 1 到六轮上限后仍未完成停止耐心。" width="792" height="504" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · CommonLit</strong> v3 两个题目折的真实训练／验证及分目标曲线。fold 0 最佳在第 1 轮，fold 1 到六轮上限后仍未完成停止耐心。<br /><a href="/kaggle/16/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/16/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-16-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · CommonLit</strong> v3 两个题目折的真实训练／验证及分目标曲线。fold 0 最佳在第 1 轮，fold 1 到六轮上限后仍未完成停止耐心。<br /><a href="/kaggle/16/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/16/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-16-learning">图表出处与口径</a></figcaption>
 </figure>
 
 fold 0 的训练 MSE 持续下降，验证 content 误差却恶化；wording 又在最后一轮改善。综合指标最终选择第一轮，正是因为两个目标不是沿同一方向变化。fold 1 训练到六轮，选在第五轮，尚未完整观察到预设停止耐心。
@@ -122,4 +122,4 @@ fold 0 的训练 MSE 持续下降，验证 content 误差却恶化；wording 又
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/16_commonlit_evaluate_student_summaries/docs/results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/16_commonlit_evaluate_student_summaries/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-16)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-16)列出了本文的结果口径、记录日期与可核对范围。

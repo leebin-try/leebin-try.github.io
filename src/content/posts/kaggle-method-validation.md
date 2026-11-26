@@ -29,7 +29,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/validation/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · 从 17 个项目抽象验证设计"><img src="/kaggle/validation/method.svg" alt="原创流程与验证边界示意。按完整相关组留出的交叉验证矩阵示意；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · 从 17 个项目抽象验证设计</strong> 原创流程与验证边界示意。按完整相关组留出的交叉验证矩阵示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/validation/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-validation-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · 从 17 个项目抽象验证设计</strong> 原创流程与验证边界示意。按完整相关组留出的交叉验证矩阵示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/validation/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-validation-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ## 第一层：找到不能轻易拆散的单位
@@ -42,7 +42,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 | 月度销量与会话行为 | 时间原点、完整未来窗口 | 只用当时信息能否预测之后 |
 | 同一辆车的多个视角 | 完整车辆 | 能否分割没见过的车辆 |
 
-这些单位不是越大越好，而要与任务对应。[Titanic](/posts/kaggle-01-titanic/) 的普通验证与关系组压力验证有明显差距；如果部署允许观察同行者信息，组外压力题比实际任务更严。相反，[GI Tract](/posts/kaggle-11-gi-tract/) 讨论新病人时，就不能把同一病人的切片随机拆开。
+这些单位不是越大越好，而要与任务对应。[Titanic](/zh/posts/kaggle-01-titanic/) 的普通验证与关系组压力验证有明显差距；如果部署允许观察同行者信息，组外压力题比实际任务更严。相反，[GI Tract](/zh/posts/kaggle-11-gi-tract/) 讨论新病人时，就不能把同一病人的切片随机拆开。
 
 ## 用一条数据血缘检查，比背诵 OOF 更有效
 
@@ -63,7 +63,7 @@ OOF 能阻止模型直接拟合当前行，却不自动阻止这些旁路。Name
 
 不泄漏标签，不只是不把标签列放进特征。目标编码、均值填补、类别字典、词表、阈值和特征选择，都可能读到不该读的样本。
 
-[SF Crime](/posts/kaggle-13-sf-crime/) 的目标统计要排除当前保留周；[Name That LLM](/posts/kaggle-02-name-that-llm/) 的词表拟合有自己的外部数据边界；[销量预测](/posts/kaggle-07-future-sales/) 的首次售出月份不能读取未来。共同点是：**每个从数据学出的部件，都需要一个明确的拟合集。**
+[SF Crime](/zh/posts/kaggle-13-sf-crime/) 的目标统计要排除当前保留周；[Name That LLM](/zh/posts/kaggle-02-name-that-llm/) 的词表拟合有自己的外部数据边界；[销量预测](/zh/posts/kaggle-07-future-sales/) 的首次售出月份不能读取未来。共同点是：**每个从数据学出的部件，都需要一个明确的拟合集。**
 
 反过来，无标签的全量结构信息不应被笼统称为标签泄漏，但必须说明传导式使用的范围与许可。是否可用、是否跨过标签边界，是两个问题。
 
@@ -71,7 +71,7 @@ OOF 能阻止模型直接拟合当前行，却不自动阻止这些旁路。Name
 
 fit 用来学习参数，stop 用来选择轮次，tune 可以选择阈值和混合，audit 用来在选择冻结后提供另一次检查。这个四段结构帮助解释数据用途，却不是所有数据集必须照抄的配方。
 
-数据少时，过度切分会让每部分都不稳定；可以考虑分组交叉拟合或嵌套选择，但计算成本也会上升。更重要的是诚实记录复用：[CommonLit](/posts/kaggle-16-commonlit/) 按题留出的 OOF 同时参与检查点选择，只有四个题目，不能改名为“完全未触碰测试集”。
+数据少时，过度切分会让每部分都不稳定；可以考虑分组交叉拟合或嵌套选择，但计算成本也会上升。更重要的是诚实记录复用：[CommonLit](/zh/posts/kaggle-16-commonlit/) 按题留出的 OOF 同时参与检查点选择，只有四个题目，不能改名为“完全未触碰测试集”。
 
 OOF 只说明每一行的预测来自没直接拟合该行的模型，不自动说明超参数、外部数据筛选、停止与混合也完全没用过它。
 
@@ -80,7 +80,7 @@ OOF 只说明每一行的预测来自没直接拟合该行的模型，不自动�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/01/validation.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · 从 17 个项目抽象验证设计"><img src="/kaggle/01/validation.svg" alt="四个内部方案在普通重复交叉验证与整组压力协议下的 accuracy。两个协议回答不同泛化问题；不是四个官方得分。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · 从 17 个项目抽象验证设计</strong> 四个内部方案在普通重复交叉验证与整组压力协议下的 accuracy。两个协议回答不同泛化问题；不是四个官方得分。<br /><a href="/kaggle/01/validation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/01/validation.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-01-validation">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · 从 17 个项目抽象验证设计</strong> 四个内部方案在普通重复交叉验证与整组压力协议下的 accuracy。两个协议回答不同泛化问题；不是四个官方得分。<br /><a href="/kaggle/01/validation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/01/validation.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-01-validation">图表出处与口径</a></figcaption>
 </figure>
 
 
@@ -101,4 +101,4 @@ CommonLit 有 7,165 行摘要，但只有四个题目。若关心的是换题目
 - [项目验证与实验标准](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/PROJECT_STANDARD.md)
 - 上述各比赛复盘均链接其原始实验记录；这些归纳不代表对其他数据分布已经完成了验证。
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#protocol)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#protocol)列出了本文的结果口径、记录日期与可核对范围。

@@ -13,7 +13,7 @@ try {
   await desktop.evaluate(() => Promise.all(Array.from(document.images, image => image.decode().catch(() => undefined))));
   await desktop.screenshot({ path: 'docs/previews/home-desktop.png', fullPage: true });
   await desktop.screenshot({ path: 'docs/previews/home-first-screen.png' });
-  await desktop.getByRole('button', { name: '切换到深色模式' }).click();
+  await desktop.getByRole('button', { name: 'Switch to dark mode' }).click();
   await desktop.screenshot({ path: 'docs/previews/home-dark.png', fullPage: true });
   const mobile = await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true });
   await mobile.goto('http://127.0.0.1:4321/', { waitUntil: 'networkidle' });

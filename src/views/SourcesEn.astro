@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPosts, postPath } from '@/utils/posts';
+import { label } from '@/utils/i18n';
+import figures from '@/data/kaggle-figures.json';
+import '@/styles/kaggle.css';
+const cases = (await getPosts('en')).flatMap(post => post.data.kaggle?.kind === 'case' ? [{post,record:post.data.kaggle}] : []).sort((a,b)=>a.record.number-b.record.number);
+---
+<BaseLayout title="Kaggle notes: evidence and sources" description="Score definitions, evidence dates, submission references and source-access boundaries for each case study.">
+<article class="article-shell">
+  <a class="article-back" href="/kaggle/">← Back to Kaggle field notes</a>
+  <header class="article-header"><span class="section-eyebrow-label">EVIDENCE / 2026.11.26</span><h1>Establish the evidence.<br/>Then discuss the conclusion.</h1><p class="article-description">A public account of what each experiment established, including the limits that remain, without requiring access to private source code.</p></header>
+  <div class="article-body"><div class="prose">
+    <h2 id="protocol">Sources and access</h2>
+    <p>The articles draw on experiment documents in <code>kaggle_try</code>, principally commit <code>b3ddf87</code> of November 25, 2026. That repository is private. Exact document links are retained for authorized readers; publication here does not change their access permissions.</p>
+    <p>The public summaries retain scores, metrics, dates and scoring references. They do not publish competition data, predictions, checkpoints or credentials. “Scored” means the documents record a checked terminal scoring receipt. Publication did not re-query the entire submission history and is not a third-party audit. Kaggle pages and private notebooks remain subject to their own access rules.</p>
+    <p>“Evaluation blocked” and “Not scored” describe evidence states, rather than zero scores. Method articles synthesize the cases; their applicability conditions and proposed experiments do not establish that another experiment has already run.</p>
+    <p>The visual collection contains 40 original covers and method diagrams, plus 16 evidence figures redrawn from recorded aggregate metrics. Original art uses no official logos, competition photographs or patient images. Metric exports contain only allowlisted aggregate losses, scores and counts, without sample records, predictions, weights or full runtime logs.</p>
+    <h2>Results by competition</h2>
+    {cases.map(({post,record})=><section class="kaggle-source-record" id={`case-${String(record.number).padStart(2,'0')}`}>
+      <h3><a href={postPath(post)}>{String(record.number).padStart(2,'0')} · {post.data.title}</a></h3>
+      <p><strong>{label(record.status,'en')}</strong> · Evidence date {record.evidenceDate}</p><p>{record.result}</p>
+      {record.submission && <p>Documented official scoring reference: <code>{record.submission}</code>, status COMPLETE.</p>}
+      {record.number===12 && <p>The mixture also has scoring reference 58646587: public/private MCC 0.98494/0.98473. The article preserves its comparison with the single model.</p>}
+      {record.number===17 && <p>Additional read-only check on November 26, 2026, at 02:07 UTC: pilot v1 was COMPLETE and official submission history was empty. Local artifact validation subsequently stopped at the CSV parser’s default field limit. The timing figure reports remote pilot observations; it does not establish successful local validation, full training or official scoring.</p>}
+      <p><a href={record.competitionUrl}>Official competition</a> · <a href={record.recordSource}>Original record (private; access required)</a> · <a href={postPath(post)}>Read the case study</a></p>
+    </section>)}
+    <h2>Interpreting time and rank</h2>
+    <p>Workflow times generally exclude queues, transfers and hosted scoring replay; each article follows its source’s definition. A timeout is a budget, not measured training time. Allocating two GPUs, actually using both, accelerating one operation and accelerating a whole workflow are separate observations.</p>
+    <p>Rank claims require both a date and a denominator. Late submissions to most closed competitions do not confer historical rank, medals or prizes. Public and private scores come from different partitions; their difference is not a before/after model improvement.</p>
+    <h2 id="figures">Figure provenance and downloadable data</h2>
+    <p>The list records each figure’s nature, aggregation scope and file fingerprints. Curves connect recorded observations only; missing validation values are not invented. CSV files are allowlisted plotting extracts, not competition tables or per-example predictions. <a href="/kaggle/figures.json">Download the complete provenance manifest.</a></p>
+    {figures.map(figure=><section class="kaggle-figure-source" id={`fig-${figure.id}`}>
+      <h3>{figure.id}</h3>
+      {figure.kind==='recorded_aggregate_metrics' ? <><p><strong>Recorded aggregate evidence.</strong> {'scope' in figure && figure.scope}</p><p>{'notes' in figure && figure.notes}</p></> : <p><strong>Original explanation.</strong> Drawn by BIN / JOURNAL to explain the task or method. It is neither an official logo nor a competition sample or model prediction.</p>}
+      <p><a href={figure.file}>Open full SVG</a>{'data' in figure && <> · <a href={figure.data} download>Download aggregate metric CSV</a></>}</p>
+      <details><summary>Sources and SHA-256 fingerprints</summary>
+        <p>Figure: <code>{figure.sha256}</code></p>
+        {'dataSha256' in figure && <p>Public CSV: <code>{figure.dataSha256}</code></p>}
+        {'sources' in figure && figure.sources?.map(source=><div><p>Private source record, relative path: <code>{source.path}</code></p><p>Source file: <code>{source.sha256}</code></p></div>)}
+      </details>
+    </section>)}
+    <h2>Updates and corrections</h2>
+    <p>Articles are updated around experimental events, rather than synchronized automatically with leaderboards. New candidates require new evidence; earlier failures and unmet goals remain visible. Corrections can be raised in the site’s GitHub repository and should update the article, structured summary and provenance together. English and Chinese editions preserve the same scores and evidence boundaries.</p>
+  </div></div>
+</article>
+</BaseLayout>

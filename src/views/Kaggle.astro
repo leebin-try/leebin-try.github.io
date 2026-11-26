@@ -1,0 +1,79 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import PostCard from '@/components/PostCard.astro';
+import { getPosts, postPath } from '@/utils/posts';
+import { KAGGLE_TOPICS } from '@/config';
+import '@/styles/kaggle.css';
+import { localeOf, localPath, translator, label as name } from '@/utils/i18n';
+const locale = localeOf(Astro.url.pathname);
+const t = translator(locale);
+const posts = await getPosts(locale);
+const cases = posts.flatMap(post => post.data.kaggle?.kind === 'case' ? [{ post, record: post.data.kaggle }] : [])
+  .sort((a, b) => a.record.number - b.record.number);
+const methods = posts.filter(post => post.data.kaggle?.kind === 'method');
+const scored = cases.filter(item => item.record.status === '已出分').length;
+---
+<BaseLayout title={t("Kaggle 竞赛笔记","Kaggle field notes")} description={t("17 个 Kaggle 项目的方法、判断与失败复盘，按六类问题组织，并提炼验证、指标与计算预算的共同原则。","Methods, decisions and failures across 17 Kaggle projects, with shared lessons on validation, metrics and compute.")}>
+  <section class="kaggle-hero shell">
+    <span class="section-eyebrow-label">KAGGLE / FIELD NOTES</span>
+    <h1>{t("比赛会结束，","Competitions end.")}<br/>{t("方法可以留下","Methods stay")}<span class="accent-dot">{t('。','.')}</span></h1>
+    <p class="kaggle-lead">{t("把每一次建模，整理成下一次判断的依据。","Turn each experiment into evidence for the next decision.")}</p>
+    <p class="kaggle-intro">{t("这里记录 ","Across ")}{cases.length}{t(" 个项目的模型选择、验证设计、失败与取舍，也把不同题目中的共同问题连起来。先读具体复盘，再追问：这个结论在什么条件下仍然成立？"," projects, these notes connect model selection, validation, failures and trade-offs. Read a case, then ask where its conclusion still applies.")}</p>
+    <div class="kaggle-stats" aria-label={t("专栏内容概况","Field notes at a glance")}>
+      <div><strong>{cases.length}</strong><span>{t("比赛记录","Case studies")}</span></div><div><strong>{scored}</strong><span>{t("有官方评分","Officially scored")}</span></div>
+      <div><strong>{KAGGLE_TOPICS.length}</strong><span>{t("问题类别","Problem families")}</span></div><div><strong>{methods.length}</strong><span>{t("方法论文章","Method articles")}</span></div>
+    </div>
+    <div class="kaggle-reading"><a href="#cases">{t("按比赛阅读 ↓","Read by competition")}</a><a href="#methods">{t("从方法开始 ↓","Start with methods")}</a><a href={localPath('/kaggle/sources/',locale)}>{t("证据与出处说明 ↗","Evidence and sources")}</a></div>
+  </section>
+  <section class="kaggle-principles shell" aria-label={t("阅读这组复盘的三个角度","Three ways to read the case studies")}>
+    <div><span>01 / VALIDATION</span><h2>{t("先问怎样验证。","Start with validation.")}</h2><p>{t("随机切分、整组留出与时间回测，回答的是不同问题。","Random splits, group holdouts and temporal backtests ask different questions.")}</p></div>
+    <div><span>02 / STRUCTURE</span><h2>{t("再问缺什么信号。","Identify the missing signal.")}</h2><p>{t("零销量、候选召回、文本风格与图像边缘，各有自己的信息结构。","Zero demand, retrieval coverage, text style and image boundaries have different information structures.")}</p></div>
+    <div><span>03 / EVIDENCE</span><h2>{t("最后问能推出什么。","State what the evidence supports.")}</h2><p>{t("官方分数、诊断指标和未执行假设，分别保留各自的边界。","Official scores, diagnostic metrics and untested hypotheses have distinct roles.")}</p></div>
+  </section>
+  <section class="kaggle-cases shell" id="cases" aria-labelledby="cases-title">
+    <div class="section-heading"><div><span class="section-eyebrow-label">THE COMPETITIONS</span><h2 id="cases-title">{t("逐赛复盘","Competition case studies")}</h2></div><p class="kaggle-count" data-kaggle-count aria-live="polite">{t("显示 ","Showing ")}{cases.length}{t(" 个比赛"," competitions")}</p></div>
+    <div class="filter-row kaggle-filters" role="group" aria-label={t("按题型筛选比赛","Filter competitions by problem family")}>
+      {['全部', ...KAGGLE_TOPICS].map((topic, index) => <button type="button" class:list={['filter-button', { active: index === 0 }]} data-kaggle-filter={topic} aria-pressed={index === 0}>{name(topic,locale)}<span>{topic === '全部' ? cases.length : cases.filter(item => item.record.topic === topic).length}</span></button>)}
+    </div>
+    <div class="kaggle-case-grid">
+      {cases.map(({ post, record }) => <article class="kaggle-case" data-kaggle-case data-topic={record.topic}>
+        <a class="kaggle-case-cover" href={postPath(post)} tabindex="-1" aria-hidden="true"><img src={post.data.coverImage} alt="" width="1200" height="675" loading="lazy"/></a>
+        <div class="kaggle-case-meta"><span>{String(record.number).padStart(2, '0')} / {name(record.topic,locale)}</span><span class:list={['kaggle-state', { 'kaggle-state-scored': record.status === '已出分' }]}>{name(record.status,locale)}</span></div>
+        <h3><a href={postPath(post)}>{post.data.title}</a></h3><p>{post.data.description}</p>
+        <div class="kaggle-case-result">{record.result}</div>
+        <a class="text-link" href={postPath(post)}>{t("阅读复盘 ","Read the case study ")}<Icon name="arrow" size={16}/></a>
+      </article>)}
+    </div>
+    <p class="kaggle-evidence-note">{t("成绩是原始实验记录的快照，日期详见各篇；这里没有刷新所有比赛的实时榜单。不同指标不横向排高低，晚提交也不换算成历史名次。源仓库为私有，公开摘要可直接阅读，原记录链接需要访问权限。","Scores are dated snapshots of experiment records, not a live leaderboard. Different metrics cannot be ranked against each other, and late submissions do not establish historical placements. Public evidence summaries are readable; original records in the private source repository require access.")}<a href={localPath('/kaggle/sources/',locale)}>{t("查看证据与出处说明 ↗","Read the evidence policy")}</a></p>
+  </section>
+  <section class="kaggle-methods shell" id="methods" aria-labelledby="methods-title">
+    <div class="section-heading"><div><span class="section-eyebrow-label">ACROSS COMPETITIONS</span><h2 id="methods-title">{t("把经验抽象成方法","From cases to methods")}</h2></div></div>
+    <p class="kaggle-section-intro">{t("把案例放在一起读，才能看见哪些判断可以迁移，哪些只在特定数据与预算下成立。","Compare cases to distinguish reusable judgments from choices that depend on a particular dataset or budget.")}</p>
+    <div class="post-grid">{methods.map((post, index) => <PostCard post={post} index={index}/>)}</div>
+  </section>
+  <aside class="kaggle-editorial shell"><h2>{t("这组文章如何维护","How these notes are maintained")}</h2><p>{t("每篇按“问题定位 → 技术思路与路线 → 评价方式 → 结果与证据 → 思考与结论 → 下一步”展开。开头给核心判断，正文解释实现和取舍，结尾列出可验证的实验。分数与观察附来源，未执行的设计单独标明。","Each case follows the problem, technical approach, evaluation, results, conclusions and next experiments. The opening makes a concrete claim; the body explains implementation and trade-offs. Scores have sources, and proposed experiments are labelled.")}<a href={t('https://github.com/leebin-try/leebin-try.github.io/blob/main/docs/templates/kaggle-case-study.md','https://github.com/leebin-try/leebin-try.github.io/blob/main/docs/templates/kaggle-case-study.en.md')}>{t("查看完整写作模板","Read the editorial template")}</a>{t('。','.')}</p><a class="text-link" href={localPath('/rss.xml',locale)}>{t("通过 RSS 订阅后续复盘 ","Follow future case studies via RSS ")}<Icon name="arrow" size={16}/></a></aside>
+</BaseLayout>
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('[data-kaggle-filter]');
+  const cards = document.querySelectorAll<HTMLElement>('[data-kaggle-case]');
+  function filter(topic: string, updateURL: boolean): void {
+    let count = 0;
+    cards.forEach(card => { card.hidden = topic !== '全部' && card.dataset.topic !== topic; if (!card.hidden) count++; });
+    buttons.forEach(button => {
+      const active = button.dataset.kaggleFilter === topic;
+      button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active));
+    });
+    const label = document.querySelector('[data-kaggle-count]');
+    if (label) label.textContent = document.documentElement.lang.startsWith('zh') ? `显示 ${count} 个比赛` : `Showing ${count} competitions`;
+    if (updateURL) {
+      const url = new URL(window.location.href);
+      if (topic === '全部') url.searchParams.delete('topic'); else url.searchParams.set('topic', topic);
+      window.history.replaceState(null, '', url);
+      window.dispatchEvent(new Event('journal:locationchange'));
+    }
+  }
+  buttons.forEach(button => button.addEventListener('click', () => filter(button.dataset.kaggleFilter ?? '全部', true)));
+  const initial = new URL(window.location.href).searchParams.get('topic');
+  if (initial && [...buttons].some(button => button.dataset.kaggleFilter === initial)) filter(initial, false);
+</script>

@@ -1,8 +1,11 @@
 ---
 import Icon from './Icon.astro';
 import { SITE } from '@/config';
+import { localeOf, localPath, translator } from '@/utils/i18n';
+const locale = localeOf(Astro.url.pathname);
+const t = translator(locale);
 ---
 <footer class="site-footer shell">
-  <div class="footer-top"><a href="/" class="footer-brand">bin<span>.</span></a><p>把想法写下来，<br/>让有趣的事情发生。</p><a class="back-top" href="#top">回到顶部 <span>↑</span></a></div>
-  <div class="footer-bottom"><p>© {new Date().getFullYear()} BIN / JOURNAL <span class="footer-divider">/</span> 保持好奇，持续构建。</p><div><a href="/kaggle/">KAGGLE</a><a href={SITE.github} target="_blank" rel="noopener noreferrer">GITHUB <Icon name="arrow" size={12}/></a><a href="/rss.xml">RSS <Icon name="rss" size={13}/></a></div></div>
+  <div class="footer-top"><a href={localPath('/',locale)} class="footer-brand">bin<span>.</span></a><p>{t('把想法写下来，','Write down an idea.')}<br/>{t('让有趣的事情发生。','Make something interesting.')}</p><a class="back-top" href="#top">{t('回到顶部','Back to top')} <span>↑</span></a></div>
+  <div class="footer-bottom"><p>© {new Date().getFullYear()} BIN / JOURNAL <span class="footer-divider">/</span> {t('保持好奇，持续构建。','Stay curious. Keep building.')}</p><div><a href={localPath('/kaggle/',locale)}>KAGGLE</a><a href={SITE.github} target="_blank" rel="noopener noreferrer">GITHUB <Icon name="arrow" size={12}/></a><a href={localPath('/rss.xml',locale)}>RSS <Icon name="rss" size={13}/></a></div></div>
 </footer>

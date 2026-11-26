@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/08/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · CIFAR-10"><img src="/kaggle/08/method.svg" alt="原创流程与验证边界示意。小图像网格经过 ConvNeXt 分层表示得到十类输出；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · CIFAR-10</strong> 原创流程与验证边界示意。小图像网格经过 ConvNeXt 分层表示得到十类输出；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/08/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-08-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · CIFAR-10</strong> 原创流程与验证边界示意。小图像网格经过 ConvNeXt 分层表示得到十类输出；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/08/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-08-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：用成熟表示，建立可以交付的分类器
@@ -73,7 +73,7 @@ Accuracy 是被官方计分图像的分类正确比例，越高越好。45,000 �
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/08/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · CIFAR-10"><img src="/kaggle/08/learning.svg" alt="v5 两个种子的真实验证历史，每轮一个点，虚线分别标记第 27／25 轮；该停止集同时承担候选选择。" width="792" height="317" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · CIFAR-10</strong> v5 两个种子的真实验证历史，每轮一个点，虚线分别标记第 27／25 轮；该停止集同时承担候选选择。<br /><a href="/kaggle/08/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/08/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-08-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · CIFAR-10</strong> v5 两个种子的真实验证历史，每轮一个点，虚线分别标记第 27／25 轮；该停止集同时承担候选选择。<br /><a href="/kaggle/08/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/08/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-08-learning">图表出处与口径</a></figcaption>
 </figure>
 
 两种子的验证曲线都在前期明显改善，后期出现小幅波动；最优点分别是 27 与 25 轮。后期微小差异既可能来自模型，也可能来自同一验证集上的随机波动。仅比较峰值，没有给出新的独立确认。
@@ -115,4 +115,4 @@ Accuracy 是被官方计分图像的分类正确比例，越高越好。45,000 �
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/08_cifar_10/)
 - [模型与训练配方](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/08_cifar_10/README.md)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-08)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-08)列出了本文的结果口径、记录日期与可核对范围。

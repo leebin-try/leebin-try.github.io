@@ -30,7 +30,7 @@ QWK 可概括为 `1 - 加权观测分歧 / 加权期望分歧`，常见权重随
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/15/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · CMI"><img src="/kaggle/15/method.svg" alt="原创流程与验证边界示意。序数等级零到三与有序阈值决策；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · CMI</strong> 原创流程与验证边界示意。序数等级零到三与有序阈值决策；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/15/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-15-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · CMI</strong> 原创流程与验证边界示意。序数等级零到三与有序阈值决策；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/15/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-15-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：连续预测，再学习有序阈值
@@ -76,12 +76,12 @@ RMSE 的最佳模型前缀不一定是 QWK 最佳前缀。训练损失继续下�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/15/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · CMI"><img src="/kaggle/15/learning.svg" alt="XGBoost fold 1 的日志采样点。右侧固定阈值 QWK 不等于最终校准 QWK，108 轮按 RMSE 选择。" width="792" height="317" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · CMI</strong> XGBoost fold 1 的日志采样点。右侧固定阈值 QWK 不等于最终校准 QWK，108 轮按 RMSE 选择。<br /><a href="/kaggle/15/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/15/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-15-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · CMI</strong> XGBoost fold 1 的日志采样点。右侧固定阈值 QWK 不等于最终校准 QWK，108 轮按 RMSE 选择。<br /><a href="/kaggle/15/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/15/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-15-learning">图表出处与口径</a></figcaption>
 </figure>
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/15/confusion.svg" target="_blank" rel="noopener" aria-label="放大：实测图 2 · CMI"><img src="/kaggle/15/confusion.svg" alt="冻结 audit 的真实混淆矩阵，纵轴真值、横轴预测；类别 3 共 7 人，正确数为 0。只有聚合数量，无参与者记录。" width="540" height="360" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 2 · CMI</strong> 冻结 audit 的真实混淆矩阵，纵轴真值、横轴预测；类别 3 共 7 人，正确数为 0。只有聚合数量，无参与者记录。<br /><a href="/kaggle/15/confusion.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/15/confusion.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-15-confusion">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 2 · CMI</strong> 冻结 audit 的真实混淆矩阵，纵轴真值、横轴预测；类别 3 共 7 人，正确数为 0。只有聚合数量，无参与者记录。<br /><a href="/kaggle/15/confusion.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/15/confusion.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-15-confusion">图表出处与口径</a></figcaption>
 </figure>
 
 第一张图来自 XGBoost fold 1：RMSE 的最佳前缀是 108 轮，之后固定阈值 QWK 仍可能上升或波动。注意图中 QWK 使用固定阈值，不是已校准开发 QWK，更不是官方分数；把它们混在一起会制造不存在的“模型持续提高”。
@@ -122,4 +122,4 @@ audit 中模型确实输出了两次类别 3，但它们都来自真实类别 2�
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/15_child_mind_institute_problematic_internet_use/docs/results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/15_child_mind_institute_problematic_internet_use/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-15)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-15)列出了本文的结果口径、记录日期与可核对范围。

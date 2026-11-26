@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/12/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · 毒蘑菇分类"><img src="/kaggle/12/method.svg" alt="原创流程与验证边界示意。蘑菇轮廓与类别表示决策树，非赛题照片；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · 毒蘑菇分类</strong> 原创流程与验证边界示意。蘑菇轮廓与类别表示决策树，非赛题照片；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/12/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-12-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · 毒蘑菇分类</strong> 原创流程与验证边界示意。蘑菇轮廓与类别表示决策树，非赛题照片；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/12/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-12-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：比较表示，而不是默认所有列都同一种处理
@@ -77,7 +77,7 @@ MCC 把正确和错误的正负分类放到同一个相关系数中，越高越�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/12/audit-ablation.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · 毒蘑菇分类"><img src="/kaggle/12/audit-ablation.svg" alt="固定 audit 上四种特征表示的 MCC。零起点避免夸大微小差异，精确数字与数据文件一并保留。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · 毒蘑菇分类</strong> 固定 audit 上四种特征表示的 MCC。零起点避免夸大微小差异，精确数字与数据文件一并保留。<br /><a href="/kaggle/12/audit-ablation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/12/audit-ablation.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-12-audit-ablation">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · 毒蘑菇分类</strong> 固定 audit 上四种特征表示的 MCC。零起点避免夸大微小差异，精确数字与数据文件一并保留。<br /><a href="/kaggle/12/audit-ablation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/12/audit-ablation.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-12-audit-ablation">图表出处与口径</a></figcaption>
 </figure>
 
 下图使用零起点纵轴，避免把万分之一级差距画成巨大跃升，同时直接保留数字与下载数据。这里最清楚的现象是全类别 CatBoost 在这组设置下更弱；其他接近的候选不能仅凭柱子高低建立稳定优劣。
@@ -120,4 +120,4 @@ accuracy 的差值在固定总体上可以换算净正确数，MCC 却不是。�
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/12_playground_series_s4e8/docs/results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/12_playground_series_s4e8/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-12)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-12)列出了本文的结果口径、记录日期与可核对范围。

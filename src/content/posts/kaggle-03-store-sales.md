@@ -30,7 +30,7 @@ RMSLE 评价 `log1p` 空间的误差。预测大销量系列时，绝对差几�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/03/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · Store Sales"><img src="/kaggle/03/method.svg" alt="原创流程与验证边界示意。历史日历与预测原点后的多窗口销量轨迹示意；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · Store Sales</strong> 原创流程与验证边界示意。历史日历与预测原点后的多窗口销量轨迹示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/03/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-03-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · Store Sales</strong> 原创流程与验证边界示意。历史日历与预测原点后的多窗口销量轨迹示意；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/03/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-03-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：拆分产品族，递归推进未来
@@ -79,7 +79,7 @@ RMSLE 是预测与真实销量在 log1p 空间的均方根误差，越低越好�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/03/scored-candidates.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · Store Sales"><img src="/kaggle/03/scored-candidates.svg" alt="五个有官方评分回执的整体预测包，RMSLE 越低越好。多个部件同时变化，不能从柱子直接分解因果贡献。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · Store Sales</strong> 五个有官方评分回执的整体预测包，RMSLE 越低越好。多个部件同时变化，不能从柱子直接分解因果贡献。<br /><a href="/kaggle/03/scored-candidates.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/03/scored-candidates.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-03-scored-candidates">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · Store Sales</strong> 五个有官方评分回执的整体预测包，RMSLE 越低越好。多个部件同时变化，不能从柱子直接分解因果贡献。<br /><a href="/kaggle/03/scored-candidates.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/03/scored-candidates.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-03-scored-candidates">图表出处与口径</a></figcaption>
 </figure>
 
 五个已评分配置说明，最终族模型窗口融合在这次官方评价中更好；它没有隔离“分族”“缩放”“历史长度”“递归方式”的单独作用。这些变量同时变化时，即便总收益很大，仍可能存在一个没起作用、甚至拖后腿的部件。
@@ -120,4 +120,4 @@ RMSLE 是预测与真实销量在 log1p 空间的均方根误差，越低越好�
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/03_store_sales_time_series_forecasting/docs/final-report.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/03_store_sales_time_series_forecasting/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-03)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-03)列出了本文的结果口径、记录日期与可核对范围。

@@ -32,7 +32,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/17/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · Carvana"><img src="/kaggle/17/method.svg" alt="原创流程与验证边界示意。原创车辆轮廓、像素网格与原生掩码编码；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · Carvana</strong> 原创流程与验证边界示意。原创车辆轮廓、像素网格与原生掩码编码；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/17/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-17-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · Carvana</strong> 原创流程与验证边界示意。原创车辆轮廓、像素网格与原生掩码编码；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/17/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-17-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 为什么按整辆车分组
@@ -81,7 +81,7 @@ RLE 也要以实际标签为准。下面是合成 2×3 掩码，不是比赛图�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/17/pilot-timing.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · Carvana"><img src="/kaggle/17/pilot-timing.svg" alt="远程预检报告的同一批 512 图像墙钟时间，约 95.04／60.06 秒，含启动；仅一个正权重模型。本地产物校验尚未完成，不是正式评分。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · Carvana</strong> 远程预检报告的同一批 512 图像墙钟时间，约 95.04／60.06 秒，含启动；仅一个正权重模型。本地产物校验尚未完成，不是正式评分。<br /><a href="/kaggle/17/pilot-timing.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/17/pilot-timing.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-17-pilot-timing">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · Carvana</strong> 远程预检报告的同一批 512 图像墙钟时间，约 95.04／60.06 秒，含启动；仅一个正权重模型。本地产物校验尚未完成，不是正式评分。<br /><a href="/kaggle/17/pilot-timing.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/17/pilot-timing.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-17-pilot-timing">图表出处与口径</a></figcaption>
 </figure>
 
 远程报告记录了同一批 512 张测试图的单卡和双卡墙钟对照：约 95.04 秒与 60.06 秒，观测比值约 1.58；它包含 worker／模型启动成本。该预检选中的是一个正权重模型，不是双模型完整集成，因此不能直接把这项吞吐外推成两模型 TTA 的全部成本。
@@ -124,4 +124,4 @@ RLE 也要以实际标签为准。下面是合成 2×3 掩码，不是比赛图�
 
 [预检 Notebook](https://www.kaggle.com/code/godlovebinlee/carvana-segmentation-train) 为私有运行；状态快照不等同于产物校验或评分。
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-17)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-17)列出了本文的结果口径、记录日期与可核对范围。

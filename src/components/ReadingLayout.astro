@@ -1,0 +1,10 @@
+---
+import ArticleToc from './ArticleToc.astro';
+import '@/styles/reading.css';
+interface Props { headings: Array<{depth:number; slug:string; text:string}>; }
+const { headings } = Astro.props;
+---
+<div class="reading-layout">
+  <aside class="reading-sidebar"><ArticleToc headings={headings}/></aside>
+  <div class="reading-main"><slot/></div>
+</div>

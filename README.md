@@ -2,7 +2,7 @@
 
 [访问博客](https://leebin-try.github.io/) · [GitHub 仓库](https://github.com/leebin-try/leebin-try.github.io)
 
-采用暖白、墨黑和荧光绿配色的中文个人博客。现有 [Kaggle 竞赛笔记专栏](https://leebin-try.github.io/kaggle/)，以及研究报告和个人文章。
+采用暖白、墨黑和荧光绿配色的中英文个人博客，默认英文，可在页头自由切换中文。现有 [Kaggle 竞赛笔记专栏](https://leebin-try.github.io/kaggle/)，以及研究报告和个人文章。
 
 当前使用 Astro 与严格 TypeScript 配置，实现独立定制主题；内容组织参考 AstroPaper 的 Markdown 博客思路。Kaggle 专栏是有来源的实验复盘；其余保留的示例文章在正文单独标注。手记和个人介绍仍沿用初始示例。
 
@@ -48,10 +48,11 @@ demo_personal_blog/
 ├── public/art/             # 本地原创 SVG 封面
 ├── public/kaggle/          # 逐题封面、方法图、实测图及聚合指标 CSV
 ├── src/
+│   ├── views/              # 默认英文／中文路由共用的页面视图
 │   ├── components/         # 导航、页脚、文章卡片和搜索框
-│   ├── content/posts/      # Markdown 文章
+│   ├── content/posts/      # 中文 Markdown 与 en/ 下的英文对应文章
 │   ├── layouts/            # 页面骨架与元信息
-│   ├── pages/              # 首页、文章、手记、关于、RSS 与搜索索引
+│   ├── pages/              # 默认英文与 zh/ 路由、RSS 与搜索索引
 │   ├── scripts/            # 浏览器交互
 │   ├── styles/             # 主题变量、排版和响应式样式
 │   ├── utils/              # 内容读取、日期与阅读时长
@@ -79,28 +80,29 @@ cover: garden
 featured: false
 draft: false
 sample: false
+lang: zh
 ---
 ```
 
-在文件头之后写 Markdown 正文。`category` 支持 `技术`、`设计`、`生活`、`Kaggle`；`cover` 支持 `garden`、`terminal`、`design`、`coffee`、`workflow`、`slow`。草稿设置 `draft: true` 后不会出现在文章列表、RSS 或搜索索引中。
+在文件头之后写 Markdown 正文。默认发布要求同名英文版本放在 `src/content/posts/en/`，声明 `lang: en`；中英文标题、说明和正文分别维护，数据事实及章节顺序保持对应。见[双语维护说明](docs/bilingual-editing.md)。`category` 支持 `技术`、`设计`、`生活`、`Kaggle`；`cover` 支持 `garden`、`terminal`、`design`、`coffee`、`workflow`、`slow`。草稿设置 `draft: true` 后不会出现在文章列表、RSS 或搜索索引中。
 
 ## Kaggle 专栏
 
 - 入口：`/kaggle/`，导航、首页及页脚均有链接。
 - 内容：17 篇逐赛复盘，按表格学习、时序与推荐、图像分类、图像分割、语言模型、智能体分类；另有验证设计、评价指标、计算预算三篇方法论。
 - 深度：17 篇逐赛文章采用[六章写作模板](docs/templates/kaggle-case-study.md)：问题定位、技术思路与路线、评价方式、结果与证据、思考与结论、下一步。开头给核心判断，解释指标与验证职责，保留具体实现、实测分析和可证伪的下一步设计；未执行的方案明确标注。
-- 排版：正文 16px、约 1.8 行高，收紧段落、标题和模块间距；列表用缩略图，文章封面与图注并排，目录提供直接章节入口。实测图保持完整比例并可放大，不以裁掉坐标轴换取紧凑。相同窗口下，专栏列表的总页面高度较上一版减少约 50%（桌面）／37%（手机）；[测量记录](docs/previews/layout-density.json)同时说明文章内容与字号变化的影响。
+- 排版：正文 16px、约 1.8 行高，收紧段落、标题和模块间距；按最新要求恢复整行大封面（桌面最高约 480px），列表封面也占据卡片整行。实测图完整保留坐标与文字，可放大查看。此前缩略图版的页面缩短比例不再描述当前版本；[测量记录](docs/previews/layout-density.json)使用相同中文内容进行历史对照，并明确记录封面、字号与导航变化。
 - 图像：20 幅赛题／方法主题封面、20 幅流程图，均为原创 SVG；另有 16 幅依据真实记录重绘的曲线、对照图与混淆矩阵。封面同步提供 PNG 分享预览，正文支持放大原图与下载指标 CSV。
-- 阅读：分类筛选可通过 URL 的 `topic` 参数分享；文章也进入全站归档、搜索、RSS 与 sitemap。
+- 阅读：默认英文，中文位于 `/zh/`；27 篇文章均有对应语言版本，研究报告、导航、搜索、证据页和 RSS 也支持双语。切换语言保留当前文章、分类参数和对应章节；归档与搜索每种语言显示 27 篇文章，避免重复。桌面文章目录固定在左侧并高亮当前章节，窄屏可展开目录。
 - 证据：`/kaggle/sources/` 提供公开结果摘要。源代码仓库当前为私有，原记录链接标注访问权限；本文不改变源仓库权限或发布原始数据、预测和模型。
 - 状态：15 个项目有文档核实过的官方评分；PLE 环境受阻；Carvana 远程预检 COMPLETE，本地产物校验在 CSV 字段上限处停止、无正式提交。分数按各篇记录日期引用，不是全量实时榜单同步。
-- 维护：[专栏编辑约定](docs/kaggle-editorial-guide.md)与[完整写作模板](docs/templates/kaggle-case-study.md)。成绩、事实与归纳观点分别记录，新增项目不必更改页面里的固定列表。
+- 维护：[双语维护说明](docs/bilingual-editing.md)、[英文写作模板](docs/templates/kaggle-case-study.en.md)与[专栏编辑约定](docs/kaggle-editorial-guide.md)与[完整写作模板](docs/templates/kaggle-case-study.md)。成绩、事实与归纳观点分别记录，新增项目不必更改页面里的固定列表。
 
 [专栏桌面预览](docs/previews/kaggle-desktop.png) · [专栏手机预览](docs/previews/kaggle-mobile.png) · [手机复盘阅读](docs/previews/kaggle-article-mobile.png) · [真实图表阅读](docs/previews/kaggle-figures-desktop.png)
 
-[文章桌面首屏](docs/previews/kaggle-article-desktop.png) · [文章手机首屏](docs/previews/kaggle-article-first-screen.png)
+[英文文章首屏](docs/previews/kaggle-article-desktop.png) · [中文文章首屏](docs/previews/kaggle-article-zh-desktop.png) · [左侧章节目录](docs/previews/kaggle-outline-desktop.png) · [文章手机首屏](docs/previews/kaggle-article-first-screen.png)
 
-本次本地验证：Astro／TypeScript 0 错误、0 警告、0 提示；35 个静态页面构建成功；18 项桌面／手机浏览器测试通过，逐篇检查全部 17 个比赛的六章结构、目录跳转及溢出，另检查 320／768／1024px 的 15 个页面组合；1,420 个站内链接、图片及锚点检查通过。另核对 56 幅 SVG、16 份指标 CSV 和源记录的 SHA-256，以及 20 张 PNG 封面尺寸。发布结果以 GitHub Pages 工作流为准。
+本次本地验证：Astro／TypeScript 0 错误、0 警告、0 提示；69 个静态页面构建成功；16 项双语桌面／手机浏览器测试通过，覆盖默认语言、同文章／章节切换、目录固定及高亮、导航、搜索、筛选、主题、订阅与图表下载；另检查 320／768／1024px 下的 36 个双语页面组合。静态检查核对 27 对文章的章节／图片对应、分数元信息、54 个文章 canonical／hreflang、研究报告 54 个锚点，以及 3,793 个站内链接、图片和锚点。56 幅 SVG、16 份指标 CSV 与 20 张分享封面的完整性检查保留。发布结果以 GitHub Pages 工作流为准。
 
 图表由 `scripts/build-kaggle-assets.py` 从私有工程的白名单聚合指标生成；不读取训练样本、不运行模型、不发布完整运行日志。复绘需要 Python + Matplotlib 和源记录；静态完整性检查仅需要 Python 标准库：
 
@@ -109,6 +111,7 @@ python scripts/build-kaggle-assets.py --source-root /path/to/kaggle_try
 node scripts/render-kaggle-covers.mjs
 npm run build
 python scripts/check-kaggle-assets.py --source-root /path/to/kaggle_try
+python scripts/check-translations.py
 node scripts/capture-kaggle-preview.mjs
 node scripts/measure-reading-layout.mjs
 ```

@@ -40,6 +40,10 @@ jobs:
         run: npm run typecheck
       - name: Build static site
         run: npm run build
+      - name: Validate bilingual content and public assets
+        run: |
+          python3 scripts/check-translations.py
+          python3 scripts/check-kaggle-assets.py
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v5
         with:

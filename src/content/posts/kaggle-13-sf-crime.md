@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/13/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · SF Crime"><img src="/kaggle/13/method.svg" alt="原创流程与验证边界示意。合成城市地址网格与整周统计，点位不是真实犯罪位置；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · SF Crime</strong> 原创流程与验证边界示意。合成城市地址网格与整周统计，点位不是真实犯罪位置；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/13/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-13-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · SF Crime</strong> 原创流程与验证边界示意。合成城市地址网格与整周统计，点位不是真实犯罪位置；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/13/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-13-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：把地址表示与标签统计分开管
@@ -82,7 +82,7 @@ CatBoost 自身处理类别结构，与人为目标统计的 XGBoost 是两种�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/13/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · SF Crime"><img src="/kaggle/13/learning.svg" alt="v6 CatBoost 与目标特征 XGBoost 的训练／停止曲线。仅连接实际记录点，虚线标记 1,625 与 137 轮检查点。" width="792" height="317" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · SF Crime</strong> v6 CatBoost 与目标特征 XGBoost 的训练／停止曲线。仅连接实际记录点，虚线标记 1,625 与 137 轮检查点。<br /><a href="/kaggle/13/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/13/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-13-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · SF Crime</strong> v6 CatBoost 与目标特征 XGBoost 的训练／停止曲线。仅连接实际记录点，虚线标记 1,625 与 137 轮检查点。<br /><a href="/kaggle/13/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/13/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-13-learning">图表出处与口径</a></figcaption>
 </figure>
 
 真实曲线中，目标特征 XGBoost 的停止损失在所选 137 轮附近达到低点，训练损失仍继续下降。CatBoost 选择 1,625 轮。两者的轮次不是计算成本的共同单位：模型、每轮工作和数据处理不同，需要单列真实时间。
@@ -123,4 +123,4 @@ CatBoost 自身处理类别结构，与人为目标统计的 XGBoost 是两种�
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/13_sf_crime/docs/results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/13_sf_crime/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-13)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-13)列出了本文的结果口径、记录日期与可核对范围。

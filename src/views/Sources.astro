@@ -1,0 +1,7 @@
+---
+import SourcesZh from './SourcesZh.astro';
+import SourcesEn from './SourcesEn.astro';
+import { localeOf } from '@/utils/i18n';
+const View = localeOf(Astro.url.pathname) === 'zh' ? SourcesZh : SourcesEn;
+---
+<View/>

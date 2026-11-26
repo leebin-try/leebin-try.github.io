@@ -1,14 +1,15 @@
 ---
 import Icon from './Icon.astro';
-import { formatDate, readingTime, coverSource, type Post } from '@/utils/posts';
+import { formatDate, readingTime, coverSource, postPath, type Post } from '@/utils/posts';
+import { label } from '@/utils/i18n';
 import '@/styles/kaggle.css';
 interface Props { post: Post; index?: number; }
 const { post, index = 0 } = Astro.props;
 ---
 <article class="post-card" data-post-card data-category={post.data.category}>
-  <a class={`post-cover cover-${post.data.cover}`} href={`/posts/${post.id}/`} tabindex="-1" aria-hidden="true"><img src={coverSource(post)} class:list={{ 'editorial-cover': Boolean(post.data.coverImage) }} alt="" width="1200" height="675" loading="lazy"/>{!post.data.coverImage && <><span class="cover-index">{String(index+1).padStart(2,'0')} / JOURNAL</span><span class="cover-arrow"><Icon name="arrow" size={22}/></span></>}</a>
-  <div class="post-meta"><span class="category"><i></i>{post.data.category}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time></div>
-  <h3><a href={`/posts/${post.id}/`}>{post.data.title}</a></h3>
+  <a class={`post-cover cover-${post.data.cover}`} href={postPath(post)} tabindex="-1" aria-hidden="true"><img src={coverSource(post)} class:list={{ 'editorial-cover': Boolean(post.data.coverImage) }} alt="" width="1200" height="675" loading="lazy"/>{!post.data.coverImage && <><span class="cover-index">{String(index+1).padStart(2,'0')} / JOURNAL</span><span class="cover-arrow"><Icon name="arrow" size={22}/></span></>}</a>
+  <div class="post-meta"><span class="category"><i></i>{label(post.data.category,post.data.lang)}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time></div>
+  <h3><a href={postPath(post)}>{post.data.title}</a></h3>
   <p>{post.data.description}</p>
-  <div class="post-card-bottom"><span>{readingTime(post.body)}</span><span>{post.data.tags.slice(0, 2).map(tag => `# ${tag}`).join('　')}</span></div>
+  <div class="post-card-bottom"><span>{readingTime(post.body,post.data.lang)}</span><span>{post.data.tags.slice(0, 2).map(tag => `# ${tag}`).join('　')}</span></div>
 </article>

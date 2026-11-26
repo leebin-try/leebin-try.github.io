@@ -4,22 +4,32 @@ import Footer from '@/components/Footer.astro';
 import Search from '@/components/Search.astro';
 import { SITE } from '@/config';
 import '@/styles/global.css';
-interface Props { title?: string; description?: string; image?: string; }
-const { title, description = SITE.description, image } = Astro.props;
-const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.title}`;
+import '@/styles/reading.css';
+import { localeOf, localPath, translator } from '@/utils/i18n';
+interface Props { title?: string; description?: string; image?: string; fragments?: Record<string,string>; }
+const locale = localeOf(Astro.url.pathname);
+const t = translator(locale);
+const { title, description = t(SITE.description, 'Notes on technology, design and everyday work. Clear questions, tested ideas and evidence that can be followed.'), image, fragments } = Astro.props;
+const pageTitle = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${t(SITE.title, 'Stay curious. Keep building.')}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const isNotFound = /^\/404(?:\.html)?\/?$/.test(Astro.url.pathname);
 ---
 <!doctype html>
-<html lang="zh-CN">
+<html lang={locale === 'zh' ? 'zh-CN' : 'en'}>
   <head>
     <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="description" content={description}/><meta name="theme-color" content="#f7f7f2"/>
     <meta property="og:title" content={pageTitle}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/>
     {image && <><meta property="og:image" content={new URL(image, Astro.site)}/><meta name="twitter:card" content="summary_large_image"/></>}
     <link rel="canonical" href={canonical}/><meta property="og:url" content={canonical}/>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml"/><link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml"/>
+    {!isNotFound && <>
+    <link rel="alternate" hreflang="en" href={new URL(localPath(Astro.url.pathname, 'en'), Astro.site)}/>
+    <link rel="alternate" hreflang="zh-CN" href={new URL(localPath(Astro.url.pathname, 'zh'), Astro.site)}/>
+    <link rel="alternate" hreflang="x-default" href={new URL(localPath(Astro.url.pathname, 'en'), Astro.site)}/>
+    </>}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml"/><link rel="alternate" type="application/rss+xml" title={SITE.name} href={localPath('/rss.xml',locale)}/>
     <title>{pageTitle}</title>
     <script is:inline>try{const theme=localStorage.getItem('bin-journal-theme');document.documentElement.dataset.theme=theme==='dark'?'dark':'light';}catch{document.documentElement.dataset.theme='light';}</script>
   </head>
-  <body id="top"><a class="skip-link" href="#main">跳到正文</a><Header/><main id="main"><slot/></main><Footer/><Search/><script src="../scripts/site.ts"></script></body>
+  <body id="top"><a class="skip-link" href="#main">{t('跳到正文','Skip to content')}</a><Header fragments={fragments}/><main id="main"><slot/></main><Footer/><Search/><script src="../scripts/site.ts"></script></body>
 </html>

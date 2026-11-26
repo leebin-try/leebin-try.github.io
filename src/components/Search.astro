@@ -1,8 +1,10 @@
 ---
 import Icon from './Icon.astro';
+import { localeOf, translator } from '@/utils/i18n';
+const t = translator(localeOf(Astro.url.pathname));
 ---
 <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-title">
-  <div class="search-top"><label for="search-input" id="search-title"><Icon name="search" size={22}/><span class="sr-only">搜索文章</span></label><input id="search-input" type="search" placeholder="搜索文章、标签或关键词…" autocomplete="off"/><button type="button" class="icon-button" data-search-close aria-label="关闭搜索"><Icon name="close"/></button></div>
-  <div id="search-results" class="search-results" aria-live="polite"><p class="search-hint">输入关键词，找回一个想法。</p></div>
-  <div class="search-footer"><span>搜索本站文章</span><span><kbd>ESC</kbd> 关闭</span></div>
+  <div class="search-top"><label for="search-input" id="search-title"><Icon name="search" size={22}/><span class="sr-only">{t('搜索文章','Search articles')}</span></label><input id="search-input" type="search" placeholder={t('搜索文章、标签或关键词…','Search articles, tags or keywords…')} autocomplete="off"/><button type="button" class="icon-button" data-search-close aria-label={t('关闭搜索','Close search')}><Icon name="close"/></button></div>
+  <div id="search-results" class="search-results" aria-live="polite"><p class="search-hint">{t('输入关键词，找回一个想法。','Type a keyword to find an idea.')}</p></div>
+  <div class="search-footer"><span>{t('搜索本站文章','Search this journal')}</span><span><kbd>ESC</kbd> {t('关闭','Close')}</span></div>
 </dialog>

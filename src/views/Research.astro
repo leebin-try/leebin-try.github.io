@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import chinese from '@/content/reports/data-agent-ontology.html?raw';
+import english from '@/content/reports/data-agent-ontology-en.html?raw';
+import ReadingLayout from '@/components/ReadingLayout.astro';
+import ArticleToc from '@/components/ArticleToc.astro';
+import { localeOf, localPath, translator } from '@/utils/i18n';
+import '@/styles/research-report.css';
+const locale = localeOf(Astro.url.pathname);
+const t = translator(locale);
+const report = (locale === 'zh' ? chinese : english).replace(/<nav[\s\S]*?<\/nav>/,'');
+const headings = [{ depth:2, slug:'overview', text:t('报告概览','Overview') }, ...Array.from(report.matchAll(/<section id="([^"]+)"><h2>(.*?)<\/h2>/g),match=>({depth:2,slug:match[1]!,text:match[2]!.replace(/<[^>]*>/g,'')}))];
+---
+<BaseLayout title={t('Data Agent 与本体','Data agents and ontologies')} description={t('Data Agent 与本体的技术关系：技术主线、关键消融、前沿问题及可追溯的原始证据。','Technical approaches, key ablations, open questions and traceable primary evidence on data agents and ontologies.')}>
+  <ReadingLayout headings={headings}>
+  <article class="research-report shell">
+    <a class="article-back" href={localPath('/',locale)}>{t('← 返回首页','← Back to home')}</a>
+    <ArticleToc headings={headings} mobile/>
+    <div data-reading-content set:html={report}/>
+  </article>
+  </ReadingLayout>
+</BaseLayout>

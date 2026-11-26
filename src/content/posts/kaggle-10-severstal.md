@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/10/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · Severstal"><img src="/kaggle/10/method.svg" alt="原创流程与验证边界示意。钢带上四类缺陷的原创示意，突出像素掩码与存在性任务；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · Severstal</strong> 原创流程与验证边界示意。钢带上四类缺陷的原创示意，突出像素掩码与存在性任务；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/10/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-10-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · Severstal</strong> 原创流程与验证边界示意。钢带上四类缺陷的原创示意，突出像素掩码与存在性任务；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/10/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-10-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：分割与存在性共同学习
@@ -79,7 +79,7 @@ Dice 衡量预测前景与真实前景的重叠，越高越好。空图与非空
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/10/learning.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · Severstal"><img src="/kaggle/10/learning.svg" alt="worker 0 的真实训练记录与每两轮验证点。CSV 同时保留裁剪宽度和各类正样本 Dice；缺失轮次没有补值。" width="792" height="317" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · Severstal</strong> worker 0 的真实训练记录与每两轮验证点。CSV 同时保留裁剪宽度和各类正样本 Dice；缺失轮次没有补值。<br /><a href="/kaggle/10/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/10/learning.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-10-learning">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · Severstal</strong> worker 0 的真实训练记录与每两轮验证点。CSV 同时保留裁剪宽度和各类正样本 Dice；缺失轮次没有补值。<br /><a href="/kaggle/10/learning.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/10/learning.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-10-learning">图表出处与口径</a></figcaption>
 </figure>
 
 worker 0 的首次验证记录在第 2 轮：平均 Dice 约 0.86167，始终输出空白的参考就有约 0.85660。此时前两类的正样本 Dice 都是零。这个观察针对早期停止折，不能推断最终重训模型也完全不会这两类；但它足够说明，前几轮的高均值不能作为前景已学好的证据。
@@ -121,4 +121,4 @@ worker 0 的首次验证记录在第 2 轮：平均 Dice 约 0.86167，始终输
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/10_severstal_steel_defect_detection/)
 - [分组、裁剪与校准协议](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/10_severstal_steel_defect_detection/docs/baseline-campaign.md)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-10)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-10)列出了本文的结果口径、记录日期与可核对范围。

@@ -1,0 +1,11 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { localeOf, translator } from '@/utils/i18n';
+const t = translator(localeOf(Astro.url.pathname));
+const notes = [
+{date:'2026.11.13',title:t('给想法留一点空白','Leave room for an idea'),text:t('今天的提醒：页面可以留白，日程也可以。不是每一个空隙都需要被信息填满。','A reminder: a page can have space, and so can a schedule. Not every gap needs to be filled.'),tag:t('日常观察','Everyday observations')},
+{date:'2026.11.10',title:t('工具的边界','The boundaries of a tool'),text:t('一个好工具，不必解决所有问题。把一件小事做好，让使用它的人少想一步，就已经很有价值。','A useful tool need not solve every problem. Doing one small job well and removing a decision is already valuable.'),tag:t('关于构建','On building')},
+{date:'2026.11.06',title:t('先开始，再慢慢完善','Start, then improve'),text:t('一篇没有写完的文章，胜过十个还没创建的文件夹。先记录一个真实的问题，再去寻找更好的表达。','An unfinished article is more useful than ten imagined folders. Start with a real question, then find a clearer way to express it.'),tag:t('写作碎片','Writing fragments')},
+];
+---
+<BaseLayout title={t('手记','Notes')}><section class="notes-page shell"><div class="page-heading"><span class="section-eyebrow-label">SMALL THOUGHTS, QUIET MOMENTS</span><h1>{t('长文章之外，','Beyond the long reads,')}<br/>{t('还有一些小事','a few smaller things')}<span class="accent-dot">.</span></h1><p>{t('不一定完整，但值得记下。以下为演示手记。','Not finished arguments, but worth recording. These are retained sample notes.')}</p></div><div class="notes-list">{notes.map((note,index)=><article class="note-entry"><div class="note-number">{String(index+1).padStart(2,'0')}</div><div><div class="post-meta"><span>{note.tag}</span><time>{note.date}</time></div><h2>{note.title}</h2><p>{note.text}</p><span class="note-end">↳ NOTE TO SELF</span></div></article>)}</div></section></BaseLayout>

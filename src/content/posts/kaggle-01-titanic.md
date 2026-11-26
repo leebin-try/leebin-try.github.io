@@ -30,7 +30,7 @@ coverCaption: "原创赛题／方法插图，依据本文协议绘制；不是�
 
 <figure class="research-figure" data-figure-kind="original_method_diagram">
 <a href="/kaggle/01/method.svg" target="_blank" rel="noopener" aria-label="放大：方法图 · Titanic"><img src="/kaggle/01/method.svg" alt="原创流程与验证边界示意。Titanic 轮船与同行关系网络，突出关系组验证的任务结构；箭头说明协议依赖，不代表每个阶段都已经完成。" width="1200" height="675" loading="lazy" decoding="async" /></a>
-<figcaption><strong>方法图 · Titanic</strong> 原创流程与验证边界示意。Titanic 轮船与同行关系网络，突出关系组验证的任务结构；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/01/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/sources/#fig-01-original_method_diagram">图表出处与口径</a></figcaption>
+<figcaption><strong>方法图 · Titanic</strong> 原创流程与验证边界示意。Titanic 轮船与同行关系网络，突出关系组验证的任务结构；箭头说明协议依赖，不代表每个阶段都已经完成。<br /><a href="/kaggle/01/method.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/zh/kaggle/sources/#fig-01-original_method_diagram">图表出处与口径</a></figcaption>
 </figure>
 
 ### 方法：先建关系，再决定怎样使用标签
@@ -80,7 +80,7 @@ Accuracy 是预测正确的乘客数占全部被评分乘客的比例，越高�
 
 <figure class="research-figure" data-figure-kind="recorded_aggregate_metrics">
 <a href="/kaggle/01/validation.svg" target="_blank" rel="noopener" aria-label="放大：实测图 1 · Titanic"><img src="/kaggle/01/validation.svg" alt="四个内部方案在普通重复交叉验证与整组压力协议下的 accuracy。两个协议回答不同泛化问题；不是四个官方得分。" width="720" height="324" loading="lazy" decoding="async" /></a>
-<figcaption><strong>实测图 1 · Titanic</strong> 四个内部方案在普通重复交叉验证与整组压力协议下的 accuracy。两个协议回答不同泛化问题；不是四个官方得分。<br /><a href="/kaggle/01/validation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/01/validation.csv" download>下载聚合指标 CSV</a> · <a href="/kaggle/sources/#fig-01-validation">图表出处与口径</a></figcaption>
+<figcaption><strong>实测图 1 · Titanic</strong> 四个内部方案在普通重复交叉验证与整组压力协议下的 accuracy。两个协议回答不同泛化问题；不是四个官方得分。<br /><a href="/kaggle/01/validation.svg" target="_blank" rel="noopener">放大原图</a> · <a href="/kaggle/01/validation.csv" download>下载聚合指标 CSV</a> · <a href="/zh/kaggle/sources/#fig-01-validation">图表出处与口径</a></figcaption>
 </figure>
 
 下图把四个内部方案放在相同的两种协议下。普通重复验证中，加入关系规则后只出现小幅增益；关系组压力验证中，纯规则和专家组合的平均值相同。后一个现象意味着，当前压力协议没有单独建立专家路线的增量，不能将官方组合提升全部归到 XGBoost。
@@ -123,4 +123,4 @@ Accuracy 是预测正确的乘客数占全部被评分乘客的比例，越高�
 - [本篇依据的实验记录（私有源仓库，需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/01_titanic/docs/wcg-results.md)
 - [对应代码与版本（需访问权限）](https://github.com/leebin-try/kaggle_try/blob/b3ddf87ddb3383e77ea7055702ff08b2c137f548/01_titanic/)
 
-原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/kaggle/sources/#case-01)列出了本文的结果口径、记录日期与可核对范围。
+原始代码与实验记录位于私有仓库；[公开证据摘要](https://leebin-try.github.io/zh/kaggle/sources/#case-01)列出了本文的结果口径、记录日期与可核对范围。
