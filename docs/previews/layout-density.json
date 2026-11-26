@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-11-26T03:46:32.620Z",
+  "observedAt": "2026-11-26T03:47:48.720Z",
   "baselineCommit": "fee49346ac80cbbee6f95ef2de84301f11906eb2",
   "scope": "Same viewports; article text was expanded and mobile prose increased from 15px to 16px, so document height is not a controlled spacing-only ablation.",
   "measurements": [
@@ -17,7 +17,7 @@
         "paragraphLineHeight": "normal"
       },
       "after": {
-        "height": 2574,
+        "height": 2441,
         "hero": 316.875,
         "paragraphLineHeight": "normal"
       }

@@ -23,6 +23,8 @@ test('navigation and article reading work without horizontal overflow', async ({
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('保持好奇');
   await expect(page.locator('[data-post-card]')).toHaveCount(6);
+  const featured = await page.locator('.featured-story').boundingBox();
+  expect(featured!.height).toBeLessThan(info.project.name === 'mobile' ? 520 : 330);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   if (info.project.name === 'mobile') {
     await page.getByRole('button', { name: '打开导航' }).click();
