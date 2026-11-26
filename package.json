@@ -11,7 +11,13 @@
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1 --port 4321",
     "typecheck": "astro check",
-    "test:e2e": "playwright test"
+    "preview:test": "astro preview --host 127.0.0.1 --port 4329 --ignore-lock",
+    "test:e2e": "playwright test --project=desktop --project=mobile",
+    "test:design": "playwright test --project=design",
+    "test:browser": "playwright test",
+    "check:content": "python3 scripts/check-translations.py && python3 scripts/check-kaggle-assets.py",
+    "check:design": "npm run build && npm run test:design",
+    "check": "npm run typecheck && npm run build && npm run check:content && npm run test:browser"
   },
   "dependencies": {
     "astro": "^7.4.5",

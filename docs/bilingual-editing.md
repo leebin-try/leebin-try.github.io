@@ -31,16 +31,12 @@ Consistency is defined by component role rather than identical pixel dimensions 
 Homepage motion is scoped to `Home.astro`, `home-motion.css` and `home-motion.ts`. It uses finite CSS entrance effects and one-shot IntersectionObserver reveals through Web Animations. Content is visible without JavaScript; reduced-motion preference disables CSS effects and cancels active scripted animations, including when changed during a visit. Hover movement applies only to a fine pointer. Keep reveals confined to opacity and transforms so they do not reflow the page.
 
 ```bash
-npm run typecheck
-npm run build
-python scripts/check-translations.py
-python scripts/check-kaggle-assets.py
-npm run preview
-npm run test:e2e
-./node_modules/.bin/astro preview stop
+npm run check
+# Focused design verification, including a fresh build:
+npm run check:design
 ```
 
-Run browser checks against the production preview: the sitemap assertions require built output and are unavailable on the development server. Playwright reuses the preview at port 4321. Stop the preview you started after verification.
+Follow [the design standard](../DESIGN_STANDARD.md) and [repository instructions](../AGENTS.md). Browser checks manage an isolated foreground production preview at port 4329, then stop it. They never reuse a development server: sitemap assertions and final CSS must be checked against built output. For manual screenshots, start `npm run preview` on port 4321 and stop your preview afterwards.
 
 Translation checks validate pairs, heading and figure parity, stable scoring metadata, language-specific canonicals, visible English text and report anchors. Asset checks validate hashes and all built internal links. Browser checks exercise language switching, filters, localized search/feeds, theme labels, full-width covers, native contents navigation, sticky positioning and active-section tracking on desktop and mobile. Capture previews after starting the preview server and waiting for entrance animations to finish.
 

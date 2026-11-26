@@ -17,7 +17,7 @@
 - 下载设置：项目内 `.npmrc` 使用国内 npm 镜像并直连，不修改全局代理或 npm 配置。
 - 框架：Astro，静态站点输出。
 - 内容：Markdown + Astro Content Collections + Zod 校验。
-- 浏览器检查：Playwright，使用本机 Google Chrome。
+- 浏览器检查：Playwright；macOS 优先使用本机 Google Chrome，其他环境使用安装的 Playwright Chromium。
 
 ## 开始使用
 
@@ -31,22 +31,33 @@ npm run dev
 浏览器打开 `http://127.0.0.1:4321`。
 
 ```bash
-npm run typecheck
-npm run build
-npm run preview
-npm run test:e2e
+npm run check
+npm run check:design
 ```
 
-`typecheck` 执行 Astro 和 TypeScript 检查，`build` 生成 `dist/`，`preview` 预览构建产物。开发服务与预览服务使用同一端口，请先关闭其中一个再启动另一个。
+`check` 一次执行类型检查、生产构建、双语／素材审计、交互与设计检查；`check:design` 重新构建并只检查设计。浏览器测试自动启动并回收 4329 端口的独立生产预览，不复用开发服务。手动预览仍可运行 `npm run preview`，与开发服务共用 4321 端口。
 
-浏览器测试覆盖桌面和手机布局、页面跳转、文章阅读、分类筛选、搜索和主题持久化。`playwright.config.ts` 默认使用本机 `/Applications/Google Chrome.app`，其他平台可改为对应的浏览器路径。
+浏览器测试覆盖桌面和手机布局、页面跳转、文章阅读、分类筛选、搜索和主题持久化。没有本机 Chrome 时，首次执行 `npx playwright install chromium`；也可用 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 指定浏览器。
 
 开发服务运行时，可执行 `node scripts/capture-preview.mjs` 更新 `docs/previews/` 中的实际浏览器截图。
+
+## 设计规范与自动检查
+
+[网页设计标准](DESIGN_STANDARD.md)说明视觉层级、图片尺寸、信息密度、阅读排版、响应式、中英文、动效和人工审阅原则；[AGENTS.md](AGENTS.md)要求后续维护先读规范并完成检查。
+
+核心规则是“同类组件一致，不同职责保留层级”：普通文章卡片和 Kaggle 案例封面统一 16:9，但可以分别采用三列、两列；首页精选可以更突出；正文图表保留原始比例和完整信息。
+
+[design-contract.json](design-contract.json)记录可测量的尺寸边界、代表页面、两种语言和 5 种屏宽。真实浏览器检查封面比例与对齐、图片加载及替代文字、图表完整展示、整行文章封面、阅读字号及间距、目录布局及断点边界、页面横向溢出、双主题和减少动态效果；并注入旧版比例混用、图表裁切、过大段落间距、页面溢出，验证检查器能识别这些缺陷。
+
+推送到 `main`、提交面向 `main` 的 PR 或手动运行 Actions 时自动检查；失败会阻止部署，并保留浏览器报告、失败截图和 trace。PR 只检查，不发布。新增页面模板时，应同时扩充规则和代表路由。内容深度、图中文字是否清楚、视觉层级与颜色质量仍需人工审阅。
 
 ## 目录结构
 
 ```text
-demo_personal_blog/
+leebin-try.github.io/
+├── AGENTS.md              # 后续维护必须遵循的仓库指引
+├── DESIGN_STANDARD.md     # 设计原则、组件规范和验收边界
+├── design-contract.json   # 浏览器检查使用的页面矩阵和尺寸约束
 ├── public/art/             # 本地原创 SVG 封面
 ├── public/kaggle/          # 逐题封面、方法图、实测图及聚合指标 CSV
 ├── src/
@@ -61,6 +72,7 @@ demo_personal_blog/
 │   ├── config.ts           # 站点名称、介绍、作者和 GitHub 地址
 │   └── content.config.ts   # 文章字段校验
 ├── tests/e2e/              # 真实浏览器行为检查
+├── tests/design/           # 设计规范与响应式检查
 ├── astro.config.mjs
 ├── playwright.config.ts
 ├── tsconfig.json
@@ -104,7 +116,7 @@ lang: zh
 
 [英文文章首屏](docs/previews/kaggle-article-desktop.png) · [中文文章首屏](docs/previews/kaggle-article-zh-desktop.png) · [左侧章节目录](docs/previews/kaggle-outline-desktop.png) · [文章手机首屏](docs/previews/kaggle-article-first-screen.png)
 
-本次本地验证：Astro／TypeScript 0 错误、0 警告、0 提示；69 个静态页面构建成功；16 项双语桌面／手机浏览器测试通过，覆盖默认语言、同文章／章节切换、目录固定及高亮、导航、搜索、筛选、主题、订阅与图表下载；另检查 320／768／1024px 下的 36 个双语页面组合。静态检查核对 27 对文章的章节／图片对应、分数元信息、54 个文章 canonical／hreflang、研究报告 54 个锚点，以及 3,793 个站内链接、图片和锚点。56 幅 SVG、16 份指标 CSV 与 20 张分享封面的完整性检查保留。发布结果以 GitHub Pages 工作流为准。
+设计规范接入时的本地验证：Astro／TypeScript 0 错误、0 警告、0 提示；69 个静态页面构建成功；123 项浏览器测试通过（16 项交互、107 项设计），覆盖 9 类页面 × 2 种语言 × 5 种屏宽的 90 个布局组合，以及目录断点两侧、双主题、动效、无 JavaScript 阅读和四类故障注入。静态检查核对 27 对文章的章节／图片对应、分数元信息、54 个文章 canonical／hreflang、研究报告 54 个锚点，以及 3,793 个站内链接、图片和锚点。56 幅 SVG、16 份指标 CSV 与 20 张分享封面的完整性检查保留。后续验证以 `npm run check` 和对应提交的 GitHub Actions 记录为准。
 
 图表由 `scripts/build-kaggle-assets.py` 从私有工程的白名单聚合指标生成；不读取训练样本、不运行模型、不发布完整运行日志。复绘需要 Python + Matplotlib 和源记录；静态完整性检查仅需要 Python 标准库：
 
@@ -130,7 +142,7 @@ node scripts/measure-reading-layout.mjs
 
 正式站点地址为 `https://leebin-try.github.io/`，可通过 `SITE_URL` 环境变量覆盖。RSS、sitemap、robots.txt 和页面 canonical 使用该站点地址。
 
-远程仓库为 `leebin-try/leebin-try.github.io`。GitHub Pages 使用 GitHub Actions 发布，配置位于 `.github/workflows/deploy.yml`：推送到 `main` 后，自动安装锁定依赖、执行类型检查、构建并部署。也可在仓库 Actions 页面手动运行该工作流。
+远程仓库为 `leebin-try/leebin-try.github.io`。GitHub Pages 使用 GitHub Actions 发布，配置位于 `.github/workflows/deploy.yml`：推送到 `main` 后，自动安装锁定依赖、执行类型检查、构建、内容审计及浏览器交互／设计检查，全部通过后部署。PR 执行相同验证但不部署，也可在仓库 Actions 页面手动运行该工作流。
 
 本机下载保持国内源直连；GitHub 托管的构建机器使用 npm 官方源，并通过 npm 的 `replace-registry-host` 设置解析锁文件中的镜像地址。工作流使用 GitHub 自动提供的令牌，不需要添加个人 Token。
 
@@ -139,8 +151,7 @@ node scripts/measure-reading-layout.mjs
 本地验证后的发布方式：
 
 ```bash
-npm run typecheck
-npm run build
+npm run check
 git add .
 git commit -m "更新博客内容"
 git push origin main

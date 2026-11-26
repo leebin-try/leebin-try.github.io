@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "locales": [
+    { "prefix": "", "lang": "en" },
+    { "prefix": "/zh", "lang": "zh-CN" }
+  ],
+  "widths": [320, 390, 768, 1024, 1440],
+  "routes": [
+    "/",
+    "/posts/",
+    "/kaggle/",
+    "/posts/kaggle-15-cmi/",
+    "/posts/digital-garden/",
+    "/data-agent-ontology/",
+    "/kaggle/sources/",
+    "/about/",
+    "/notes/"
+  ],
+  "limits": {
+    "geometryTolerancePx": 1,
+    "cardAspectRatio": [16, 9],
+    "articleCoverMaxHeightPx": 480,
+    "articleProseMaxWidthPx": 760,
+    "bodyFontSizePx": [15, 18],
+    "bodyLineHeightRatio": [1.6, 2],
+    "paragraphGapMaxEm": 1.2,
+    "sectionHeadingGapMaxPx": 36,
+    "cardGridGapPx": [12, 48],
+    "desktopContentsAbovePx": 1100,
+    "motionBudgetMs": 5000
+  }
+}
