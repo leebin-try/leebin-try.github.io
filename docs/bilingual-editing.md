@@ -24,14 +24,22 @@ Article covers occupy the entire article row, preserve their image geometry and 
 
 ## Verification and publication
 
+Homepage motion is scoped to `Home.astro`, `home-motion.css` and `home-motion.ts`. It uses finite CSS entrance effects and one-shot IntersectionObserver reveals through Web Animations. Content is visible without JavaScript; reduced-motion preference disables CSS effects and cancels active scripted animations, including when changed during a visit. Hover movement applies only to a fine pointer. Keep reveals confined to opacity and transforms so they do not reflow the page.
+
 ```bash
 npm run typecheck
 npm run build
 python scripts/check-translations.py
 python scripts/check-kaggle-assets.py
+npm run preview
 npm run test:e2e
+./node_modules/.bin/astro preview stop
 ```
 
-Translation checks validate pairs, heading and figure parity, stable scoring metadata, language-specific canonicals, visible English text and report anchors. Asset checks validate hashes and all built internal links. Browser checks exercise language switching, filters, localized search/feeds, theme labels, full-width covers, native contents navigation, sticky positioning and active-section tracking on desktop and mobile. Capture previews after starting the existing development or preview server.
+Run browser checks against the production preview: the sitemap assertions require built output and are unavailable on the development server. Playwright reuses the preview at port 4321. Stop the preview you started after verification.
+
+Translation checks validate pairs, heading and figure parity, stable scoring metadata, language-specific canonicals, visible English text and report anchors. Asset checks validate hashes and all built internal links. Browser checks exercise language switching, filters, localized search/feeds, theme labels, full-width covers, native contents navigation, sticky positioning and active-section tracking on desktop and mobile. Capture previews after starting the preview server and waiting for entrance animations to finish.
+
+Homepage motion was verified on both editions: a 650ms title entrance and 520ms scroll reveal, cancellation when reduced motion is enabled during playback, zero animations when reduced motion is enabled initially, visible content with JavaScript disabled, and no horizontal overflow at 320, 390 and 768px. All 16 existing desktop/mobile browser checks passed against the production build.
 
 Push the reviewed source to `main`, confirm the exact commit's GitHub Pages workflow, then verify both live editions. A successful push does not by itself establish deployment.

@@ -6,6 +6,8 @@
 
 当前使用 Astro 与严格 TypeScript 配置，实现独立定制主题；内容组织参考 AstroPaper 的 Markdown 博客思路。Kaggle 专栏是有来源的实验复盘；其余保留的示例文章在正文单独标注。手记和个人介绍仍沿用初始示例。
 
+中英文首页提供轻量动效：首屏分层渐入、荧光下划线展开、滚动内容进入及桌面悬停反馈。使用原生 CSS、IntersectionObserver 和 Web Animations，无额外依赖；尊重“减少动态效果”偏好，并在偏好变化时取消正在播放的动画。内容默认可读，不依赖滚动动画才能显示。
+
 [桌面首页预览](docs/previews/home-desktop.png) · [手机预览](docs/previews/home-mobile.png) · [深色主题](docs/previews/home-dark.png) · [手机文章页](docs/previews/article-mobile.png)
 
 ## 环境

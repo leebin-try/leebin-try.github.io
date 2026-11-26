@@ -1,0 +1,37 @@
+/* The page stays laid out throughout; only composited opacity/position animate. */
+@keyframes home-enter {
+  from { opacity:0; transform:translateY(14px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes home-underline {
+  from { transform:scaleX(0); }
+  to { transform:scaleX(1); }
+}
+@keyframes home-beacon {
+  0%,100% { box-shadow:0 0 0 4px #91ab6014; }
+  50% { box-shadow:0 0 0 9px #91ab6000; }
+}
+.home-page .hero-eyebrow { animation:home-enter 500ms 40ms both; }
+.home-page .hero h1 { animation:home-enter 650ms 110ms both; }
+.home-page .hero-bottom { animation:home-enter 550ms 190ms both; }
+.home-page .hero-intro { animation:home-enter 650ms 220ms both; }
+.home-page .hero-emphasis svg { transform-origin:left center; animation:home-underline 700ms 420ms cubic-bezier(.16,1,.3,1) both; }
+.home-page .status-dot { animation:home-beacon 1700ms 600ms 2; }
+.home-page .featured-story,
+.home-page .post-card,
+.home-page .kaggle-entry,
+.home-page .research-entry { transition:translate 220ms ease,box-shadow 220ms ease; }
+@media(hover:hover) and (pointer:fine) {
+  .home-page .featured-story:hover,
+  .home-page .post-card:hover { translate:0 -4px; }
+  .home-page .featured-story:hover { box-shadow:0 12px 32px #20251f12; }
+  .home-page .kaggle-entry:hover,
+  .home-page .research-entry:hover { translate:0 -2px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .home-page .featured-story:hover,
+  .home-page .post-card:hover,
+  .home-page .kaggle-entry:hover,
+  .home-page .research-entry:hover { translate:none; }
+  .home-page .hero-emphasis svg { transform:none; }
+}
