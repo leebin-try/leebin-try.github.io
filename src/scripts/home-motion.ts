@@ -43,7 +43,7 @@ if (home) {
     },{ threshold:0.08, rootMargin:'0px 0px -24px 0px' });
     // Content is visible by default, including with JavaScript disabled.
     home!.querySelectorAll<HTMLElement>(
-      '.featured-section, .kaggle-entry, .research-entry, .latest-section .section-heading, .post-card, .closing-note',
+      '.featured-section, .kaggle-entry, .math-entry, .research-entry, .latest-section .section-heading, .post-card, .closing-note',
     ).forEach(element=>observer!.observe(element));
   }
 

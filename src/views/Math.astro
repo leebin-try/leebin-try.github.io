@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import { getPosts, postPath, coverSource, coverAlt, readingTime, formatDate } from '@/utils/posts';
+import { localeOf, localPath, translator } from '@/utils/i18n';
+import '@/styles/kaggle.css';
+import '@/styles/math.css';
+const locale = localeOf(Astro.url.pathname);
+const t = translator(locale);
+const posts = (await getPosts(locale)).filter(post => post.data.category === 'Math');
+---
+<BaseLayout title={t('Math · 理解证明','Math · Understanding proofs')}>
+  <section class="math-hub shell">
+    <header><span class="section-eyebrow-label">MATH / DEFINITIONS, IDEAS & PROOFS</span><h1>{t('沿着理由，读懂证明。','Follow the reasons. Understand the proof.')}</h1><p class="math-lead">{t('从一个准确的问题出发，追踪概念、工具与关键不等式。解释每一步为什么需要，也说明哪些细节仍要回到原文。','Start with a precise question, then follow the concepts, tools and decisive inequalities. Understand why each step is needed and where the original argument demands further study.')}</p></header>
+    <div class="math-lenses">
+      <div><span>01 / THE QUESTION</span><h2>{t('先把命题说准确','State the problem precisely')}</h2><p>{t('量词、假设、边界和结论，决定一篇文章究竟证明了什么。','Quantifiers, hypotheses and boundaries determine what an argument actually proves.')}</p></div>
+      <div><span>02 / THE MECHANISM</span><h2>{t('找到真正起作用的桥梁','Find the mechanism')}</h2><p>{t('把大定理拆成可解释的接口，用推导、例子和图示连接起来。','Break a theorem into explainable interfaces, connected by derivations, examples and diagrams.')}</p></div>
+      <div><span>03 / THE LEARNING PATH</span><h2>{t('知道下一步该学什么','Know what to learn next')}</h2><p>{t('把先修概念映射到课程与练习；区分看懂结构和独立复核证明。','Map prerequisites to courses and exercises; distinguish understanding a structure from independently checking its proof.')}</p></div>
+    </div>
+    <div class="section-heading"><h2>{t('深入解读','Long-form reading')}</h2><span class="kaggle-count">{posts.length} {t('篇文章','article')}</span></div>
+    {posts.map(post => <a class="featured-story" href={postPath(post)}><div class="featured-art"><img class="editorial-cover" src={coverSource(post)} alt={coverAlt(post)} width="1200" height="675"/></div><div class="featured-copy"><div class="featured-kicker"><span class="category"><i></i>Math</span></div><h2>{post.data.title}</h2><p>{post.data.description}</p><div class="featured-bottom"><span>{formatDate(post.data.date)} / {readingTime(post.body,locale)}</span><span class="circle-arrow"><Icon name="arrow" size={25}/></span></div></div></a>)}
+    <p class="math-reading-note">{t('每篇解读记录来源和核实日期。正式验证、数学解释与本文的教学例子分别说明；公式可直接阅读，图示可打开原图。','Each guide records its sources and verification date. Formal verification, mathematical explanation and teaching examples have distinct roles. Equations render directly, and diagrams link to their full-size originals.')}</p>
+    <a class="text-link" href={localPath('/posts/?category=Math',locale)}>{t('在全部文章中查看 Math','Browse Math in the archive')} <Icon name="arrow" size={17}/></a>
+  </section>
+</BaseLayout>

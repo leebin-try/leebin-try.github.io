@@ -2,6 +2,7 @@
 import Home from '@/views/Home.astro';
 import Archive from '@/views/Archive.astro';
 import Kaggle from '@/views/Kaggle.astro';
+import MathView from '@/views/Math.astro';
 import Sources from '@/views/Sources.astro';
 import About from '@/views/About.astro';
 import Notes from '@/views/Notes.astro';
@@ -9,7 +10,7 @@ import Research from '@/views/Research.astro';
 import Article from '@/views/Article.astro';
 import { getPosts, postKey, type Post } from '@/utils/posts';
 export async function getStaticPaths() {
-  const pages = ['', 'posts', 'kaggle', 'kaggle/sources', 'about', 'notes', 'data-agent-ontology'];
+  const pages = ['', 'posts', 'kaggle', 'math', 'kaggle/sources', 'about', 'notes', 'data-agent-ontology'];
   return [
     ...pages.map(page => ({ params:{ page:page || undefined }, props:{ view:page, post:undefined } })),
     ...(await getPosts('zh')).map(post => ({ params:{ page:`posts/${postKey(post)}` }, props:{ view:'article', post } })),
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
 }
 interface Props { view: string; post?: Post; }
 const { view, post } = Astro.props;
-const views = { '':Home, posts:Archive, kaggle:Kaggle, 'kaggle/sources':Sources, about:About, notes:Notes, 'data-agent-ontology':Research };
+const views = { '':Home, posts:Archive, kaggle:Kaggle, math:MathView, 'kaggle/sources':Sources, about:About, notes:Notes, 'data-agent-ontology':Research };
 const View = views[view as keyof typeof views];
 ---
 {view === 'article' && post ? <Article post={post}/> : View && <View/>}

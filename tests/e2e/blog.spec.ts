@@ -40,7 +40,7 @@ test('navigation, category filters and search stay in the selected language', as
     await page.getByRole('button',{name:zh?/^设计/:/^Design/}).click();
     await expect(page.locator('[data-post-card]:visible')).toHaveCount(2);
     await page.getByRole('button',{name:zh?/^全部/:/^All/}).click();
-    await expect(page.locator('[data-post-card]:visible')).toHaveCount(27);
+    await expect(page.locator('[data-post-card]:visible')).toHaveCount(28);
     await page.getByRole('button',{name:zh?'搜索文章':'Search articles',exact:true}).click();
     await page.getByRole('searchbox').fill('CommonLit');
     await expect(page.locator('.search-result')).toHaveCount(1);
@@ -169,8 +169,8 @@ test('search, RSS and sitemap expose language-specific content without duplicate
   for(const zh of [false,true]) {
     const prefix=zh?'/zh':'';
     const index=await (await page.request.get(prefix+'/search.json')).json() as Array<{url:string;title:string}>;
-    expect(index).toHaveLength(27);
-    expect(new Set(index.map(p=>p.url)).size).toBe(27);
+    expect(index).toHaveLength(28);
+    expect(new Set(index.map(p=>p.url)).size).toBe(28);
     expect(index.every(p=>p.url.startsWith(prefix+'/posts/'))).toBe(true);
     const rss=await (await page.request.get(prefix+'/rss.xml')).text();
     expect(rss).toContain(`<language>${zh?'zh-cn':'en'}</language>`);

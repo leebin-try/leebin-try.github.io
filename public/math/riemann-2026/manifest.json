@@ -1,0 +1,12 @@
+{
+  "scope": "Original teaching diagrams and a finite arithmetic computation; not a new proof or a verification of the Lean archive.",
+  "proofCommit": "72fead102f663d5c7a407964a13dc0cf9d977207",
+  "files": {
+    "cover.svg": "c7d66201e02e52366a5f506afd5a1801b617464a8197d1b7d320349e68e15cad",
+    "three-languages.svg": "b615968de2d99eba8bc23c08f3e364ccf70538a991aa0c2cc54da7e579394028",
+    "lattice.svg": "e80652e72bbf907d5d069defdd7b66d5c3cc350a5592af42d76f93d6233e2ea8",
+    "proof-map.svg": "9f37de271820100907f4e9ddcec9df0d9e384eaa40da8602dd3fbbf725d7e242",
+    "learning-map.svg": "ad88faecc5cc417a9277047140d5d4fb3b34fd52e4014a85da66609b9763fbc7",
+    "prime-powers.csv": "1cfb16fb119eb40d18ab927ec034ae057ef6612af009c6e0d7dfb3ce6e8da815"
+  }
+}

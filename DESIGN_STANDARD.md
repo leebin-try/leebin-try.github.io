@@ -39,8 +39,11 @@ The current desktop grid choices are defaults, not universal column-count requir
 | DS-08 | Reduced motion disables active motion, including after a preference change; no JavaScript is required to see content | Both homepage editions, preference changes during a scroll reveal, initial reduced motion, finite animation duration, and a JavaScript-disabled browser context |
 | DS-09 | Both themes retain the layout contract | English/Chinese home and article pages at desktop/mobile widths with light/dark themes; color judgment and contrast review are manual |
 | DS-10 | Spacing preserves useful density | Card-grid gaps stay within 12–48px; top-level article paragraphs have at most 1.2em outer margin, section headings at most 36px; unrelated block heights remain unconstrained |
+| DS-11 | Mathematical articles render equations without losing access or breaking narrow pages | The Math article joins the bilingual width matrix; browser checks require rendered equations, MathML, no math-error nodes, working contents/language mapping and reading with JavaScript disabled |
 
 The route matrix covers each current page template, both a decorated sample article and a technical article, and the evidence/report layouts. It is a representative browser audit, not a claim to test every article at every width. Separate content/asset audits inspect all built pages, bilingual pairs, internal links and registered figure hashes. Adding a template requires adding a route to the contract.
+
+Math adds a topic hub using the existing featured-story role and a long article with build-time KaTeX. Long displays scroll inside their own containers; do not shrink the entire article or hide page overflow to disguise a formula that is too wide. Formula/source parity and reproducible Math assets join the content checks. See [the Math editorial guide](docs/math-editorial-guide.md).
 
 ## Reading and content
 

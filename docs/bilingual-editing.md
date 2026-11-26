@@ -14,6 +14,8 @@ English is the default at `/`. Chinese pages live under `/zh/`. Both editions ar
 
 Navigation, archive filters, search, RSS, evidence pages, notes and biography are localized. Each archive/search/feed contains one edition, rather than duplicate pairs. Canonical and `hreflang` links identify the English and Chinese URLs; both appear in the sitemap.
 
+Math has paired hubs at `/math/` and `/zh/math/`. Its articles use the same pairing and outline mapping. Follow [the Math editorial guide](math-editorial-guide.md); preserve the structured source/verification metadata, pinned proof commit, display formulas and numerical rows across editions. Category URLs such as `?category=Math` restore the selected filter and retain it across language switches. KaTeX renders equations with MathML at build time, and long displays scroll within the reading column.
+
 The research report has paired HTML in `src/content/reports/` and English/Chinese companion Markdown files in `public/data-agent-ontology/`. Preserve every claim/source anchor and its verification scope. Translating the frozen report is not a new literature review.
 
 ## Reading layout

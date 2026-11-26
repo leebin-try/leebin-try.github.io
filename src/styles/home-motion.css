@@ -20,18 +20,21 @@
 .home-page .featured-story,
 .home-page .post-card,
 .home-page .kaggle-entry,
+.home-page .math-entry,
 .home-page .research-entry { transition:translate 220ms ease,box-shadow 220ms ease; }
 @media(hover:hover) and (pointer:fine) {
   .home-page .featured-story:hover,
   .home-page .post-card:hover { translate:0 -4px; }
   .home-page .featured-story:hover { box-shadow:0 12px 32px #20251f12; }
   .home-page .kaggle-entry:hover,
+  .home-page .math-entry:hover,
   .home-page .research-entry:hover { translate:0 -2px; }
 }
 @media(prefers-reduced-motion:reduce) {
   .home-page .featured-story:hover,
   .home-page .post-card:hover,
   .home-page .kaggle-entry:hover,
+  .home-page .math-entry:hover,
   .home-page .research-entry:hover { translate:none; }
   .home-page .hero-emphasis svg { transform:none; }
 }

@@ -61,6 +61,13 @@ def main():
             for field in ['kind', 'number', 'topic', 'status', 'evidenceDate', 'submission', 'competitionUrl', 'recordSource']:
                 assert zrecord.get(field) == erecord.get(field), (key, field)
             assert re.findall(r'\d+(?:\.\d+)?', zrecord.get('result', '')) == re.findall(r'\d+(?:\.\d+)?', erecord.get('result', '')), key
+        if 'math:' in zfront:
+            zrecord = json.loads(re.search(r'^math: (.+)$', zfront, re.M)[1])
+            erecord = json.loads(re.search(r'^math: (.+)$', efront, re.M)[1])
+            assert zrecord == erecord, (key, 'Math provenance metadata differs')
+            assert re.findall(r'\$\$\s*\n(.*?)\n\$\$', zbody, re.S) == re.findall(r'\$\$\s*\n(.*?)\n\$\$', ebody, re.S), (key, 'Math display formulas differ')
+            numeric_row = r'^\| [\d,]+ \| -?\d+\.\d+ \| -?\d+\.\d+ \| -?\d+\.\d+ \|$'
+            assert re.findall(numeric_row, zbody, re.M) == re.findall(numeric_row, ebody, re.M), (key, 'Math numerical example differs')
         for prefix, language in [('', 'en'), ('zh/', 'zh-CN')]:
             path = ROOT / 'dist' / prefix / 'posts' / key / 'index.html'
             doc = Document(path.read_text())
@@ -79,7 +86,7 @@ def main():
     zhreport = (ROOT / 'src/content/reports/data-agent-ontology.html').read_text()
     enreport = (ROOT / 'src/content/reports/data-agent-ontology-en.html').read_text()
     assert set(re.findall(r'\bid="([^"]+)"', zhreport)) == set(re.findall(r'\bid="([^"]+)"', enreport))
-    print(f'Verified {len(english)} bilingual pairs, heading/figure parity, score metadata, {len(english)*2} article canonicals/alternates, English visible text, and 54 research anchors.')
+    print(f'Verified {len(english)} bilingual pairs, heading/figure parity, score and Math provenance metadata, Math formulas/data parity, {len(english)*2} article canonicals/alternates, English visible text, and 54 research anchors.')
 
 
 if __name__ == '__main__':

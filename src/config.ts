@@ -5,5 +5,5 @@ export const SITE = {
   author: 'Bin',
   github: 'https://github.com/leebin-try',
 };
-export const categories = ['全部', 'Kaggle', '技术', '设计', '生活'] as const;
+export const categories = ['全部', 'Kaggle', 'Math', '技术', '设计', '生活'] as const;
 export const KAGGLE_TOPICS = ['表格学习', '时序与推荐', '图像分类', '图像分割', '语言模型', '智能体'] as const;

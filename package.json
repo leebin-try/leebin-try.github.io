@@ -15,19 +15,23 @@
     "test:e2e": "playwright test --project=desktop --project=mobile",
     "test:design": "playwright test --project=design",
     "test:browser": "playwright test",
-    "check:content": "python3 scripts/check-translations.py && python3 scripts/check-kaggle-assets.py",
+    "check:content": "python3 scripts/check-translations.py && python3 scripts/check-kaggle-assets.py && python3 scripts/build-math-assets.py --check",
     "check:design": "npm run build && npm run test:design",
     "check": "npm run typecheck && npm run build && npm run check:content && npm run test:browser"
   },
   "dependencies": {
-    "astro": "^7.4.5",
+    "@astrojs/markdown-remark": "^7.3.10",
     "@astrojs/rss": "^4.0.19",
-    "@astrojs/sitemap": "^3.7.4"
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.5",
+    "katex": "^0.19.1",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "@types/node": "^24.0.0",
     "@playwright/test": "^1.58.0",
+    "@types/node": "^24.0.0",
     "typescript": "^6.0.3"
   }
 }

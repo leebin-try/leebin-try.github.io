@@ -41,7 +41,18 @@ filterButtons.forEach(button => button.addEventListener('click', () => {
   });
   const empty = document.querySelector<HTMLElement>('.filter-empty');
   if (empty) empty.hidden = visible !== 0;
+  const url = new URL(location.href);
+  if (category === '全部') url.searchParams.delete('category');
+  else if (category) url.searchParams.set('category', category);
+  history.replaceState(null, '', url);
+  window.dispatchEvent(new Event('journal:locationchange'));
 }));
+function restoreCategoryFilter(): void {
+  const selected = new URL(location.href).searchParams.get('category') ?? '全部';
+  Array.from(filterButtons).find(button => button.dataset.filter === selected)?.click();
+}
+restoreCategoryFilter();
+window.addEventListener('popstate', restoreCategoryFilter);
 
 const dialog = document.querySelector<HTMLDialogElement>('#search-dialog');
 const input = document.querySelector<HTMLInputElement>('#search-input');

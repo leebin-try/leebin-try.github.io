@@ -7,6 +7,8 @@ import Icon from '@/components/Icon.astro';
 import { getPosts, postKey, formatDate, readingTime, coverSource, coverAlt } from '@/utils/posts';
 import { localPath, translator, label } from '@/utils/i18n';
 import '@/styles/kaggle.css';
+import 'katex/dist/katex.min.css';
+import '@/styles/math.css';
 interface Props { post: CollectionEntry<'posts'>; }
 const { post } = Astro.props;
 const locale = post.data.lang;
@@ -17,11 +19,12 @@ const counterpart = (await getPosts(locale === 'en' ? 'zh' : 'en')).find(p => po
 const alternateHeadings = counterpart ? (await render(counterpart)).headings : [];
 const fragments = Object.fromEntries(headings.map((h,i) => [h.slug,alternateHeadings[i]?.slug ?? h.slug]));
 const evidenceHref = post.data.kaggle ? localPath(post.data.kaggle.source,locale) : undefined;
+const backPath = post.data.math ? '/math/' : post.data.kaggle ? '/kaggle/' : '/posts/';
 ---
 <BaseLayout title={post.data.title} description={post.data.description} image={post.data.coverImage?.replace('.svg','.png')} fragments={fragments}>
   <ReadingLayout headings={sections}>
-    <article class:list={['article-shell', { 'kaggle-article': Boolean(post.data.kaggle) }]}>
-      <a class="article-back" href={localPath(post.data.kaggle ? '/kaggle/' : '/posts/',locale)}>{post.data.kaggle ? t('← 返回 Kaggle 竞赛笔记','← Back to Kaggle field notes') : t('← 返回全部文章','← Back to all articles')}</a>
+    <article class:list={['article-shell', { 'kaggle-article': Boolean(post.data.kaggle), 'math-article': Boolean(post.data.math) }]}>
+      <a class="article-back" href={localPath(backPath,locale)}>{post.data.math ? t('← 返回 Math 专栏','← Back to Math') : post.data.kaggle ? t('← 返回 Kaggle 竞赛笔记','← Back to Kaggle field notes') : t('← 返回全部文章','← Back to all articles')}</a>
       <header class="article-header">
         <div class="post-meta"><span class="category"><i></i>{label(post.data.category,locale)}</span><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time><span>{readingTime(post.body,locale)}</span><span>{t('作者 Bin','By Bin')}</span></div>
         <h1>{post.data.title}</h1><p class="article-description">{post.data.description}</p>
@@ -31,6 +34,7 @@ const evidenceHref = post.data.kaggle ? localPath(post.data.kaggle.source,locale
         {post.data.coverCaption && <figcaption>{post.data.coverCaption}</figcaption>}
       </figure>
       <div class="article-body">
+        {post.data.math && <aside class="math-evidence" aria-label={t('数学解读的来源与范围','Sources and scope of this mathematical guide')}><strong>{t('数学阅读指南 · 核实日期','Mathematical reading guide · checked')} {post.data.math.evidenceDate}</strong><p>{t('形式化核验状态引用原始报告；本文解释证明结构及先修知识，未在本项目完整重跑 Lean 证明。','Verification status is attributed to primary reports. This article explains the proof structure and prerequisites; the complete Lean proof was not rebuilt in this project.')} <a href={post.data.math.source}>{t('作者公告','Author announcement')}</a> · <a href={post.data.math.verificationSource}>{t('独立核验','Independent verification')}</a></p></aside>}
         {post.data.kaggle && <aside class="kaggle-evidence" aria-label={t('复盘证据与状态','Evidence and status')}>
           {post.data.kaggle.kind === 'case' && <p class="kaggle-evidence-heading"><strong>{label(post.data.kaggle.topic,locale)} · {label(post.data.kaggle.status,locale)}</strong><span>{post.data.kaggle.result}</span></p>}
           <p>{t('实验记录截至','Evidence as of')} {post.data.kaggle.evidenceDate}. <a href={evidenceHref}>{t('查看公开证据摘要','Read the public evidence summary')}</a></p>

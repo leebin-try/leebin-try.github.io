@@ -2,7 +2,7 @@
 
 [访问博客](https://leebin-try.github.io/) · [GitHub 仓库](https://github.com/leebin-try/leebin-try.github.io)
 
-采用暖白、墨黑和荧光绿配色的中英文个人博客，默认英文，可在页头自由切换中文。现有 [Kaggle 竞赛笔记专栏](https://leebin-try.github.io/kaggle/)，以及研究报告和个人文章。
+采用暖白、墨黑和荧光绿配色的中英文个人博客，默认英文，可在页头自由切换中文。现有 [Kaggle 竞赛笔记专栏](https://leebin-try.github.io/kaggle/)、[Math 数学专栏](https://leebin-try.github.io/math/)，以及研究报告和个人文章。
 
 当前使用 Astro 与严格 TypeScript 配置，实现独立定制主题；内容组织参考 AstroPaper 的 Markdown 博客思路。Kaggle 专栏是有来源的实验复盘；其余保留的示例文章在正文单独标注。手记和个人介绍仍沿用初始示例。
 
@@ -98,7 +98,32 @@ lang: zh
 ---
 ```
 
-在文件头之后写 Markdown 正文。默认发布要求同名英文版本放在 `src/content/posts/en/`，声明 `lang: en`；中英文标题、说明和正文分别维护，数据事实及章节顺序保持对应。见[双语维护说明](docs/bilingual-editing.md)。`category` 支持 `技术`、`设计`、`生活`、`Kaggle`；`cover` 支持 `garden`、`terminal`、`design`、`coffee`、`workflow`、`slow`。草稿设置 `draft: true` 后不会出现在文章列表、RSS 或搜索索引中。
+在文件头之后写 Markdown 正文。默认发布要求同名英文版本放在 `src/content/posts/en/`，声明 `lang: en`；中英文标题、说明和正文分别维护，数据事实及章节顺序保持对应。见[双语维护说明](docs/bilingual-editing.md)。`category` 支持 `技术`、`设计`、`生活`、`Kaggle`、`Math`；`cover` 支持 `garden`、`terminal`、`design`、`coffee`、`workflow`、`slow`。草稿设置 `draft: true` 后不会出现在文章列表、RSS 或搜索索引中。
+
+## Math 专栏
+
+- 入口：`/math/` 与 `/zh/math/`，首页、导航、页脚及归档均可访问；归档支持 `?category=Math` 并随语言切换保留分类。
+- 首篇：[黎曼猜想证明深度解读（中文）](https://leebin-try.github.io/zh/posts/math-riemann-proof-2026/) · [English edition](https://leebin-try.github.io/posts/math-riemann-proof-2026/)。围绕 2026 年 11 月 20 日 Alpöge / Claude 公布的证明，借助 11 月 25 日较短重写版说明数学架构，固定代码提交 `72fead102f663d5c7a407964a13dc0cf9d977207`。
+- 内容：18 节，中文约 9 千汉字；包含 ζ 与素数权重、单侧判据、格的体积与指标、A/B/C 三个输入、主不等式完整代数、平方根链长、θ 提升、分母与 Selmer 群、Lean 阅读顺序、七门官方课程与六道练习。
+- 公式与图示：29 块展示公式，构建时以 KaTeX / MathML 渲染，使用本地字体，不依赖浏览器执行数学脚本；5 幅原创 SVG（含封面），另有分享用 PNG。长公式和宽表格仅在自身区域滚动，图表保持完整比例。
+- 证据：核实日期 2026-11-26；分别引用原公告、Lean / Mathlib 联合声明、MIT 原版及较短版核验记录。本站未重建完整 Lean 工程，教学例子与第三方核验明确区分。详见[研究记录](docs/math/riemann-2026-research.md)。
+- 数据：Python 标准库生成有限范围的 ψ(x) 教学表，公开 CSV、代码与素材指纹；它不替代带特征的证明对象或无穷范围证明。
+- 维护：[Math 编辑规范](docs/math-editorial-guide.md)。`npm run check` 同时检查双语公式、版本元信息、数值表一致性、素材可复现性及真实浏览器中的阅读行为；设计矩阵包含新专栏和数学长文。
+
+本次 Math 上线前验证：53 个文件类型检查 0 错误、0 警告；73 个页面构建成功；28 对文章的双语与来源检查通过；149 项浏览器检查通过（22 项交互、127 项设计）。数学长文纳入双语、多屏宽及双主题检查；这些结果验证网站与教学素材，不构成对原始证明的独立重放。
+
+[专栏桌面预览](docs/previews/math-desktop.png) · [中文长文首屏](docs/previews/math-article-desktop.png) · [主不等式推导](docs/previews/math-derivation-desktop.png) · [手机阅读](docs/previews/math-article-mobile.png) · [手机深色主题](docs/previews/math-derivation-dark-mobile.png)
+
+更新原创数学图示与预览：
+
+```bash
+python3 scripts/build-math-assets.py
+node scripts/render-math-cover.mjs
+npm run check
+# 先启动手动预览，再捕获实际页面：
+npm run preview
+node scripts/capture-math-preview.mjs
+```
 
 ## Kaggle 专栏
 
@@ -107,7 +132,7 @@ lang: zh
 - 深度：17 篇逐赛文章采用[六章写作模板](docs/templates/kaggle-case-study.md)：问题定位、技术思路与路线、评价方式、结果与证据、思考与结论、下一步。开头给核心判断，解释指标与验证职责，保留具体实现、实测分析和可证伪的下一步设计；未执行的方案明确标注。
 - 排版：正文 16px、约 1.8 行高，收紧段落、标题和模块间距；按最新要求恢复整行大封面（桌面最高约 480px），列表封面也占据卡片整行。实测图完整保留坐标与文字，可放大查看。此前缩略图版的页面缩短比例不再描述当前版本；[测量记录](docs/previews/layout-density.json)使用相同中文内容进行历史对照，并明确记录封面、字号与导航变化。
 - 图像：20 幅赛题／方法主题封面、20 幅流程图，均为原创 SVG；另有 16 幅依据真实记录重绘的曲线、对照图与混淆矩阵。封面同步提供 PNG 分享预览，正文支持放大原图与下载指标 CSV。
-- 阅读：默认英文，中文位于 `/zh/`；27 篇文章均有对应语言版本，研究报告、导航、搜索、证据页和 RSS 也支持双语。切换语言保留当前文章、分类参数和对应章节；归档与搜索每种语言显示 27 篇文章，避免重复。桌面文章目录固定在左侧并高亮当前章节，窄屏可展开目录。
+- 阅读：默认英文，中文位于 `/zh/`；28 篇文章均有对应语言版本，研究报告、导航、搜索、证据页和 RSS 也支持双语。切换语言保留当前文章、分类参数和对应章节；归档与搜索每种语言显示 28 篇文章，避免重复。桌面文章目录固定在左侧并高亮当前章节，窄屏可展开目录。
 - 证据：`/kaggle/sources/` 提供公开结果摘要。源代码仓库当前为私有，原记录链接标注访问权限；本文不改变源仓库权限或发布原始数据、预测和模型。
 - 状态：15 个项目有文档核实过的官方评分；PLE 环境受阻；Carvana 远程预检 COMPLETE，本地产物校验在 CSV 字段上限处停止、无正式提交。分数按各篇记录日期引用，不是全量实时榜单同步。
 - 维护：[双语维护说明](docs/bilingual-editing.md)、[英文写作模板](docs/templates/kaggle-case-study.en.md)与[专栏编辑约定](docs/kaggle-editorial-guide.md)与[完整写作模板](docs/templates/kaggle-case-study.md)。成绩、事实与归纳观点分别记录，新增项目不必更改页面里的固定列表。

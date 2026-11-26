@@ -53,7 +53,7 @@ for (const width of [390, 1440]) {
       test(`theme ${theme} ${locale.lang} ${width}px`, async ({ page }, info) => {
         await page.setViewportSize({ width, height: 1000 });
         await page.addInitScript(value => localStorage.setItem('bin-journal-theme', value), theme);
-        for (const route of ['/', '/posts/kaggle-15-cmi/']) {
+        for (const route of ['/', '/posts/kaggle-15-cmi/', '/posts/math-riemann-proof-2026/']) {
           await openAndAudit(page, locale.prefix + route, info);
           await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
         }
