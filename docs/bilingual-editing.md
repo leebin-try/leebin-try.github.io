@@ -22,6 +22,10 @@ The research report has paired HTML in `src/content/reports/` and English/Chines
 
 Article covers occupy the entire article row, preserve their image geometry and approach the former large-cover height (desktop maximum 480px). List covers also occupy their card row. This intentionally supersedes the previous thumbnail layout. The tighter prose spacing remains in place.
 
+All standard article-card covers use one 16:9 frame, including retained sample posts, competition cases and method articles, at every breakpoint. The base `.post-cover` rule owns this ratio; avoid content-specific or mobile overrides. Editorial diagrams remain fully visible with `object-fit: contain`, while decorative artwork may fill its frame with `cover`.
+
+Consistency is defined by component role rather than identical pixel dimensions across the site. The homepage feature remains prominent; the article archive uses three columns on desktop, while the Kaggle case grid uses two columns to accommodate results and status. Both card grids use 16:9 covers that scale with their columns. Reading-page covers and inline analytical figures retain their separate layout rules and original figure proportions.
+
 ## Verification and publication
 
 Homepage motion is scoped to `Home.astro`, `home-motion.css` and `home-motion.ts`. It uses finite CSS entrance effects and one-shot IntersectionObserver reveals through Web Animations. Content is visible without JavaScript; reduced-motion preference disables CSS effects and cancels active scripted animations, including when changed during a visit. Hover movement applies only to a fine pointer. Keep reveals confined to opacity and transforms so they do not reflow the page.

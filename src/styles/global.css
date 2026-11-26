@@ -599,7 +599,7 @@ button {
 
 .post-cover {
   display:block;
-  aspect-ratio:1.5;
+  aspect-ratio:16/9;
   position:relative;
   overflow:hidden;
   border-radius:3px
@@ -1740,9 +1740,6 @@ kbd {
   .post-grid {
     grid-template-columns:1fr;
     gap:36px
-  }
-  .post-cover {
-    aspect-ratio:1.55
   }
   .post-meta {
     margin-top:17px
